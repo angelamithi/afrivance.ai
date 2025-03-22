@@ -1,0 +1,229 @@
+/* General Styles */
+body {
+    background-color: #05051e;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+  
+.container {
+    width: 100%;
+    margin: auto;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    position: relative;
+    height: 25px;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    position: absolute;
+    left: 5%;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 50px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    color: #fff;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: white;
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    text-align: center;
+}
+
+.hero-video {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+}
+
+/* Button Positioned on Video */
+.top-right-button {
+    position: absolute;
+    top: 250px;
+    left: 80px;
+    background: linear-gradient(to right, #43A5FE, #0468c5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.top-right-button a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Services Section */
+.services {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+.service-card {
+    flex: 1;
+    min-width: 280px;
+    max-width: 320px;
+    padding: 15px;
+    border: 1px solid #2487e2;
+    border-radius: 10px;
+    text-align: center;
+    background: #0a0a2e;
+}
+
+.service-image {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.service-card h3 {
+    color: #2487e2;
+    font-size: 20px;
+}
+.image-text-section {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Space between image and text */
+    margin-top: 70px;
+    justify-content: space-between;
+}
+
+.image-container {
+    flex: 2; /* Give the image more space */
+    margin-left: 140px; /* Move image 50px inside from the left */
+}
+
+.image-container img {
+    width: 90%; /* Make it occupy more width */
+    max-width: 600px; /* Adjust max width */
+    border-radius: 10px;
+}
+
+.text-container {
+    flex: 1; /* Reduce text section width */
+    margin-right: 290px; /* Move text 50px inside from the right */
+}
+
+.text-container ul {
+    list-style: none; /* Remove default bullets */
+    padding: 0;
+}
+
+.text-container li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.text-container li::before {
+    content: "✔"; /* Add tick mark */
+    color: #43A5FE;
+    font-weight: bold;
+}
+
+  .text-container li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .text-container li::before {
+    content: "✔"; /* Add tick mark */
+    color: #43A5FE;
+    font-weight: bold;
+  }
+  
+
+.bullet-list {
+    list-style: none;
+    padding: 0;
+}
+
+.bullet-list li {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.bullet-list li::before {
+    content: "✔";
+    color: #43A5FE;
+    margin-right: 10px;
+    font-weight: bold;
+}
+
+/* Team Section */
+.team-section {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.team-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.team-carousel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    overflow-x: auto;
+}
+
+.team-img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+/* Quick Links */
+.quick-links {
+    margin-top: 40px;
+    text-align: right;
+}
+
+.quick-links h3 {
+    color: #2487e2;
+    font-size: 20px;
+}
+
+.quick-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.quick-links li {
+    cursor: pointer;
+    color: white;
+}
+
+.quick-links li:hover {
+    color: #43a5fe;
+}

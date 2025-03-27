@@ -17,7 +17,7 @@ const AboutUs = () => {
 
       <div className="about-section section-light">
         <h2 style={{ marginTop: "20px" }}>
-          <FaEye color="grey" size={22}/> Our Vision
+          <FaEye color="grey" size={20}/>  Our Vision
         </h2>
         <p>
           "To be a world-class AI powerhouse—driving innovation, shaping the
@@ -25,7 +25,7 @@ const AboutUs = () => {
           to all."
         </p>
         <h2 style={{ marginTop: "40px" }}>
-          <FaBullseye color="grey" size={22} /> Our Mission
+          <FaBullseye color="grey" size={20} />  Our Mission
         </h2>
         <ul>
           <li>Develop cutting-edge AI solutions that address global challenges</li>
@@ -33,7 +33,7 @@ const AboutUs = () => {
           <li>Democratize AI, ensuring accessibility to businesses and individuals across Africa</li>
         </ul>
         <h2 style={{ marginTop: "40px" }}>
-          <FaTasks color="grey" size={22} /> What We Do
+          <FaTasks color="grey" size={20} />  What We Do
         </h2>
         <ul>
           <li>AI Consultancy: Helping businesses navigate AI adoption.</li>
@@ -48,6 +48,7 @@ const AboutUs = () => {
           Partner with us, support our journey, or explore AI solutions for your challenges. Stay updated on AI innovations,
           trends, and our journey—Follow us on Facebook: <strong>Afrivance.ai</strong>
         </p>
+        <a href="/contact" className="cta-button">Contact Us</a>
       </div>
     </div>
   );

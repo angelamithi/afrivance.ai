@@ -19,7 +19,9 @@ body {
     align-items: center;
     padding: 20px 0;
     position: relative;
-    height: 25px;
+    height: 50px;
+    background-color: #05051e;
+    z-index: 10;
 }
 
 .logo {
@@ -27,6 +29,7 @@ body {
     font-weight: bold;
     position: absolute;
     left: 5%;
+    color: white;
 }
 
 .nav-links {
@@ -38,13 +41,48 @@ body {
 }
 
 .nav-item {
-    color: #fff;
+    color: white;
     cursor: pointer;
+    position: relative; /* Important for dropdown positioning */
+    padding: 10px 15px;
 }
 
 .nav-item:hover {
+    color: #43A5FE;
+}
+
+/* Dropdown Menu */
+.dropdown-menu {
+    position: absolute;
+    top: 40px; /* Push it below "Services" */
+    left: 0;
+    background: #0A0A2E;
+    border: 1px solid #2487e2;
+    border-radius: 8px;
+    list-style: none;
+    padding: 10px 0;
+    width: 220px;
+    z-index: 20;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-menu li {
+    padding: 10px 15px;
+    color: white;
+    cursor: pointer;
+    white-space: nowrap; /* Prevents text from wrapping */
+}
+
+.dropdown-menu li:hover {
+    background-color: #2487e2;
     color: white;
 }
+
+/* Ensure dropdown overflows outside navbar */
+.services-menu {
+    position: relative;
+}
+
 
 /* Hero Section */
 .hero {
@@ -252,16 +290,16 @@ body {
 .bullet-list li {
     font-size: 17px; /* Reduced size */
     margin-bottom: 8px;
-    color: #b9b9ba;
+    color: #b0b0d0;
 }
 
 
 
 /* Service Description */
 .service-card p {
-    font-size: 16px; /* Increased from default */
+    font-size: 20px; /* Increased from default */
     line-height: 2.0;
-    color: #b9b9ba;
+    color: #b0b0d0;
 }
 
 

@@ -2,13 +2,13 @@
 .portfolio-wrapper {
     text-align: center;
     padding: 20px;
-    background-color: #0A0A2E;
+    background-color: #05051e;
   }
   
   .portfolio-heading {
-    font-size: 32px;
+    font-size: 2.5rem;
     font-weight: bold;
-    color:#fff;
+    color: #43A5FE;
     margin-bottom: 20px;
   }
   

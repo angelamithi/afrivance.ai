@@ -1,0 +1,135 @@
+/* Consultancy Page Styles */
+.consultancy-container {
+    background-color: #05051e;
+    color: white;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+/* Hero Section */
+.hero-text2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.hero-title2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #43A5FE;
+}
+
+.hero-subtitle2 {
+    font-size: 1.5rem;
+    color: #b0b0d0;
+    margin-top: 0.5rem;
+}
+
+/* Image & Description Layout */
+.hero-section2 {
+    display: flex;
+    flex-direction: row; /* Horizontal layout */
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    width: 100%;
+    text-align: left;
+   
+}
+
+/* Image Styling */
+.hero-image2 {
+    flex: 2; /* Takes more space */
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image2 img {
+    width: 100%;
+    max-width: 600px; /* Increased max width */
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(67, 165, 254, 0.3);
+}
+
+/* Description Styling */
+.hero-description2 {
+    flex: 1.5; /* Takes less space */
+    font-size: 25px;
+    color: #b0b0d0;
+    padding: 0.5rem;
+    font-weight: lighter;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    line-height: 1.5;
+}
+
+/* Services Section */
+.services-section {
+    max-width: 1000px;
+    margin-top: 3rem;
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.services-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #43A5FE;
+}
+
+.services-list {
+    margin-top: 1rem;
+    list-style: none;
+    padding: 0;
+}
+
+.services-list li {
+    font-size: 1.1rem;
+    color: #d0d0e0;
+    margin-top: 0.8rem;
+}
+.services-list li::before {
+    content: "✔";
+    color: #43A5FE;
+    font-weight: bold;
+}
+
+/* CTA Section */
+.cta-section {
+    max-width: 800px;
+    text-align: center;
+    margin-top: 0.5rem;
+    padding: 1rem;
+}
+
+.cta-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #43A5FE;
+}
+
+.cta-description {
+    font-size: 1.3rem;
+    color: #d0d0e0;
+    margin-top: 1rem;
+    line-height: 1.8;
+}
+
+.cta-button {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background-color: #0468c5;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.3s;
+}
+
+.cta-button:hover {
+    background-color: #43A5FE;
+}

@@ -7,6 +7,7 @@ import Portfolio from "./Portfolio";
 import AIConsultancy from "./AIConsultancy";
 import CustomAiAgents from "./CustomAiAgents";
 import AIBespokeSolutions from "./AIBespokeSolutions";
+import Contact from "./Contact";
 
 
 function Navbar() {
@@ -79,7 +80,7 @@ export default function App() {
           <Route path="/aiconsultancy" element={<AIConsultancy />} />
           <Route path="/customaiagents" element={<CustomAiAgents />} />
           <Route path="/aibespokesolutions" element={<AIBespokeSolutions />} /> 
-          {/* <Route path="/contact" element={<Contact />} /> */}
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         <Footer />
       </div>

@@ -54,12 +54,12 @@
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: #FFB134;
+            background: #FFf;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: white;
+          
             font-size: 1.2rem;
         }
         
@@ -238,18 +238,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            min-height: 600px;
         }
 
         .phone-mockup {
             position: relative;
             width: 300px;
             height: 600px;
-            background: #1a202c;
+            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
             border-radius: 40px;
             padding: 12px;
+            padding-top: 30px;
             box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
             transform: perspective(1000px) rotateY(-15deg);
             transition: transform 0.3s ease;
+            border: 2px solid #718096;
+        }
+        
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 6px;
+            background: #1a202c;
+            border-radius: 3px;
         }
 
         .phone-mockup:hover {
@@ -279,16 +294,17 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             animation: float 3s ease-in-out infinite;
             border: 2px solid #FFB134;
+            z-index: 10;
         }
 
         .badge-1 {
-            top: 10%;
-            right: -10%;
+            top: 120px;
+            right: -30px;
         }
 
         .badge-2 {
-            bottom: 15%;
-            left: -15%;
+            bottom: 120px;
+            left: -30px;
         }
 
         @keyframes float {
@@ -872,7 +888,7 @@
         <div class="nav-container">
             <a href="#home" class="logo">
                 <div class="logo-icon">
-                    <img src="macros-ai-icon.png" alt="Macros AI">
+                    <img src="macros-icon.png" alt="Macros AI">
                 </div>
                 Macros AI
             </a>
@@ -1282,7 +1298,7 @@
         </div>
     </footer>
 
-    <script>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {

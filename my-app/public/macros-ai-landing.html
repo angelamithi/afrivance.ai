@@ -313,9 +313,12 @@
         }
 
         /* Stats Section */
+       /* Stats Section */
         .stats-section {
             background: #f7fafc;
             padding: 4rem 2rem;
+            position: relative; /* Add this */
+            z-index: 2; /* Add this to bring it above hero */
         }
 
         .stats-container {
@@ -351,10 +354,12 @@
         }
 
         /* How It Works Section */
+        /* How It Works Section */
         .how-it-works {
-            padding: 6rem 2rem;
+            padding: 8rem 2rem 6rem 2rem; /* Added extra top padding */
             max-width: 1200px;
             margin: 0 auto;
+            scroll-margin-top: 80px; /* Offset for fixed navbar */
         }
 
         /* Video Demo Section */
@@ -1002,11 +1007,11 @@
     <section class="stats-section">
         <div class="stats-container">
             <div class="stat-card">
-                <div class="stat-number">1sec</div>
+                <div class="stat-number">10sec</div>
                 <div class="stat-label">Meal Analysis Time</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">100%</div>
+                <div class="stat-number">95%</div>
                 <div class="stat-label">AI-Powered Accuracy</div>
             </div>
             <div class="stat-card">
@@ -1393,11 +1398,12 @@
         });
 
         // Add parallax effect to hero section
+        // Add parallax effect to hero section (limited to prevent overlap)
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            if (hero && scrolled < window.innerHeight * 0.8) { // Limit the parallax range
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`; // Reduced parallax intensity
             }
         });
     </script>

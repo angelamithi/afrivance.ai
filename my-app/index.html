@@ -124,12 +124,10 @@
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            /* background: linear-gradient(135deg, #00d4ff, #0ea5e9, #8b5cf6); */
             background: #fff;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
         }
 
         .hero-tagline {
@@ -269,6 +267,7 @@
             border-radius: 15px;
             color: white;
             transition: all 0.3s ease;
+            cursor: pointer;
         }
 
         .portfolio-item:hover {
@@ -498,28 +497,19 @@
         <div class="container">
             <h2>Our Solutions in Action</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item fade-in">
+                <!-- Macros AI - Clickable Card -->
+                <div class="portfolio-item fade-in" onclick="window.location.href='macros-ai-landing.html'">
                         <h3><i class="fas fa-apple-alt"></i> Macros AI App</h3>
                         <p>AI-powered nutrition tracking app that simplifies healthy eating by analyzing meal photos to calculate macros instantly. Users set personalized goals and receive AI-driven insights on their eating patterns, and get real-time recommendations to stay on track with their fitness objectives.</p>
                         
-                        <!-- Add Privacy Policy Link Here -->
+                        <!-- Learn More Link -->
                         <div style="margin-top: 1.5rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.2);">
-                            <a href="/macros-ai-privacy-policy.html" style="color: #00d4ff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
-                                <i class="fas fa-shield-alt"></i> Privacy Policy
-                            </a>
-                            <span style="color: rgba(255,255,255,0.5); margin: 0 0.5rem;">•</span>
-
-                            <!-- ADD THIS DELETE ACCOUNT LINK -->
-                        <a href="/macros-ai-delete-account.html" style="color: #00d4ff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
-                            <i class="fas fa-trash-alt"></i> Delete Account
-                        </a>
-                        <span style="color: rgba(255,255,255,0.5); margin: 0 0.5rem;">•</span>
-                        
-                            <a href="#" style="color: #00d4ff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease;">
-                                <i class="fas fa-download"></i> Download App
+                            <a href="macros-ai-landing.html" style="color: #00d4ff; text-decoration: none; display: inline-flex; align-items: center; gap: 0.5rem; transition: all 0.3s ease; font-weight: 600; font-size: 1.1rem;" onclick="event.stopPropagation();">
+                                <i class="fas fa-arrow-right"></i> Learn More
                             </a>
                         </div>
                 </div>
+                
                 <div class="portfolio-item fade-in">
                     <h3><i class="fas fa-building"></i> Business Intelligence Tools</h3>
                     <p>Custom AI solutions for organizations that need to process information quickly, identify opportunities, and make strategic decisions with confidence and speed.</p>
@@ -543,7 +533,7 @@
                     <i class="fas fa-envelope"></i>
                 </div>
                 <h3>Get in Touch</h3>
-                <a href="mailto:info@afrivance.ai">info@afrivance.ai</a>
+                <a href="/cdn-cgi/l/email-protection#96fff8f0f9d6f7f0e4ffe0f7f8f5f3b8f7ff"><span class="__cf_email__" data-cfemail="1871767e7758797e6a716e79767b7d367971">[email&#160;protected]</span></a>
             </div>
             <div class="contact-card fade-in">
                 <div class="contact-icon">
@@ -569,10 +559,10 @@
         <h3>Afrivance AI</h3>
         <p>AI that works for you - Building smarter solutions for a smarter world.</p>
         <div class="social-links">
-            <a href="#"><i class="fab fa-facebook"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61559787553578"><i class="fab fa-facebook"></i></a>
+            <!-- <a href="#"><i class="fab fa-twitter"></i></a>
             <a href="#"><i class="fab fa-linkedin"></i></a>
-            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a> -->
         </div>
         
         <!-- Updated Footer Links -->
@@ -582,7 +572,6 @@
             </a>
             <span style="color: rgba(255,255,255,0.5);">|</span>
             
-            <!-- ADD THIS DELETE ACCOUNT LINK -->
             <a href="/macros-ai-delete-account.html" style="color: #00d4ff; text-decoration: none; margin: 0 1rem; transition: color 0.3s ease;">
                 Delete Account
             </a>

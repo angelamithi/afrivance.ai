@@ -398,11 +398,11 @@
             .video-wrapper {
                 position: relative;
                 width: 100%;
-                padding-top: 177.78%; /* 9:16 aspect ratio for vertical videos */
+                padding-top: 210%; /* INCREASED from 177.78% for taller phone mockup */
                 background: #1a202c; /* Phone body color */
                 border-radius: 35px 35px 0 0; /* Curved top like a phone */
                 padding: 8px;
-                padding-top: calc(177.78% + 8px);
+                padding-top: calc(210% + 8px); /* UPDATED calculation */
                 padding-bottom: 0;
             }
 
@@ -1437,7 +1437,6 @@
             lastScroll = currentScroll;
         });
 
-        // Add parallax effect to hero section
         // Add parallax effect to hero section (limited to prevent overlap)
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;

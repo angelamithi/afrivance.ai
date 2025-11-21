@@ -241,44 +241,61 @@
             min-height: 650px;
         }
 
-        .phone-mockup {
-            position: relative;
-            width: 300px;
-            height: 650px;
-            background: linear-gradient(135deg, #4a5568 0%, #2d3748 100%);
-            border-radius: 40px;
-            padding: 12px;
-            padding-top: 30px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
-            transform: perspective(1000px) rotateY(-15deg);
-            transition: transform 0.3s ease;
-            border: 2px solid #718096;
-        }
-        
-        .phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 6px;
-            background: #1a202c;
-            border-radius: 3px;
-        }
+       .phone-mockup {
+    position: relative;
+    width: 360px;
+    height: 720px;
+    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-radius: 45px;
+    padding: 15px;
+    padding-top: 35px;
+    box-shadow: 
+        0 50px 100px rgba(0, 0, 0, 0.5),
+        0 0 0 1px rgba(255, 255, 255, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    transform: perspective(1000px) rotateY(-12deg);
+    transition: transform 0.5s ease;
+}
 
-        .phone-mockup:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
+.phone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 25px;
+    background: #000;
+    border-radius: 0 0 20px 20px;
+    box-shadow: inset 0 -2px 3px rgba(255, 255, 255, 0.1);
+}
 
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-        }
+.phone-mockup::after {
+    content: '';
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(circle, #1a3a52 0%, #0a1a2a 100%);
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.phone-mockup:hover {
+    transform: perspective(1000px) rotateY(0deg) scale(1.02);
+}
+
+.phone-screen {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+}
 
         .phone-screen img {
             width: 100%;

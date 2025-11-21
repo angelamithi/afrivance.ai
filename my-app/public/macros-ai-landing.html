@@ -360,109 +360,112 @@
             max-width: 1200px;
             margin: 0 auto;
             scroll-margin-top: 80px; /* Offset for fixed navbar */
-
-/* Video Demo Section */
-        .video-demo-section {
-            padding: 6rem 2rem;
-            background: #f7fafc;
         }
 
-        .video-demo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+        /* Video Demo Section */
+        /* Video Demo Section */
+            /* Video Demo Section */
+            .video-demo-section {
+                padding: 6rem 2rem;
+                background: #f7fafc;
+            }
 
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
+            .video-demo-container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
 
-        .video-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
+            .videos-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+                gap: 2.5rem;
+                margin-top: 3rem;
+            }
 
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(255, 177, 52, 0.2);
-        }
+            .video-card {
+                background: white;
+                border-radius: 25px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+            }
 
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 177.78%; /* 9:16 aspect ratio for vertical videos */
-            background: #1a202c; /* Phone body color */
-            border-radius: 35px 35px 0 0; /* Curved top like a phone */
-            padding: 8px;
-            padding-top: calc(177.78% + 8px);
-            padding-bottom: 0;
-        }
+            .video-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 50px rgba(255, 177, 52, 0.2);
+            }
 
-        .video-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 6px;
-            background: #0a0f1a;
-            border-radius: 3px;
-            z-index: 3;
-        }
+            .video-wrapper {
+                position: relative;
+                width: 100%;
+                padding-top: 177.78%; /* 9:16 aspect ratio for vertical videos */
+                background: #1a202c; /* Phone body color */
+                border-radius: 35px 35px 0 0; /* Curved top like a phone */
+                padding: 8px;
+                padding-top: calc(177.78% + 8px);
+                padding-bottom: 0;
+            }
 
-        .video-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: 8px;
-            right: 8px;
-            bottom: 0;
-            background: #000;
-            border-radius: 20px 20px 0 0;
-            z-index: 1;
-        }
+            .video-wrapper::before {
+                content: '';
+                position: absolute;
+                top: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 6px;
+                background: #0a0f1a;
+                border-radius: 3px;
+                z-index: 2;
+            }
 
-        .video-wrapper video {
-            position: absolute;
-            top: 30px;
-            left: 8px;
-            width: calc(100% - 16px);
-            height: calc(100% - 30px);
-            object-fit: cover;
-            background: #000;
-            border-radius: 20px 20px 0 0;
-            z-index: 2;
-        }
+            .video-wrapper::after {
+                content: '';
+                position: absolute;
+                top: 25px;
+                left: 8px;
+                right: 8px;
+                bottom: 0;
+                background: #000;
+                border-radius: 20px 20px 0 0;
+                z-index: 1;
+            }
 
-        .video-info {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 0 0 25px 25px;
-        }
+            .video-wrapper video {
+                position: absolute;
+                top: 25px;
+                left: 8px;
+                width: calc(100% - 16px);
+                height: calc(100% - 25px);
+                object-fit: cover;
+                background: #000;
+                border-radius: 20px 20px 0 0;
+                z-index: 2;
+            }
 
-        .video-info h4 {
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+            .video-info {
+                padding: 1.5rem;
+                background: white;
+                border-radius: 0 0 25px 25px;
+            }
 
-        .video-info h4 i {
-            color: #FFB134;
-        }
+            .video-info h4 {
+                font-size: 1.3rem;
+                color: #2d3748;
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
 
-        .video-info p {
-            color: #718096;
-            line-height: 1.6;
-        }
+            .video-info h4 i {
+                color: #FFB134;
+            }
+
+            .video-info p {
+                color: #718096;
+                line-height: 1.6;
+            }
 
         .section-header {
             text-align: center;

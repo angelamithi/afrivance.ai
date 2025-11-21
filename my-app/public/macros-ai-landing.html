@@ -659,8 +659,13 @@
 
         .screenshot-image {
             width: 100%;
-            height: 500px;
-            object-fit: cover;
+            height: auto;
+            min-height: 400px;
+            max-height: 700px;
+            object-fit: contain;
+            object-position: top center;
+            background: #f7fafc;
+            display: block;
         }
 
         .screenshot-info {

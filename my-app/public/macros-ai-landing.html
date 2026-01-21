@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macros AI - AI-Powered Nutrition Tracking for Your Fitness Goals</title>
+    <title>Macros AI - AI-Powered Nutrition Tracking with Personal AI Coach</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
@@ -59,7 +59,6 @@
             display: flex;
             align-items: center;
             justify-content: center;
-          
             font-size: 1.2rem;
         }
         
@@ -242,60 +241,60 @@
         }
 
        .phone-mockup {
-    position: relative;
-    width: 360px;
-    height: 750px;
-    background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
-    border-radius: 45px;
-    padding: 15px;
-    padding-top: 35px;
-    box-shadow: 
-        0 50px 100px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.1);
-    transform: perspective(1000px) rotateY(-12deg);
-    transition: transform 0.5s ease;
-}
+            position: relative;
+            width: 360px;
+            height: 750px;
+            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
+            border-radius: 45px;
+            padding: 15px;
+            padding-top: 35px;
+            box-shadow: 
+                0 50px 100px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transform: perspective(1000px) rotateY(-12deg);
+            transition: transform 0.5s ease;
+        }
 
-.phone-mockup::before {
-    content: '';
-    position: absolute;
-    top: 18px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 25px;
-    background: #000;
-    border-radius: 0 0 20px 20px;
-    box-shadow: inset 0 -2px 3px rgba(255, 255, 255, 0.1);
-}
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 25px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            box-shadow: inset 0 -2px 3px rgba(255, 255, 255, 0.1);
+        }
 
-.phone-mockup::after {
-    content: '';
-    position: absolute;
-    top: 25px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 12px;
-    height: 12px;
-    background: radial-gradient(circle, #1a3a52 0%, #0a1a2a 100%);
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-}
+        .phone-mockup::after {
+            content: '';
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 12px;
+            height: 12px;
+            background: radial-gradient(circle, #1a3a52 0%, #0a1a2a 100%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-.phone-mockup:hover {
-    transform: perspective(1000px) rotateY(0deg) scale(1.02);
-}
+        .phone-mockup:hover {
+            transform: perspective(1000px) rotateY(0deg) scale(1.02);
+        }
 
-.phone-screen {
-    width: 100%;
-    height: 100%;
-    background: #000;
-    border-radius: 32px;
-    overflow: hidden;
-    position: relative;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
-}
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
+        }
 
         .phone-screen img {
             width: 100%;
@@ -330,12 +329,11 @@
         }
 
         /* Stats Section */
-       /* Stats Section */
         .stats-section {
             background: #f7fafc;
             padding: 4rem 2rem;
-            position: relative; /* Add this */
-            z-index: 2; /* Add this to bring it above hero */
+            position: relative;
+            z-index: 2;
         }
 
         .stats-container {
@@ -370,118 +368,128 @@
             font-weight: 600;
         }
 
-        /* How It Works Section */
-        /* How It Works Section */
-        .how-it-works {
-            padding: 8rem 2rem 6rem 2rem; /* Added extra top padding */
-            max-width: 1200px;
-            margin: 0 auto;
-            scroll-margin-top: 80px; /* Offset for fixed navbar */
+        /* AI Coach Section */
+        .ai-coach-section {
+            padding: 8rem 2rem;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a1a1a 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Video Demo Section */
-        /* Video Demo Section */
-            /* Video Demo Section */
-            .video-demo-section {
-                padding: 6rem 2rem;
-                background: #f7fafc;
-            }
+        .ai-coach-section::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 177, 52, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -300px;
+            right: -300px;
+        }
 
-            .video-demo-container {
-                max-width: 1200px;
-                margin: 0 auto;
-            }
+        .ai-coach-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
 
-            .videos-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-                gap: 2.5rem;
-                margin-top: 3rem;
-            }
+        .ai-coach-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
 
-            .video-card {
-                background: white;
-                border-radius: 25px;
-                overflow: hidden;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-                transition: all 0.3s ease;
-            }
+        .ai-coach-header h2 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
 
-            .video-card:hover {
-                transform: translateY(-10px);
-                box-shadow: 0 20px 50px rgba(255, 177, 52, 0.2);
-            }
+        .ai-coach-header .gradient-text {
+            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-            .video-wrapper {
-                position: relative;
-                width: 100%;
-                padding-top: 210%; /* INCREASED from 177.78% for taller phone mockup */
-                background: #1a202c; /* Phone body color */
-                border-radius: 35px 35px 0 0; /* Curved top like a phone */
-                padding: 8px;
-                padding-top: calc(210% + 8px); /* UPDATED calculation */
-                padding-bottom: 0;
-            }
+        .ai-coach-header p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-            .video-wrapper::before {
-                content: '';
-                position: absolute;
-                top: 10px;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 80px;
-                height: 6px;
-                background: #0a0f1a;
-                border-radius: 3px;
-                z-index: 2;
-            }
+        .ai-coach-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
 
-.video-wrapper::after {
-    content: '';
-    position: absolute;
-    top: 30px;  /* Changed from 25px to 30px */
-    left: 8px;
-    right: 8px;
-    bottom: 0;
-    background: #000;
-    border-radius: 20px 20px 0 0;
-    z-index: 1;
-}
+        .ai-coach-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 3rem;
+            border-radius: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
 
-.video-wrapper video {
-    position: absolute;
-    top: 30px;  /* Changed from 25px to 30px */
-    left: 8px;
-    width: calc(100% - 16px);
-    height: calc(100% - 30px);  /* Changed from calc(100% - 25px) */
-    object-fit: cover;
-    background: #000;
-    border-radius: 20px 20px 0 0;
-    z-index: 2;
-}
-            .video-info {
-                padding: 1.5rem;
-                background: white;
-                border-radius: 0 0 25px 25px;
-            }
+        .ai-coach-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(255, 177, 52, 0.2);
+        }
 
-            .video-info h4 {
-                font-size: 1.3rem;
-                color: #2d3748;
-                margin-bottom: 0.5rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
+        .ai-coach-card i {
+            font-size: 3rem;
+            color: #FFB134;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
 
-            .video-info h4 i {
-                color: #FFB134;
-            }
+        .ai-coach-card h3 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
 
-            .video-info p {
-                color: #718096;
-                line-height: 1.6;
-            }
+        .ai-coach-card p {
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .ai-coach-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+            padding: 0;
+        }
+
+        .ai-coach-card li {
+            color: rgba(255, 255, 255, 0.9);
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .ai-coach-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFB134;
+            font-weight: bold;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 8rem 2rem 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            scroll-margin-top: 80px;
+        }
 
         .section-header {
             text-align: center;
@@ -502,38 +510,35 @@
             margin: 0 auto;
         }
 
-        /* Update the steps-grid to ensure all 4 cards fit in one row */
-            .steps-grid {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                gap: 1.5rem;
-                margin-top: 3rem;
-            }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
 
-            /* Adjust step-card styling */
-            .step-card {
-                position: relative;
-                padding: 2.5rem 1.5rem;
-                background: white;
-                border-radius: 25px;
-                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-                transition: all 0.3s ease;
-            }
+        .step-card {
+            position: relative;
+            padding: 2.5rem 1.5rem;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
 
-            /* Reposition icon next to header */
-            .step-icon {
-                display: inline-block;
-                font-size: 1.8rem;
-                margin-right: 0.5rem;
-                margin-bottom: 0;
-                background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-clip: text;
-                vertical-align: middle;
-            }
+        .step-icon {
+            display: inline-block;
+            font-size: 1.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0;
+            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            vertical-align: middle;
+        }
 
-            .step-card h3 {
+        .step-card h3 {
             display: flex;
             align-items: center;
             font-size: 1.3rem;
@@ -541,32 +546,22 @@
             margin-bottom: 1rem;
         }
 
-            /* Add wrapper for icon and title */
-            .step-header {
-                margin-bottom: 1rem;
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
+        @media (max-width: 1024px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
             }
+        }
 
-            /* Responsive adjustment for tablets */
-            @media (max-width: 1024px) {
-                .steps-grid {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 2rem;
-                }
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
             }
-
-            /* Mobile responsiveness */
-            @media (max-width: 768px) {
-                .steps-grid {
-                    grid-template-columns: 1fr;
-                }
-                
-                .step-card {
-                    padding: 2.5rem;
-                }
+            
+            .step-card {
+                padding: 2.5rem;
             }
+        }
 
         .step-card:hover {
             transform: translateY(-10px);
@@ -590,12 +585,112 @@
             box-shadow: 0 5px 15px rgba(255, 177, 52, 0.4);
         }
 
-
-      
-
         .step-card p {
             color: #718096;
             line-height: 1.8;
+        }
+
+        /* Video Demo Section */
+        .video-demo-section {
+            padding: 6rem 2rem;
+            background: #f7fafc;
+        }
+
+        .video-demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 25px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(255, 177, 52, 0.2);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 210%;
+            background: #1a202c;
+            border-radius: 35px 35px 0 0;
+            padding: 8px;
+            padding-top: calc(210% + 8px);
+            padding-bottom: 0;
+        }
+
+        .video-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 6px;
+            background: #0a0f1a;
+            border-radius: 3px;
+            z-index: 2;
+        }
+
+        .video-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 30px;
+            left: 8px;
+            right: 8px;
+            bottom: 0;
+            background: #000;
+            border-radius: 20px 20px 0 0;
+            z-index: 1;
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 30px;
+            left: 8px;
+            width: calc(100% - 16px);
+            height: calc(100% - 30px);
+            object-fit: cover;
+            background: #000;
+            border-radius: 20px 20px 0 0;
+            z-index: 2;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+            background: white;
+            border-radius: 0 0 25px 25px;
+        }
+
+        .video-info h4 {
+            font-size: 1.3rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .video-info h4 i {
+            color: #FFB134;
+        }
+
+        .video-info p {
+            color: #718096;
+            line-height: 1.6;
         }
 
         /* Features Section */
@@ -962,6 +1057,10 @@
             .cta-content h2 {
                 font-size: 2rem;
             }
+
+            .ai-coach-header h2 {
+                font-size: 2rem;
+            }
         }
 
         /* Scroll Animations */
@@ -992,10 +1091,10 @@
                 Macros AI
             </a>
             <ul class="nav-menu">
+                <li class="nav-item"><a href="#ai-coach">AI Coach</a></li>
                 <li class="nav-item"><a href="#features">Features</a></li>
                 <li class="nav-item"><a href="#how-it-works">How It Works</a></li>
                 <li class="nav-item"><a href="#screenshots">Screenshots</a></li>
-                <li class="nav-item"><a href="#benefits">Benefits</a></li>
                 <li class="nav-item"><a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="nav-cta">Download App</a></li>
             </ul>
         </div>
@@ -1006,24 +1105,24 @@
         <div class="hero-container">
             <div class="hero-content">
                 <h1>
-                    Your AI-Powered <span class="gradient-text">Nutrition Coach</span>
+                    Your AI-Powered <span class="gradient-text">Nutrition Coach</span> in Your Pocket
                 </h1>
                 <p class="hero-tagline">
-                    Snap, track, and achieve your fitness goals with intelligent macro tracking. Whether you want to gain muscle, lose weight, or maintain—Macros AI adapts to you.
+                    Snap, track, and chat with your personal AI nutrition coach. Get instant meal analysis, personalized meal plans, and expert guidance—all powered by advanced AI.
                 </p>
                 
                 <div class="hero-features">
                     <div class="hero-feature">
                         <i class="fas fa-camera"></i>
-                        <span>Instant meal analysis with AI</span>
+                        <span>Instant meal analysis with AI vision</span>
                     </div>
                     <div class="hero-feature">
-                        <i class="fas fa-chart-line"></i>
-                        <span>Personalized insights & recommendations</span>
+                        <i class="fas fa-comments"></i>
+                        <span>Chat with your AI nutrition coach 24/7</span>
                     </div>
                     <div class="hero-feature">
-                        <i class="fas fa-bullseye"></i>
-                        <span>Goal-specific macro tracking</span>
+                        <i class="fas fa-utensils"></i>
+                        <span>Personalized meal plans for your location</span>
                     </div>
                 </div>
 
@@ -1032,9 +1131,9 @@
                         <i class="fab fa-google-play"></i>
                         Download on Google Play
                     </a>
-                    <a href="#how-it-works" class="btn-secondary">
-                        <i class="fas fa-play-circle"></i>
-                        See How It Works
+                    <a href="#ai-coach" class="btn-secondary">
+                        <i class="fas fa-robot"></i>
+                        Meet Your AI Coach
                     </a>
                 </div>
             </div>
@@ -1047,13 +1146,13 @@
                 </div>
                 
                 <div class="floating-badge badge-1">
-                    <strong style="color: #1a202c; font-size: 1.5rem;">AI-Powered</strong>
-                    <p style="margin: 0; color: #718096;">Instant Analysis</p>
+                    <strong style="color: #1a202c; font-size: 1.5rem;">AI Coach</strong>
+                    <p style="margin: 0; color: #718096;">24/7 Available</p>
                 </div>
                 
                 <div class="floating-badge badge-2">
-                    <strong style="color: #1a202c; font-size: 1.5rem;">Real-Time</strong>
-                    <p style="margin: 0; color: #718096;">Progress Tracking</p>
+                    <strong style="color: #1a202c; font-size: 1.5rem;">Smart</strong>
+                    <p style="margin: 0; color: #718096;">Meal Planning</p>
                 </div>
             </div>
         </div>
@@ -1067,16 +1166,64 @@
                 <div class="stat-label">Meal Analysis Time</div>
             </div>
             <div class="stat-card">
-                <div class="stat-number">95%</div>
-                <div class="stat-label">AI-Powered Accuracy</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">3</div>
-                <div class="stat-label">Fitness Goals Supported</div>
-            </div>
-            <div class="stat-card">
                 <div class="stat-number">24/7</div>
-                <div class="stat-label">Smart Insights</div>
+                <div class="stat-label">AI Coach Availability</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">1000+</div>
+                <div class="stat-label">Local Foods Supported</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">AI Accuracy Rate</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Coach Section -->
+    <section id="ai-coach" class="ai-coach-section">
+        <div class="ai-coach-container">
+            <div class="ai-coach-header fade-in">
+                <h2>Meet Your <span class="gradient-text">AI Nutrition Coach</span></h2>
+                <p>It's like having a personal nutritionist, meal planner, and nutrition expert all in one—available whenever you need guidance.</p>
+            </div>
+
+            <div class="ai-coach-features">
+                <div class="ai-coach-card fade-in">
+                    <i class="fas fa-comments"></i>
+                    <h3>Conversational Guidance</h3>
+                    <p>Ask anything about nutrition, meal ideas, or your progress. Your AI coach understands your goals and provides personalized responses in natural conversation.</p>
+                    <ul>
+                        <li>Ask questions in plain language</li>
+                        <li>Get instant, personalized answers</li>
+                        <li>Receive contextual advice based on your data</li>
+                        <li>Save conversation history for later</li>
+                    </ul>
+                </div>
+
+                <div class="ai-coach-card fade-in">
+                    <i class="fas fa-calendar-alt"></i>
+                    <h3>AI Meal Planning</h3>
+                    <p>Generate complete daily or weekly meal plans tailored to your goals, diet type, and location—with authentic local foods from your region.</p>
+                    <ul>
+                        <li>Daily or weekly meal plans</li>
+                        <li>Culturally appropriate food suggestions</li>
+                        <li>Complete macro breakdowns</li>
+                        <li>Shopping lists included</li>
+                    </ul>
+                </div>
+
+                <div class="ai-coach-card fade-in">
+                    <i class="fas fa-globe-americas"></i>
+                    <h3>Location-Based Recommendations</h3>
+                    <p>Get meal suggestions using authentic local ingredients and dishes from your country—respecting cultural meal timing and customs.</p>
+                    <ul>
+                        <li>Local ingredient recommendations</li>
+                        <li>Culturally appropriate meal timing</li>
+                        <li>Authentic food names and recipes</li>
+                        <li>Supports 150+ countries</li>
+                    </ul>
+                </div>
             </div>
         </div>
     </section>
@@ -1085,114 +1232,113 @@
     <section id="how-it-works" class="how-it-works">
         <div class="section-header">
             <h2 class="section-title">How Macros AI Works</h2>
-            <p class="section-subtitle">From meal to macro breakdown in seconds. It's that simple.</p>
+            <p class="section-subtitle">From meal photo to personalized coaching in seconds</p>
         </div>
 
         <div class="steps-grid">
-    <div class="step-card fade-in">
-        <div class="step-number">1</div>
-        <h3>
-            <span class="step-icon">
-                <i class="fas fa-camera-retro"></i>
-            </span>
-            Snap Your Meal
-        </h3>
-        <p>Take a quick photo of any meal—breakfast, lunch, dinner, or snacks. Our AI vision technology instantly recognizes the food.</p>
-    </div>
+            <div class="step-card fade-in">
+                <div class="step-number">1</div>
+                <h3>
+                    <span class="step-icon">
+                        <i class="fas fa-camera-retro"></i>
+                    </span>
+                    Snap Your Meal
+                </h3>
+                <p>Take a photo of any meal. Our AI vision instantly recognizes food items and calculates nutrition.</p>
+            </div>
 
-    <div class="step-card fade-in">
-        <div class="step-number">2</div>
-        <h3>
-            <span class="step-icon">
-                <i class="fas fa-robot"></i>
-            </span>
-            AI Analyzes Instantly
-        </h3>
-        <p>Advanced AI calculates calories, protein, carbs, and fats in under a second. No manual entry needed—just snap and track.</p>
-    </div>
+            <div class="step-card fade-in">
+                <div class="step-number">2</div>
+                <h3>
+                    <span class="step-icon">
+                        <i class="fas fa-robot"></i>
+                    </span>
+                    AI Analyzes Everything
+                </h3>
+                <p>Get instant macro breakdown—calories, protein, carbs, and fats. No manual entry needed.</p>
+            </div>
 
-    <div class="step-card fade-in">
-        <div class="step-number">3</div>
-        <h3>
-            <span class="step-icon">
-                <i class="fas fa-bullseye"></i>
-            </span>
-            Set Your Goals
-        </h3>
-        <p>Choose your fitness objective: gain muscle, lose weight, or maintain. Select your diet type and daily macro targets.</p>
-    </div>
+            <div class="step-card fade-in">
+                <div class="step-number">3</div>
+                <h3>
+                    <span class="step-icon">
+                        <i class="fas fa-comments"></i>
+                    </span>
+                    Chat with AI Coach
+                </h3>
+                <p>Ask questions, get meal suggestions, and receive personalized nutrition guidance anytime.</p>
+            </div>
 
-    <div class="step-card fade-in">
-        <div class="step-number">4</div>
-        <h3>
-            <span class="step-icon">
-                <i class="fas fa-chart-bar"></i>
-            </span>
-            Get Smart Insights
-        </h3>
-        <p>Receive personalized AI recommendations on how to adjust your nutrition to stay on track with your goals.</p>
-    </div>
-</div>
+            <div class="step-card fade-in">
+                <div class="step-number">4</div>
+                <h3>
+                    <span class="step-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </span>
+                    Track Your Progress
+                </h3>
+                <p>Monitor your nutrition journey with smart insights and goal-specific recommendations.</p>
+            </div>
+        </div>
     </section>
 
     <!-- Video Demo Section -->
-    <!-- Video Demo Section -->
-<section class="video-demo-section">
-    <div class="video-demo-container">
-        <div class="section-header">
-            <h2 class="section-title">Watch Macros AI in Action</h2>
-            <p class="section-subtitle">See how easy it is to track your nutrition with AI-powered analysis</p>
+    <section class="video-demo-section">
+        <div class="video-demo-container">
+            <div class="section-header">
+                <h2 class="section-title">Watch Macros AI in Action</h2>
+                <p class="section-subtitle">See how easy it is to track nutrition and chat with your AI coach</p>
+            </div>
+
+            <div class="videos-grid">
+                <div class="video-card fade-in">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video-food-analysis.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4><i class="fas fa-camera"></i> Analyzing Food</h4>
+                        <p>Watch AI instantly analyze your meal and calculate complete macro breakdown</p>
+                    </div>
+                </div>
+
+                <div class="video-card fade-in">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video-progress-tracking.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4><i class="fas fa-chart-line"></i> Tracking Progress</h4>
+                        <p>See how easy it is to monitor your daily progress and macro goals</p>
+                    </div>
+                </div>
+
+                <div class="video-card fade-in">
+                    <div class="video-wrapper">
+                        <video controls preload="metadata">
+                            <source src="video-ai-insights.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="video-info">
+                        <h4><i class="fas fa-robot"></i> AI Coach Chat</h4>
+                        <p>Experience personalized nutrition coaching powered by advanced AI</p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="videos-grid">
-            <div class="video-card fade-in">
-                <div class="video-wrapper">
-                    <video controls preload="metadata">
-                        <source src="video-food-analysis.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-info">
-                    <h4><i class="fas fa-camera"></i> Analyzing Food</h4>
-                    <p>Watch how the AI instantly analyzes your meal and calculates macros in real-time</p>
-                </div>
-            </div>
-
-            <div class="video-card fade-in">
-                <div class="video-wrapper">
-                    <video controls preload="metadata">
-                        <source src="video-progress-tracking.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-info">
-                    <h4><i class="fas fa-chart-line"></i> Checking Progress</h4>
-                    <p>See how easy it is to track your daily progress and macro goal alignment</p>
-                </div>
-            </div>
-
-            <div class="video-card fade-in">
-                <div class="video-wrapper">
-                    <video controls preload="metadata">
-                        <source src="video-ai-insights.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="video-info">
-                    <h4><i class="fas fa-lightbulb"></i> AI Insights</h4>
-                    <p>Discover personalized recommendations to help you stay on track with your goals</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
     <!-- Features Section -->
     <section id="features" class="features-section">
         <div class="features-container">
             <div class="section-header">
                 <h2 class="section-title">Powerful Features for Real Results</h2>
-                <p class="section-subtitle">Everything you need to master your nutrition and crush your fitness goals</p>
+                <p class="section-subtitle">Everything you need to master your nutrition with AI assistance</p>
             </div>
 
             <div class="features-grid">
@@ -1201,7 +1347,7 @@
                         <i class="fas fa-eye"></i>
                     </div>
                     <h3>AI Vision Technology</h3>
-                    <p>State-of-the-art image recognition that identifies food items and portions with incredible accuracy. No more guessing or manual searching.</p>
+                    <p>Advanced image recognition identifies food items and portions with incredible accuracy. No more guessing or manual searching.</p>
                 </div>
 
                 <div class="feature-card fade-in">
@@ -1209,7 +1355,7 @@
                         <i class="fas fa-dumbbell"></i>
                     </div>
                     <h3>Goal-Specific Tracking</h3>
-                    <p>Whether you're bulking up, cutting down, or maintaining, get macro targets tailored to your specific fitness objectives.</p>
+                    <p>Get macro targets tailored to your fitness objectives—whether you're building muscle, losing weight, or maintaining.</p>
                 </div>
 
                 <div class="feature-card fade-in">
@@ -1217,23 +1363,23 @@
                         <i class="fas fa-brain"></i>
                     </div>
                     <h3>Personalized AI Insights</h3>
-                    <p>Get intelligent recommendations based on your eating patterns, progress, and goals. It's like having a nutritionist in your pocket.</p>
+                    <p>Intelligent recommendations based on your eating patterns, progress, and goals. Like having a nutritionist analyzing your data 24/7.</p>
                 </div>
 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-chart-pie"></i>
                     </div>
-                    <h3>Daily Visual Dashboards</h3>
-                    <p>Beautiful, easy-to-understand visualizations show your macro intake versus targets at a glance. Track calories, protein, carbs, and fats effortlessly.</p>
+                    <h3>Visual Dashboards</h3>
+                    <p>Beautiful, intuitive visualizations show your macro intake versus targets at a glance. Track everything effortlessly.</p>
                 </div>
 
                 <div class="feature-card fade-in">
                     <div class="feature-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3>Diet Type Compliance</h3>
-                    <p>Monitor how well your eating habits align with your chosen diet style—high protein, low carb, balanced, or custom preferences.</p>
+                    <h3>Diet Type Support</h3>
+                    <p>Whether you're high protein, low carb, vegetarian, or balanced—track compliance with your chosen dietary approach.</p>
                 </div>
 
                 <div class="feature-card fade-in">
@@ -1241,7 +1387,7 @@
                         <i class="fas fa-trophy"></i>
                     </div>
                     <h3>Progress Milestones</h3>
-                    <p>Celebrate your wins with achievement tracking, streaks, and progress indicators that keep you motivated on your journey.</p>
+                    <p>Celebrate wins with achievement tracking, streaks, and progress indicators that keep you motivated.</p>
                 </div>
             </div>
         </div>
@@ -1252,7 +1398,7 @@
         <div class="screenshots-container">
             <div class="section-header">
                 <h2 class="section-title">See Macros AI in Action</h2>
-                <p class="section-subtitle">A peek inside the app that's transforming nutrition tracking</p>
+                <p class="section-subtitle">A peek inside the app transforming nutrition tracking</p>
             </div>
 
             <div class="screenshots-grid">
@@ -1260,7 +1406,7 @@
                     <img src="daily-overview.jpeg" alt="Daily Macro Tracking" class="screenshot-image">
                     <div class="screenshot-info">
                         <h4>Daily Macro Overview</h4>
-                        <p>Track your calories, protein, carbs, and fats in real-time with beautiful circular progress indicators</p>
+                        <p>Track calories, protein, carbs, and fats in real-time with beautiful circular progress indicators</p>
                     </div>
                 </div>
 
@@ -1268,15 +1414,15 @@
                     <img src="macro-breakdown.jpeg" alt="Macro Goal Assessment" class="screenshot-image">
                     <div class="screenshot-info">
                         <h4>Goal-Specific Progress</h4>
-                        <p>See your macro goal alignment and get instant alerts when you're below target for muscle gain or above target for weight loss</p>
+                        <p>See your macro goal alignment with instant alerts and personalized recommendations</p>
                     </div>
                 </div>
 
                 <div class="screenshot-card fade-in">
                     <img src="insights.jpeg" alt="AI Insights Dashboard" class="screenshot-image">
                     <div class="screenshot-info">
-                        <h4>Personalized AI Insights</h4>
-                        <p>Get smart recommendations like increasing protein intake, meeting calorie targets, and optimizing your nutrition for better results</p>
+                        <h4>AI Coach Insights</h4>
+                        <p>Get smart recommendations like increasing protein intake and optimizing nutrition for better results</p>
                     </div>
                 </div>
             </div>
@@ -1287,16 +1433,32 @@
     <section id="benefits" class="benefits-section">
         <div class="section-header">
             <h2 class="section-title">Why Choose Macros AI?</h2>
-            <p class="section-subtitle">The smart way to achieve your fitness goals through better nutrition</p>
+            <p class="section-subtitle">The intelligent way to achieve your fitness goals</p>
         </div>
 
         <div class="benefits-grid">
             <div class="benefit-card fade-in">
                 <h3>
+                    <i class="fas fa-robot"></i>
+                    AI-Powered Coaching
+                </h3>
+                <p>Get expert nutrition guidance 24/7. Ask questions, get meal suggestions, and receive personalized advice—all powered by advanced AI that learns your preferences.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <h3>
                     <i class="fas fa-clock"></i>
                     Save Time
                 </h3>
-                <p>No more manual food logging or database searching. Get instant macro breakdowns with a single photo. What used to take 5 minutes now takes 1 second.</p>
+                <p>No more manual food logging. Get instant macro breakdowns with a photo and chat with your coach instead of searching databases.</p>
+            </div>
+
+            <div class="benefit-card fade-in">
+                <h3>
+                    <i class="fas fa-globe"></i>
+                    Culturally Relevant
+                </h3>
+                <p>Get meal suggestions with authentic local foods from your country. The AI respects cultural meal timing and uses ingredients you can actually find.</p>
             </div>
 
             <div class="benefit-card fade-in">
@@ -1304,15 +1466,7 @@
                     <i class="fas fa-check-circle"></i>
                     Stay Accountable
                 </h3>
-                <p>Visual progress tracking and daily reminders keep you consistent. The app celebrates your wins and gently nudges you when you're off track.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-user-md"></i>
-                    Expert Guidance
-                </h3>
-                <p>AI-powered insights act as your personal nutrition coach, analyzing patterns and providing actionable recommendations tailored to your goals.</p>
+                <p>Visual progress tracking and your AI coach keep you consistent. The app celebrates your wins and provides guidance when you need it.</p>
             </div>
 
             <div class="benefit-card fade-in">
@@ -1320,7 +1474,7 @@
                     <i class="fas fa-mobile-alt"></i>
                     Simple & Intuitive
                 </h3>
-                <p>Clean, beautiful interface that makes nutrition tracking enjoyable. No complicated features—just the essentials done exceptionally well.</p>
+                <p>Clean, beautiful interface makes nutrition tracking enjoyable. Chat naturally with your AI coach—no complicated features.</p>
             </div>
 
             <div class="benefit-card fade-in">
@@ -1328,15 +1482,7 @@
                     <i class="fas fa-shield-alt"></i>
                     Privacy First
                 </h3>
-                <p>Your data belongs to you. We use best-in-class security and never sell your information. Track your nutrition with complete peace of mind.</p>
-            </div>
-
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-sync-alt"></i>
-                    Continuous Learning
-                </h3>
-                <p>The AI gets smarter over time, learning your eating patterns and preferences to provide increasingly accurate analyses and personalized recommendations.</p>
+                <p>Your data belongs to you. We use best-in-class security and never sell your information. Track with complete peace of mind.</p>
             </div>
         </div>
     </section>
@@ -1344,8 +1490,8 @@
     <!-- CTA Section -->
     <section id="download" class="cta-section">
         <div class="cta-content">
-            <h2>Ready to Transform Your Nutrition?</h2>
-            <p>Join thousands who are crushing their fitness goals with AI-powered macro tracking. Download Macros AI today and start seeing results.</p>
+            <h2>Ready to Meet Your AI Nutrition Coach?</h2>
+            <p>Join thousands crushing their fitness goals with AI-powered coaching and nutrition tracking. Download Macros AI today.</p>
             
             <div class="app-badges">
                 <a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="app-badge">
@@ -1361,13 +1507,12 @@
                 <i class="fab fa-android"></i> Available on Android • <i class="fab fa-apple"></i> iOS Coming Soon
             </p>
             
-            <!-- iOS Coming Soon Notice -->
             <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 177, 52, 0.1); border-radius: 20px; border: 2px solid rgba(255, 177, 52, 0.3); max-width: 600px; margin-left: auto; margin-right: auto;">
                 <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
                     <i class="fab fa-apple" style="font-size: 2.5rem; color: #FFB134;"></i>
                     <div style="text-align: left;">
                         <h3 style="margin: 0; color: white; font-size: 1.3rem;">iOS Version Coming Soon!</h3>
-                        <p style="margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">We're working hard to bring Macros AI to the App Store</p>
+                        <p style="margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">We're bringing Macros AI to the App Store</p>
                     </div>
                 </div>
                 <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">
@@ -1382,31 +1527,30 @@
         <div class="footer-container">
             <div class="footer-logo">Macros AI</div>
             <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 1rem auto;">
-                AI-powered nutrition tracking that actually works. Built by fitness enthusiasts, for fitness enthusiasts.
+                AI-powered nutrition tracking with your personal nutrition coach. Built by fitness enthusiasts, for fitness enthusiasts.
             </p>
             
             <div class="footer-links">
                 <a href="/macros-ai-privacy-policy.html">Privacy Policy</a>
                 <a href="/macros-ai-delete-account.html">Delete Account</a>
-                <a href="/terms-of-service.html">Terms of Service</a>
-                <a href="/cdn-cgi/l/email-protection#422b2c242d022324302b34232c21276c232b">Contact Us</a>
+                <a href="/macros-ai-terms-of-service.html">Terms of Service</a>
+                <a href="mailto:info@afrivance.ai">Contact Us</a>
+                <a href="#ai-coach">AI Coach</a>
                 <a href="#features">Features</a>
-                <a href="#how-it-works">How It Works</a>
             </div>
 
             <div class="social-links">
                 <a href="https://www.facebook.com/profile.php?id=61583830148659" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://www.instagram.com/macrosaicaltracker/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-               
             </div>
 
             <div class="copyright">
-                <p>&copy; 2024 Afrivance AI. All rights reserved. Macros AI is a product of Afrivance AI.</p>
+                <p>&copy; 2026 Afrivance AI. All rights reserved. Macros AI is a product of Afrivance AI.</p>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -1440,7 +1584,6 @@
         });
 
         // Navbar scroll effect
-        let lastScroll = 0;
         window.addEventListener('scroll', function() {
             const navbar = document.querySelector('.navbar');
             const currentScroll = window.pageYOffset;
@@ -1450,16 +1593,14 @@
             } else {
                 navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
             }
-
-            lastScroll = currentScroll;
         });
 
-        // Add parallax effect to hero section (limited to prevent overlap)
+        // Limited parallax effect
         window.addEventListener('scroll', function() {
             const scrolled = window.pageYOffset;
             const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight * 0.8) { // Limit the parallax range
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`; // Reduced parallax intensity
+            if (hero && scrolled < window.innerHeight * 0.8) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
             }
         });
     </script>

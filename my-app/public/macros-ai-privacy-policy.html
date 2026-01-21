@@ -117,7 +117,7 @@
             text-align: justify;
         }
 
-        ul {
+        ul, ol {
             margin: 1rem 0 1.5rem 2rem;
         }
 
@@ -144,6 +144,28 @@
 
         .highlight-box strong {
             color: #0369a1;
+        }
+
+        .medical-disclaimer {
+            background: #fef2f2;
+            border-left: 4px solid #ef4444;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+            border: 2px solid #fecaca;
+        }
+
+        .medical-disclaimer h4 {
+            color: #991b1b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .medical-disclaimer p {
+            color: #7f1d1d;
+            font-weight: 500;
         }
 
         .contact-box {
@@ -184,6 +206,22 @@
             margin-top: 0;
         }
 
+        .info-box {
+            background: #fef3c7;
+            border-left: 4px solid #f59e0b;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            color: #92400e;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
         .footer {
             text-align: center;
             padding: 2rem;
@@ -197,10 +235,61 @@
             margin-bottom: 0.5rem;
         }
 
+        .footer a {
+            color: #00d4ff;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
         hr {
             border: none;
             border-top: 1px solid #e5e7eb;
             margin: 2rem 0;
+        }
+
+        .icon {
+            color: #00d4ff;
+            margin-right: 0.5rem;
+        }
+
+        .warning-icon {
+            color: #ef4444;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #0f172a;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: #00d4ff;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            padding-left: 0.5rem;
         }
 
         @media (max-width: 768px) {
@@ -232,6 +321,10 @@
             .back-link span {
                 display: none;
             }
+
+            ul, ol {
+                margin-left: 1rem;
+            }
         }
     </style>
 </head>
@@ -248,15 +341,34 @@
 
     <div class="container">
         <h1>Privacy Policy for Macros AI</h1>
-        <p class="last-updated"><strong>Last Updated:</strong> October 21, 2025</p>
+        <p class="last-updated"><strong>Last Updated:</strong> January 21, 2026</p>
 
         <div class="intro">
-            <p>Welcome to Macros AI. This Privacy Policy explains how Afrivance AI ("we," "our," or "us") collects, uses, and protects your information when you use the Macros AI mobile application ("the App"). We are committed to protecting your privacy and ensuring the security of your personal information.</p>
+            <p>Welcome to Macros AI. This Privacy Policy explains how Afrivance AI ("we," "our," or "us") collects, uses, and protects your information when you use the Macros AI mobile application ("the App"). We are committed to protecting your privacy and ensuring the security of your personal information, including sensitive health data related to diabetes management and nutrition tracking.</p>
+        </div>
+
+        <div class="toc">
+            <h3><i class="fas fa-list icon"></i>Table of Contents</h3>
+            <ul>
+                <li><a href="#section1">1. What Data We Collect</a></li>
+                <li><a href="#section2">2. Why We Need This Data</a></li>
+                <li><a href="#section3">3. AI Nutrition Coach Data Processing</a></li>
+                <li><a href="#section4">4. Diabetes Management Data Protection</a></li>
+                <li><a href="#section5">5. How We Use and Store Your Data</a></li>
+                <li><a href="#section6">6. Third-Party Data Sharing</a></li>
+                <li><a href="#section7">7. Your Rights and Control</a></li>
+                <li><a href="#section8">8. Security Measures</a></li>
+                <li><a href="#section9">9. Children's Privacy</a></li>
+                <li><a href="#section10">10. AI and Automated Decision-Making</a></li>
+                <li><a href="#section11">11. Regional Privacy Rights</a></li>
+                <li><a href="#section12">12. Changes to This Privacy Policy</a></li>
+                <li><a href="#section13">13. Contact Us</a></li>
+            </ul>
         </div>
 
         <hr>
 
-        <h2>1. What Data We Collect</h2>
+        <h2 id="section1"><i class="fas fa-database icon"></i>1. What Data We Collect</h2>
 
         <h3>Camera Access and Images</h3>
         <p>We collect and process the following data related to camera functionality:</p>
@@ -273,6 +385,7 @@
             <li>Nutrition goals and dietary preferences</li>
             <li>Email address (for users who sign in with Google)</li>
             <li>Device identifiers (for guest users)</li>
+            <li>Location data (country, timezone) for culturally relevant meal suggestions</li>
         </ul>
 
         <h3>Usage Data</h3>
@@ -280,11 +393,30 @@
             <li>Meal logging data and nutritional information derived from your food photos</li>
             <li>App usage patterns and preferences</li>
             <li>Device information and technical data</li>
+            <li>AI Coach conversation history and interactions</li>
+            <li>Meal plan requests and generated recommendations</li>
+            <li>Weight history and progress tracking data</li>
         </ul>
+
+        <h3>Sensitive Health Information (Optional)</h3>
+        <p>If you choose to use our diabetes management features, we collect:</p>
+        <ul>
+            <li><strong>Diabetes Type</strong>: Type 1, Type 2, Prediabetes, or Gestational Diabetes</li>
+            <li><strong>Target Blood Glucose Levels</strong>: Your personalized glucose targets (typically 80-130 mg/dL fasting, &lt;180 mg/dL post-meal)</li>
+            <li><strong>Insulin-to-Carb Ratios</strong>: Units of insulin per 10g of carbohydrates</li>
+            <li><strong>Insulin Sensitivity Factors</strong>: mg/dL drop per unit of insulin</li>
+            <li><strong>Glycemic Index Preferences</strong>: How strictly you follow low-GI foods</li>
+            <li><strong>HbA1c Targets</strong>: Your personalized HbA1c percentage goals</li>
+        </ul>
+
+        <div class="medical-disclaimer">
+            <h4><i class="fas fa-exclamation-triangle warning-icon"></i>CRITICAL MEDICAL DISCLAIMER</h4>
+            <p>The diabetes management features are for informational and educational purposes ONLY. We do not provide medical advice, diagnosis, or treatment. Always consult qualified healthcare professionals (physicians, endocrinologists, certified diabetes educators) for all medical decisions. Never adjust insulin or medication without consulting your healthcare provider. We are not liable for any health outcomes resulting from use of the diabetes features.</p>
+        </div>
 
         <hr>
 
-        <h2>2. Why We Need This Data</h2>
+        <h2 id="section2"><i class="fas fa-question-circle icon"></i>2. Why We Need This Data</h2>
 
         <h3>Camera Access</h3>
         <p>We need camera permission for the following reasons:</p>
@@ -303,9 +435,95 @@
             <li><strong>Improve accuracy</strong>: Allow you to review and correct food identifications</li>
         </ul>
 
+        <h3>Location Data</h3>
+        <ul>
+            <li><strong>Culturally Appropriate Meals</strong>: Suggest authentic local foods based on your country</li>
+            <li><strong>Meal Timing</strong>: Understand when you eat based on your timezone</li>
+            <li><strong>Note</strong>: We only collect country and timezone - NOT precise GPS location or movements</li>
+        </ul>
+
         <hr>
 
-        <h2>3. How We Use and Store Your Data</h2>
+        <h2 id="section3"><i class="fas fa-robot icon"></i>3. AI Nutrition Coach Data Processing</h2>
+
+        <p>When you interact with the AI Nutrition Coach:</p>
+        <ul>
+            <li><strong>Conversation Processing</strong>: Your messages are processed by Google Gemini AI to generate personalized nutrition guidance</li>
+            <li><strong>Context Analysis</strong>: The AI analyzes your profile data, meal history, and dietary goals to provide relevant responses</li>
+            <li><strong>Location-Based Suggestions</strong>: Your country and timezone are used to suggest culturally appropriate meals using authentic local foods</li>
+            <li><strong>Conversation Storage</strong>: Chat history is stored to maintain context across sessions</li>
+            <li><strong>Meal Plan Generation</strong>: AI creates personalized daily or weekly meal plans based on your dietary restrictions, goals, and location</li>
+            <li><strong>Nutrition Inbox</strong>: AI-generated insights are delivered to your inbox and stored with your account</li>
+            
+        </ul>
+
+        <div class="info-box">
+            <h4><i class="fas fa-info-circle"></i>How Location Data Works</h4>
+            <p><strong>What we collect:</strong> Country name and timezone only (e.g., "Kenya, Africa/Nairobi")</p>
+            <p><strong>How we collect it:</strong> Automatically detected from your device's timezone settings</p>
+            <p><strong>When we use it:</strong> Only sent to AI during your first conversation message</p>
+            <p><strong>What we DON'T collect:</strong> Precise GPS coordinates, street addresses, or movement tracking</p>
+           
+        </div>
+
+        <h3>Meal Plan Details</h3>
+        <p>Generated meal plans include:</p>
+        <ul>
+            <li>Breakfast, lunch, dinner, and 2 snacks per day</li>
+            <li>Complete macro breakdowns (calories, protein, carbs, fats)</li>
+            <li>Portion sizes and cooking instructions</li>
+            <li>Shopping lists with local ingredient names</li>
+            <li>For diabetic users: Additional diabetes information (see Section 4)</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="section4"><i class="fas fa-heartbeat icon"></i>4. Diabetes Management Data Protection</h2>
+
+        <p>If you choose to use the diabetes management features:</p>
+
+        <h3>Data Security</h3>
+        <ul>
+            <li><strong>Encryption</strong>: All diabetes-related health data is encrypted in transit (HTTPS/TLS) and at rest (AES-256)</li>
+            <li><strong>Access Control</strong>: Diabetes data access is restricted to essential systems only</li>
+            <li><strong>Separate Storage</strong>: Health data is stored with additional encryption layers</li>
+            <li><strong>Access Logs</strong>: All diabetes data access is logged and monitored</li>
+        </ul>
+
+        <h3>How We Use Diabetes Data</h3>
+        <ul>
+            <li><strong>Meal Recommendations</strong>: Provide personalized meal suggestions with low glycemic index foods</li>
+            <li><strong>Carb Counting</strong>: Calculate total carbs, net carbs, and fiber for each meal</li>
+            <li><strong>Glycemic Index Ratings</strong>: Provide GI and GL (Glycemic Load) for all food suggestions</li>
+            <li><strong>Insulin Guidance</strong>: Calculate recommended insulin doses based on YOUR provided ratios (informational only)</li>
+            <li><strong>Glucose Impact Predictions</strong>: Estimate blood sugar rise and peak times</li>
+            <li><strong>Eating Order Advice</strong>: Suggest optimal order to eat foods (vegetables → protein → carbs)</li>
+        </ul>
+
+        <h3>What We DON'T Do</h3>
+        <ul>
+            <li><strong>NO Sharing</strong>: We NEVER share diabetes data with third parties except as required by law</li>
+            <li><strong>NO Marketing</strong>: Diabetes data is NEVER used for marketing, advertising, or sold to anyone</li>
+            <li><strong>NO Research Without Consent</strong>: Only included in anonymized research if you explicitly opt-in</li>
+        </ul>
+
+        <div class="medical-disclaimer">
+            <h4><i class="fas fa-exclamation-triangle warning-icon"></i>INSULIN DOSING DISCLAIMER</h4>
+            <p><strong>CRITICAL NOTICE:</strong> Insulin dose calculations provided by the app are estimates based on the ratios YOU provide. These are for informational purposes ONLY. Never adjust insulin or medication without consulting your healthcare provider. Always verify AI recommendations with glucose testing. Monitor your blood glucose before and 2 hours after meals. Keep a food diary to identify personal glucose triggers. We are not responsible for health outcomes resulting from insulin dosing decisions.</p>
+        </div>
+
+        <h3>Type-Specific Guidance</h3>
+        <p>The AI Coach provides specialized advice based on your diabetes type:</p>
+        <ul>
+            <li><strong>Type 1 Diabetes</strong>: Precise carb counting, insulin timing, exercise adjustments</li>
+            <li><strong>Type 2 Diabetes</strong>: Weight management, insulin resistance strategies, medication timing</li>
+            <li><strong>Prediabetes</strong>: Prevention strategies, lifestyle modifications, weight loss support</li>
+            <li><strong>Gestational Diabetes</strong>: Frequent small meals, nutrient focus for baby's development, postpartum monitoring</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="section5"><i class="fas fa-cogs icon"></i>5. How We Use and Store Your Data</h2>
 
         <h3>Image Processing</h3>
         <p>When you capture a meal photo:</p>
@@ -323,6 +541,7 @@
             <li><strong>Local Caching</strong>: Images may be temporarily cached on your device for retry functionality if analysis fails</li>
             <li><strong>Encryption</strong>: All data transmission between your device and our servers uses HTTPS encryption</li>
             <li><strong>Access Control</strong>: Only you and authorized system processes can access your meal data</li>
+            <li><strong>Geographic Distribution</strong>: Backups are encrypted and stored in secure, geographically distributed locations</li>
         </ul>
 
         <h3>Camera Usage Policy</h3>
@@ -336,120 +555,182 @@
 
         <h3>Data Retention</h3>
         <ul>
-            <li>Meal images and nutritional data are retained until you delete them or close your account</li>
-            <li>Temporary image caches used during analysis are automatically cleared within 24 hours</li>
-            <li>You can delete individual meals and their associated images at any time through the app</li>
+            <li><strong>Meal Images</strong>: Retained until you delete them or close your account</li>
+            <li><strong>Temporary Caches</strong>: Automatically cleared within 24 hours</li>
+            <li><strong>Conversation History</strong>: Retained until manually deleted by you or account closure</li>
+            <li><strong>Meal Plans</strong>: Retained for 90 days unless saved permanently by you</li>
+            <li><strong>Diabetes Data</strong>: Retained until you delete it or close your account</li>
+            <li><strong>Account Deletion</strong>: All data, including health information, is permanently deleted within 30 days</li>
         </ul>
 
         <hr>
 
-        <h2>4. Third-Party Data Sharing</h2>
+        <h2 id="section6"><i class="fas fa-share-alt icon"></i>6. Third-Party Data Sharing</h2>
 
         <h3>Third-Party Services We Use</h3>
         <p>We use the following trusted third-party services to provide our functionality:</p>
         <ul>
             <li><strong>Google Cloud Firestore</strong>: For secure data storage</li>
             <li><strong>Google Authentication</strong>: For account management</li>
-            <li><strong>Google Gemini AI</strong>: For food image analysis and nutritional estimation</li>
+            <li><strong>Google Gemini AI</strong>: For food image analysis, nutritional estimation, AI Coach conversations, and meal plan generation</li>
             <li><strong>Firebase</strong>: For backend services and real-time data synchronization</li>
             <li><strong>Expo Camera API</strong>: For camera functionality</li>
+            <li><strong>Firebase Analytics</strong>: For app performance monitoring (anonymized data only)</li>
         </ul>
 
         <h3>Data Sharing Policy</h3>
-        <p>We <strong>do NOT sell, trade, or rent</strong> your personal information or meal images to third parties.</p>
+        <p>We <strong>do NOT sell, trade, or rent</strong> your personal information, meal images, conversation history, or health data to third parties.</p>
         <p>We may share your data only in the following limited circumstances:</p>
         <ul>
             <li><strong>Legal Requirements</strong>: When required by law or legal process</li>
             <li><strong>Safety and Security</strong>: To protect our rights, property, or safety</li>
             <li><strong>With Your Consent</strong>: When you explicitly authorize us to share your information</li>
-            <li><strong>Service Providers</strong>: With trusted partners who assist in app operations under strict confidentiality agreements</li>
-            <li><strong>Anonymized Data</strong>: We may use anonymized and aggregated data for research and service improvement (this data cannot identify you)</li>
+            <li><strong>Service Providers</strong>: With trusted partners who assist in app operations under strict confidentiality agreements and HIPAA-compliant safeguards where applicable</li>
+            <li><strong>Anonymized Research</strong>: Anonymized and aggregated data may be used for research and service improvement. <strong>Diabetes data is only included with explicit opt-in consent</strong></li>
+            <li><strong>Never for Marketing</strong>: We NEVER share identifiable diabetes or health data for marketing purposes</li>
         </ul>
 
         <h3>Third-Party Privacy</h3>
-        <p>The third-party services we use may process your images and data according to their own privacy policies. We ensure all partners meet high standards for data protection and privacy.</p>
+        <p>The third-party services we use may process your images, conversation data, and health information according to their own privacy policies. We ensure all partners meet high standards for data protection and privacy. When your data is processed by Google Gemini AI for AI Coach features, it is subject to Google's AI privacy terms and data handling practices.</p>
 
         <hr>
 
-        <h2>5. Your Rights and Control</h2>
+        <h2 id="section7"><i class="fas fa-user-shield icon"></i>7. Your Rights and Control</h2>
         <p>You have the following rights regarding your data:</p>
         <ul>
-            <li><strong>Access</strong>: View all your personal data and meal images</li>
+            <li><strong>Access</strong>: View all your personal data, meal images, and health information</li>
             <li><strong>Correction</strong>: Update or correct any inaccurate information</li>
-            <li><strong>Deletion</strong>: Delete your account and all associated data, including images</li>
-            <li><strong>Export</strong>: Download your data in a portable format</li>
+            <li><strong>Deletion</strong>: Delete your account and all associated data, including images, conversations, and diabetes data</li>
+            <li><strong>Export</strong>: Download your data in a portable format (JSON)</li>
             <li><strong>Camera Control</strong>: Revoke camera permissions at any time through your device settings</li>
-            <li><strong>Opt-Out</strong>: Choose not to participate in certain data processing activities</li>
-            <li><strong>Transparency</strong>: Request information about how your meal images are processed and stored</li>
+            <li><strong>Delete Conversations</strong>: Delete specific AI Coach conversations without deleting your account</li>
+            <li><strong>Disable Diabetes Features</strong>: Turn off diabetes tracking and delete all diabetes-related data</li>
+            <li><strong>Opt-Out of Research</strong>: Choose not to have your anonymized data used for research</li>
+            <li><strong>Transparency</strong>: Request information about how your meal images and health data are processed and stored</li>
+            <li><strong>Health Data Copy</strong>: Request a complete copy of all diabetes-related health data we store about you</li>
         </ul>
         <p>To exercise any of these rights, contact us using the information below or use the in-app settings.</p>
 
         <hr>
 
-        <h2>6. Security Measures</h2>
+        <h2 id="section8"><i class="fas fa-lock icon"></i>8. Security Measures</h2>
         <p>We implement the following security measures to protect your data:</p>
         <ul>
-            <li><strong>Encryption</strong>: All data transmission uses HTTPS/TLS encryption</li>
-            <li><strong>Secure Storage</strong>: Industry-standard encryption for stored data</li>
+            <li><strong>Encryption in Transit</strong>: All data transmission uses HTTPS/TLS encryption</li>
+            <li><strong>Encryption at Rest</strong>: AES-256 encryption for stored data, especially health information</li>
             <li><strong>Access Controls</strong>: Strict authentication and authorization protocols</li>
-            <li><strong>Regular Audits</strong>: Ongoing security assessments and updates</li>
+            <li><strong>Access Logs</strong>: All diabetes data access is logged and monitored</li>
+            <li><strong>Regular Audits</strong>: Ongoing security assessments and vulnerability testing</li>
+            <li><strong>Annual Reviews</strong>: Dedicated security reviews for diabetes data handling</li>
             <li><strong>Data Minimization</strong>: We only collect data necessary for app functionality</li>
+            <li><strong>Breach Notification</strong>: Priority notification procedures for health data incidents</li>
         </ul>
 
         <hr>
 
-        <h2>7. Children's Privacy</h2>
-        <p>Macros AI is not intended for children under 13 years of age. We do not knowingly collect personal information or images from children under 13. If we become aware of such collection, we will delete the information immediately.</p>
+        <h2 id="section9"><i class="fas fa-child icon"></i>9. Children's Privacy</h2>
+        <p>Macros AI is not intended for children under 13 years of age. We do not knowingly collect personal information, images, or health data from children under 13. If we become aware of such collection, we will delete the information immediately.</p>
+        <p>Parents or guardians should supervise use by minors aged 13-17, especially regarding diabetes management features.</p>
 
         <hr>
 
-        <h2>8. International Data Transfers</h2>
-        <p>Your data, including meal images, may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data during such transfers, including encryption and compliance with international data protection standards.</p>
+        <h2 id="section10"><i class="fas fa-brain icon"></i>10. AI and Automated Decision-Making</h2>
+        <p>The App uses AI for various purposes:</p>
+        <ul>
+            <li><strong>Food Identification</strong>: Analyzing images to recognize food items</li>
+            <li><strong>Nutritional Analysis</strong>: Calculating calories and macronutrients from images</li>
+            <li><strong>AI Coach Responses</strong>: Generating personalized nutrition guidance</li>
+            <li><strong>Meal Plan Generation</strong>: Creating customized meal plans based on your profile</li>
+            <li><strong>Insulin Dose Calculations</strong>: Computing recommended doses based on your provided ratios (informational only)</li>
+            <li><strong>Glycemic Assessments</strong>: Providing GI ratings and glucose impact predictions</li>
+        </ul>
+        <p><strong>Your Control:</strong> You have the right to understand how these automated decisions are made and can request human review of any AI-generated recommendations. AI outputs are suggestions only - you maintain full control over all decisions regarding your nutrition and health.</p>
 
         <hr>
 
-        <h2>9. Changes to This Privacy Policy</h2>
+        <h2 id="section11"><i class="fas fa-globe icon"></i>11. Regional Privacy Rights</h2>
+
+        <h3>For California Residents (CCPA)</h3>
+        <ul>
+            <li>Right to know what personal information is collected</li>
+            <li>Right to delete personal information</li>
+            <li>Right to opt-out of sale of personal information (we do not sell your data)</li>
+            <li>Right to non-discrimination for exercising your rights</li>
+        </ul>
+
+        <h3>For European Residents (GDPR)</h3>
+        <ul>
+            <li>Right to access, rectification, and erasure of personal data</li>
+            <li>Right to data portability</li>
+            <li>Right to restrict or object to processing</li>
+            <li>Right to withdraw consent at any time</li>
+            <li>Right to lodge a complaint with a supervisory authority</li>
+        </ul>
+
+        <h3>International Data Transfers</h3>
+        <p>Your data, including meal images, conversation history, and health information, may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place to protect your data during such transfers, including encryption and compliance with international data protection standards (GDPR, CCPA, HIPAA where applicable).</p>
+
+        <hr>
+
+        <h2 id="section12"><i class="fas fa-sync-alt icon"></i>12. Changes to This Privacy Policy</h2>
         <p>We may update this Privacy Policy from time to time to reflect changes in our practices or for legal, operational, or regulatory reasons. We will notify you of any material changes through:</p>
         <ul>
             <li>In-app notifications</li>
-            <li>Email (if you've provided one)</li>
+            <li>Email (for Google account users)</li>
             <li>Prominent notice on our website</li>
         </ul>
-        <p>Your continued use of the app after such changes constitutes acceptance of the updated policy.</p>
+        <p><strong>Health Data Changes:</strong> Material changes affecting health data processing will require explicit opt-in consent.</p>
+        <p>Your continued use of the app after such changes constitutes acceptance of the updated policy for non-material changes.</p>
 
         <hr>
 
-        <h2>10. Contact Us</h2>
-        <p>If you have any questions, concerns, or requests regarding this Privacy Policy, our data practices, or how we handle camera access and meal images, please contact us:</p>
+        <h2 id="section13"><i class="fas fa-envelope icon"></i>13. Contact Us</h2>
+        <p>If you have any questions, concerns, or requests regarding this Privacy Policy, our data practices, how we handle camera access and meal images, AI Coach functionality, or diabetes data protection, please contact us:</p>
         
         <div class="contact-box">
-            <h3>Afrivance AI</h3>
+            <h3>Afrivance AI - Privacy Office</h3>
             <p><strong>Email:</strong> <a href="mailto:info@afrivance.ai">info@afrivance.ai</a></p>
             <p><strong>Subject Line:</strong> Macros AI Privacy Inquiry</p>
-            <p style="margin-top: 1rem; color: #666;">We typically respond to privacy inquiries within 48-72 hours.</p>
+            <p style="margin-top: 1rem; color: #ef4444; font-weight: 600;">For diabetes data or health information requests, mark your email:<br>"URGENT - Health Data Request"</p>
+            <p style="margin-top: 1rem; color: #666;">We typically respond to privacy inquiries within 48-72 hours.<br>Health data requests are prioritized within 24 hours.</p>
         </div>
 
         <hr>
+
+        <div class="medical-disclaimer">
+            <h4><i class="fas fa-file-signature"></i>Consent and Acknowledgment</h4>
+            <p>By using Macros AI, you acknowledge that you have read and understood this Privacy Policy. If you use the diabetes management features, you explicitly consent to the collection, processing, and storage of your diabetes-related health information as described herein. You acknowledge that diabetes features provide informational guidance only and are not a substitute for professional medical care.</p>
+        </div>
 
         <div class="summary-box">
-            <h3>Summary</h3>
-            <p><strong>What we collect:</strong> Camera access, meal photos, nutritional data, and basic profile information</p>
-            <p><strong>Why we need it:</strong> To analyze your meals, calculate nutrition, and provide personalized tracking</p>
-            <p><strong>How we use it:</strong> Images are analyzed by AI, securely stored in the cloud, and used only for your meal tracking</p>
-            <p><strong>Who we share with:</strong> Only trusted service providers (Google Cloud, Firebase, Gemini AI) and never for marketing or sale</p>
-            <p><strong>Your control:</strong> You can delete any data, revoke permissions, and export your information at any time</p>
+            <h3><i class="fas fa-check-circle"></i>Privacy Policy Summary</h3>
+            <p><strong>What we collect:</strong> Camera access, meal photos, nutritional data, basic profile information, AI Coach conversations, and optional diabetes health data</p>
+            <p><strong>Why we need it:</strong> To analyze your meals, calculate nutrition, provide AI coaching, generate meal plans, and offer diabetes-specific guidance</p>
+            <p><strong>How we use it:</strong> Images analyzed by AI, conversations processed by Gemini AI, data securely stored in encrypted cloud storage, used only for your personalized nutrition tracking</p>
+            <p><strong>Location data:</strong> Only country and timezone (not GPS) - used for culturally appropriate meal suggestions</p>
+            <p><strong>Diabetes data:</strong> Encrypted, never shared for marketing, used only for personalized meal recommendations and insulin guidance (informational only)</p>
+            <p><strong>Who we share with:</strong> Only trusted service providers (Google Cloud, Firebase, Gemini AI) under strict confidentiality - never for marketing or sale</p>
+            <p><strong>Your control:</strong> Delete any data, revoke permissions, export information, disable diabetes features, and manage all settings at any time</p>
+            <p><strong>Medical disclaimer:</strong> AI guidance is informational only - always consult healthcare professionals for medical decisions</p>
         </div>
 
         <hr>
 
-        <p style="text-align: center; margin-top: 3rem; color: #666;"><em>Macros AI is a product of Afrivance AI</em></p>
+        <p style="text-align: center; margin-top: 3rem; color: #666;">
+            <em>Macros AI is a product of Afrivance AI</em><br>
+            <small>Privacy Policy Version 2.0 - January 2026</small>
+        </p>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Afrivance AI. All rights reserved.</p>
+        <p>&copy; 2026 Afrivance AI. All rights reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-            <a href="/" style="color: #00d4ff; text-decoration: none;">Home</a> | 
-            <a href="/macros-ai-privacy-policy.html" style="color: #00d4ff; text-decoration: none;">Privacy Policy</a>
+            <a href="/">Home</a> | 
+            <a href="/macros-ai-privacy-policy.html">Privacy Policy</a> | 
+            <a href="mailto:info@afrivance.ai">Contact</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8;">
+            <i class="fas fa-shield-alt"></i> Your privacy and health data security are our top priorities
         </p>
     </footer>
 </body>

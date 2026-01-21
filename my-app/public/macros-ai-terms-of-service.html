@@ -117,7 +117,7 @@
             text-align: justify;
         }
 
-        ul {
+        ul, ol {
             margin: 1rem 0 1.5rem 2rem;
         }
 
@@ -190,10 +190,69 @@
             padding: 1.5rem;
             margin: 2rem 0;
             border-radius: 8px;
+            border: 2px solid #fecaca;
+        }
+
+        .warning-box h4 {
+            color: #991b1b;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .warning-box strong {
             color: #991b1b;
+        }
+
+        .warning-box p {
+            color: #7f1d1d;
+        }
+
+        .info-box {
+            background: #dbeafe;
+            border-left: 4px solid #3b82f6;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+
+        .info-box h4 {
+            color: #1e40af;
+            margin-bottom: 0.5rem;
+        }
+
+        .toc {
+            background: #f8f9fa;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .toc h3 {
+            margin-top: 0;
+            color: #0f172a;
+        }
+
+        .toc ul {
+            list-style: none;
+            margin-left: 0;
+        }
+
+        .toc li {
+            margin-bottom: 0.5rem;
+        }
+
+        .toc a {
+            color: #FFB134;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .toc a:hover {
+            text-decoration: underline;
+            padding-left: 0.5rem;
         }
 
         .footer {
@@ -207,6 +266,23 @@
         .footer p {
             text-align: center;
             margin-bottom: 0.5rem;
+        }
+
+        .footer a {
+            color: #FFB134;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        .icon {
+            margin-right: 0.5rem;
+        }
+
+        .warning-icon {
+            color: #ef4444;
         }
 
         hr {
@@ -244,6 +320,10 @@
             .back-link span {
                 display: none;
             }
+
+            ul, ol {
+                margin-left: 1rem;
+            }
         }
     </style>
 </head>
@@ -260,37 +340,65 @@
 
     <div class="container">
         <h1>Terms of Service for Macros AI</h1>
-        <p class="last-updated"><strong>Last Updated:</strong> August 30, 2025</p>
+        <p class="last-updated"><strong>Last Updated:</strong> January 21, 2026</p>
 
         <div class="intro">
-            <p>Welcome to Macros AI. These Terms of Service ("Terms") govern your access to and use of the Macros AI mobile application. Please read these Terms carefully before using the App. By using Macros AI, you agree to be bound by these Terms.</p>
+            <p>Welcome to Macros AI. These Terms of Service ("Terms") govern your access to and use of the Macros AI mobile application, including AI Nutrition Coach features and diabetes management tools. Please read these Terms carefully before using the App. By using Macros AI, you agree to be bound by these Terms.</p>
+        </div>
+
+        <div class="toc">
+            <h3><i class="fas fa-list icon"></i>Table of Contents</h3>
+            <ul>
+                <li><a href="#section1">1. Acceptance of Terms</a></li>
+                <li><a href="#section2">2. Description of Service</a></li>
+                <li><a href="#section3">3. User Accounts</a></li>
+                <li><a href="#section4">4. Accuracy Disclaimer</a></li>
+                <li><a href="#section5">5. Medical Disclaimer & Diabetes Management</a></li>
+                <li><a href="#section6">6. AI Nutrition Coach Terms</a></li>
+                <li><a href="#section7">7. User Content</a></li>
+                <li><a href="#section8">8. Prohibited Uses</a></li>
+                <li><a href="#section9">9. Limitation of Liability</a></li>
+                <li><a href="#section10">10. Changes to Terms</a></li>
+                <li><a href="#section11">11. Termination</a></li>
+                <li><a href="#section12">12. Intellectual Property Rights</a></li>
+                <li><a href="#section13">13. Third-Party Services</a></li>
+                <li><a href="#section14">14. Privacy and Data Protection</a></li>
+                <li><a href="#section15">15. Indemnification</a></li>
+                <li><a href="#section16">16. Dispute Resolution</a></li>
+                <li><a href="#section17">17. Contact Information</a></li>
+            </ul>
         </div>
 
         <hr>
 
-        <h2>1. Acceptance of Terms</h2>
+        <h2 id="section1"><i class="fas fa-file-signature icon"></i>1. Acceptance of Terms</h2>
         <p>By downloading, installing, or using Macros AI ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App. Macros AI is a product of Afrivance AI ("we," "our," or "us").</p>
         <p>These Terms constitute a legally binding agreement between you and Afrivance AI. Your use of the App is also governed by our Privacy Policy, which is incorporated into these Terms by reference.</p>
+        <p><strong>Special Notice:</strong> If you use the diabetes management features, you acknowledge additional terms and disclaimers in Section 5 below.</p>
 
         <hr>
 
-        <h2>2. Description of Service</h2>
-        <p>Macros AI is a nutrition tracking application that helps users monitor their daily caloric and macronutrient intake. The App uses artificial intelligence to analyze food images and provide nutritional estimates.</p>
+        <h2 id="section2"><i class="fas fa-mobile-alt icon"></i>2. Description of Service</h2>
+        <p>Macros AI is a comprehensive nutrition tracking application that helps users monitor their daily caloric and macronutrient intake. The App uses artificial intelligence to analyze food images, provide nutritional estimates, and offer personalized guidance.</p>
 
         <h3>Key Features Include:</h3>
         <ul>
-            <li><strong>AI-Powered Food Recognition</strong>: Analyze photos of meals to identify food items</li>
+            <li><strong>AI-Powered Food Recognition</strong>: Analyze photos of meals to identify food items and estimate nutrition</li>
             <li><strong>Nutritional Tracking</strong>: Monitor calories, protein, carbohydrates, and fats</li>
-            <li><strong>Personalized Goals</strong>: Set and track custom nutrition goals</li>
+            <li><strong>Personalized Goals</strong>: Set and track custom nutrition goals based on your profile</li>
             <li><strong>Meal History</strong>: View and manage your meal logging history</li>
-            <li><strong>Progress Monitoring</strong>: Track your nutritional intake over time</li>
+            <li><strong>Progress Monitoring</strong>: Track your nutritional intake and weight progress over time</li>
+            <li><strong>AI Nutrition Coach</strong>: Interactive AI-powered chatbot providing personalized nutrition guidance and meal planning</li>
+            <li><strong>Meal Plan Generation</strong>: AI-generated daily and weekly meal plans based on your location, dietary preferences, and goals</li>
+            <li><strong>Diabetes Management Tools</strong>: Specialized features for tracking blood glucose targets, insulin ratios, glycemic index, and carb counting (optional)</li>
+            <li><strong>Location-Based Recommendations</strong>: Culturally appropriate meal suggestions using authentic local foods from your region</li>
         </ul>
 
         <p>The App is provided "as is" and we reserve the right to modify, suspend, or discontinue any feature at any time without prior notice.</p>
 
         <hr>
 
-        <h2>3. User Accounts</h2>
+        <h2 id="section3"><i class="fas fa-user-circle icon"></i>3. User Accounts</h2>
 
         <h3>Account Types</h3>
         <p>You may use the App in one of two ways:</p>
@@ -305,8 +413,9 @@
             <li>Maintaining the confidentiality of your account credentials</li>
             <li>All activities that occur under your account</li>
             <li>Notifying us immediately of any unauthorized access or security breach</li>
-            <li>Ensuring the accuracy of information you provide</li>
+            <li>Ensuring the accuracy of information you provide, especially health-related data</li>
             <li>Complying with all applicable laws while using the App</li>
+            <li>Understanding that YOU are responsible for all health decisions, not the App</li>
         </ul>
 
         <h3>Account Security</h3>
@@ -314,48 +423,167 @@
 
         <hr>
 
-        <h2>4. Accuracy Disclaimer</h2>
+        <h2 id="section4"><i class="fas fa-exclamation-triangle icon"></i>4. Accuracy Disclaimer</h2>
 
         <div class="warning-box">
-            <p><strong>IMPORTANT DISCLAIMER:</strong> Nutritional information provided by the App is for informational purposes only and should not be considered as medical advice. The AI-generated nutritional estimates may not be 100% accurate.</p>
+            <h4><i class="fas fa-exclamation-triangle warning-icon"></i>IMPORTANT DISCLAIMER</h4>
+            <p><strong>Nutritional information provided by the App is for informational purposes only and should not be considered as medical advice. The AI-generated nutritional estimates may not be 100% accurate and should not be relied upon as exact measurements.</strong></p>
         </div>
 
         <h3>Limitations of Accuracy</h3>
         <p>Please be aware that:</p>
         <ul>
             <li><strong>AI Estimates</strong>: Nutritional values are generated by artificial intelligence and are estimates, not exact measurements</li>
-            <li><strong>Variability</strong>: Actual nutritional content can vary based on ingredients, preparation methods, portion sizes, and food brands</li>
-            <li><strong>Image Quality</strong>: The accuracy of food recognition depends on image quality, lighting, and angle</li>
-            <li><strong>Database Limitations</strong>: Our AI may not recognize all foods or regional dishes accurately</li>
-            <li><strong>User Verification</strong>: You should verify and adjust nutritional information as needed</li>
+            <li><strong>Variability</strong>: Actual nutritional content can vary significantly based on ingredients, preparation methods, portion sizes, cooking techniques, and food brands</li>
+            <li><strong>Image Quality</strong>: The accuracy of food recognition depends on image quality, lighting, angle, and food visibility</li>
+            <li><strong>Database Limitations</strong>: Our AI may not recognize all foods, especially regional or ethnic dishes, or may misidentify similar-looking foods</li>
+            <li><strong>User Verification</strong>: You should always verify and adjust nutritional information as needed</li>
+            <li><strong>Portion Estimation</strong>: AI-estimated portion sizes are approximate and may differ from actual amounts</li>
         </ul>
-
-        <h3>Medical Disclaimer</h3>
-        <p>Always consult with qualified healthcare professionals, registered dietitians, or nutritionists for:</p>
-        <ul>
-            <li>Medical advice and dietary recommendations</li>
-            <li>Treatment of medical conditions</li>
-            <li>Weight management programs</li>
-            <li>Specific dietary restrictions or requirements</li>
-            <li>Any health-related decisions</li>
-        </ul>
-
-        <p>The App is not a substitute for professional medical advice, diagnosis, or treatment. Never disregard professional medical advice or delay seeking it because of information provided by the App.</p>
 
         <hr>
 
-        <h2>5. User Content</h2>
+        <h2 id="section5"><i class="fas fa-heartbeat icon"></i>5. Medical Disclaimer & Diabetes Management</h2>
+
+        <div class="warning-box">
+            <h4><i class="fas fa-exclamation-triangle warning-icon"></i>CRITICAL MEDICAL DISCLAIMER</h4>
+            <p><strong>THE APP DOES NOT PROVIDE MEDICAL ADVICE, DIAGNOSIS, OR TREATMENT. THE APP IS NOT A SUBSTITUTE FOR PROFESSIONAL MEDICAL CARE.</strong></p>
+        </div>
+
+        <h3>General Medical Disclaimer</h3>
+        <p>Always consult with qualified healthcare professionals, registered dietitians, or nutritionists for:</p>
+        <ul>
+            <li>Medical advice and dietary recommendations</li>
+            <li>Treatment of medical conditions including diabetes, heart disease, kidney disease, or any chronic illness</li>
+            <li>Weight management programs</li>
+            <li>Specific dietary restrictions or requirements</li>
+            <li>Any health-related decisions</li>
+            <li>Medication management and dosing decisions</li>
+        </ul>
+
+        <p><strong>Never disregard professional medical advice or delay seeking it because of information provided by the App.</strong></p>
+
+        <h3>Diabetes Management Features - Specific Terms</h3>
+
+        <div class="warning-box">
+            <h4><i class="fas fa-syringe warning-icon"></i>INSULIN DOSING DISCLAIMER</h4>
+            <p><strong>CRITICAL:</strong> Insulin dose calculations provided by the App are estimates based on the ratios YOU provide. These calculations are for informational and educational purposes ONLY.</p>
+            <p><strong>YOU MUST:</strong></p>
+            <ul style="margin-left: 1.5rem;">
+                <li>Always verify insulin doses with your healthcare provider before adjusting medication</li>
+                <li>Monitor your blood glucose levels before and after meals</li>
+                <li>Keep detailed records of your glucose readings and insulin doses</li>
+                <li>Never adjust insulin or medication without consulting your doctor, endocrinologist, or certified diabetes educator</li>
+                <li>Contact emergency services immediately if you experience severe hypoglycemia or hyperglycemia</li>
+            </ul>
+        </div>
+
+        <h3>Diabetes Features Limitations</h3>
+        <p>You acknowledge and agree that:</p>
+        <ul>
+            <li><strong>Individual Variation</strong>: Blood glucose responses to food vary significantly between individuals and even within the same person at different times</li>
+            <li><strong>Multiple Factors</strong>: Glucose levels are affected by stress, illness, exercise, medications, hormones, and many other factors not tracked by the App</li>
+            <li><strong>No Medical Supervision</strong>: The App does not provide medical supervision or real-time monitoring</li>
+            <li><strong>Emergency Situations</strong>: The App is not designed for emergency medical situations</li>
+            <li><strong>Glycemic Index Estimates</strong>: GI ratings are approximate and may not reflect your personal glucose response</li>
+            <li><strong>Carb Counting</strong>: Carb estimates are based on visual analysis and may differ from actual values</li>
+            <li><strong>No Medical Validation</strong>: Recommendations are not validated by medical professionals</li>
+        </ul>
+
+        <h3>Your Responsibilities for Diabetes Management</h3>
+        <p>If you use the diabetes features, you agree to:</p>
+        <ul>
+            <li>Work with qualified healthcare professionals to establish your insulin ratios, target glucose ranges, and treatment plan</li>
+            <li>Obtain all insulin ratios and sensitivity factors from your healthcare provider, not from the App</li>
+            <li>Monitor your blood glucose regularly as directed by your healthcare team</li>
+            <li>Keep regular appointments with your healthcare providers</li>
+            <li>Inform your healthcare team that you are using this App</li>
+            <li>Report any unusual patterns or concerns to your healthcare provider immediately</li>
+            <li>Maintain an HbA1c monitoring schedule as recommended by your doctor</li>
+            <li>Have a plan for managing hypoglycemia and hyperglycemia</li>
+        </ul>
+
+        <h3>Limitation of Liability for Diabetes Features</h3>
+        <p><strong>WE ARE NOT RESPONSIBLE FOR ANY HEALTH OUTCOMES, INJURIES, OR DAMAGES RESULTING FROM:</strong></p>
+        <ul>
+            <li>Reliance on App-generated insulin dose calculations</li>
+            <li>Reliance on glycemic index ratings or glucose predictions</li>
+            <li>Changes to medication based on App recommendations</li>
+            <li>Hypoglycemia, hyperglycemia, or diabetic ketoacidosis</li>
+            <li>Any health complications related to diabetes management</li>
+            <li>Errors or inaccuracies in carb counting or nutritional data</li>
+            <li>Delayed or inadequate medical care due to App usage</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="section6"><i class="fas fa-robot icon"></i>6. AI Nutrition Coach Terms</h2>
+
+        <h3>AI Coach Description</h3>
+        <p>The AI Nutrition Coach feature uses Google Gemini AI to provide:</p>
+        <ul>
+            <li>Conversational nutrition guidance and meal suggestions</li>
+            <li>Personalized meal plan generation (daily or weekly)</li>
+            <li>Location-based recommendations using local and culturally appropriate foods</li>
+            <li>Analysis of your meal history and progress</li>
+            <li>For diabetic users: Specialized guidance including GI ratings, insulin calculations, and glucose predictions</li>
+        </ul>
+
+        <h3>AI Coach Limitations</h3>
+        <p>You acknowledge that:</p>
+        <ul>
+            <li><strong>Not Medical Advice</strong>: AI Coach responses are for informational purposes only and do not constitute medical advice</li>
+            <li><strong>AI Limitations</strong>: The AI may provide incorrect, incomplete, or outdated information</li>
+            <li><strong>No Professional Relationship</strong>: Using the AI Coach does not establish a professional healthcare relationship</li>
+            <li><strong>Context Limitations</strong>: The AI cannot fully understand your complete medical history, current health status, or personal circumstances</li>
+            <li><strong>Cultural Appropriateness</strong>: While we strive for cultural accuracy, suggestions may not perfectly align with local customs</li>
+            <li><strong>Meal Plan Variability</strong>: Generated meal plans are suggestions; actual preparation may differ in nutritional content</li>
+        </ul>
+
+        <h3>Location-Based Features</h3>
+        <p>The AI Coach uses your location (country and timezone) to:</p>
+        <ul>
+            <li>Suggest meals with authentic local ingredients</li>
+            <li>Respect cultural meal timing customs</li>
+            <li>Use appropriate local food names and terminology</li>
+        </ul>
+        <p><strong>Note:</strong> We collect only country and timezone data, not precise GPS location. See our Privacy Policy for details.</p>
+
+        <h3>Your Responsibilities</h3>
+        <p>When using the AI Coach, you agree to:</p>
+        <ul>
+            <li>Use AI-generated advice as suggestions, not absolute directives</li>
+            <li>Verify information with qualified professionals before making significant dietary changes</li>
+            <li>Not rely solely on AI advice for medical or health decisions</li>
+            <li>Understand that AI responses are based on your input and may be incomplete</li>
+            <li>Review and adjust AI-generated meal plans to fit your actual needs and preferences</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="section7"><i class="fas fa-image icon"></i>7. User Content</h2>
 
         <h3>Ownership</h3>
-        <p>You retain ownership of any content you submit to the App, including food images, personal data, meal logs, and other information ("User Content").</p>
+        <p>You retain ownership of any content you submit to the App, including food images, personal data, meal logs, AI Coach conversations, health data, and other information ("User Content").</p>
 
         <h3>License Grant</h3>
         <p>By using the App, you grant us a limited, non-exclusive, worldwide, royalty-free license to:</p>
         <ul>
             <li>Process and analyze your User Content to provide the service</li>
             <li>Store your User Content on our servers</li>
-            <li>Use anonymized and aggregated data for service improvement</li>
+            <li>Use anonymized and aggregated data for service improvement and research</li>
             <li>Display your User Content back to you within the App</li>
+            <li>Process your conversations with the AI Coach to generate responses</li>
+            <li>Analyze your meal patterns to provide personalized recommendations</li>
+        </ul>
+
+        <h3>Health Data</h3>
+        <p>For diabetes and other health-related data:</p>
+        <ul>
+            <li>Health data will be stored securely with encryption</li>
+            <li>We will not share identifiable health data with third parties except as required by law or with your explicit consent</li>
+            <li>Anonymized health data may be used for research only with your opt-in consent</li>
+            <li>You can delete all health data at any time through app settings</li>
         </ul>
 
         <h3>Content Guidelines</h3>
@@ -366,6 +594,7 @@
             <li>Contain harmful, offensive, or inappropriate material</li>
             <li>Include personal information of others without consent</li>
             <li>Be used to impersonate others or misrepresent your identity</li>
+            <li>Be used to provide medical advice to others</li>
         </ul>
 
         <h3>Content Removal</h3>
@@ -373,7 +602,7 @@
 
         <hr>
 
-        <h2>6. Prohibited Uses</h2>
+        <h2 id="section8"><i class="fas fa-ban icon"></i>8. Prohibited Uses</h2>
         <p>You agree not to use the App for any unlawful purpose or in any way that could damage, disable, or impair the App. Specifically, you shall not:</p>
 
         <h3>Technical Restrictions</h3>
@@ -384,6 +613,7 @@
             <li>Interfere with or disrupt the App's functionality or servers</li>
             <li>Bypass any security measures or access controls</li>
             <li>Introduce viruses, malware, or other malicious code</li>
+            <li>Attempt to manipulate or exploit the AI Coach system</li>
         </ul>
 
         <h3>Usage Restrictions</h3>
@@ -395,12 +625,14 @@
             <li>Collect or store personal data about other users</li>
             <li>Use the App to distribute spam or unsolicited messages</li>
             <li>Resell or commercially exploit the App or its content</li>
+            <li>Use the App to provide medical advice or services to others</li>
             <li>Use the App in any way that could create liability for us</li>
+            <li>Share AI-generated insulin recommendations with others</li>
         </ul>
 
         <hr>
 
-        <h2>7. Limitation of Liability</h2>
+        <h2 id="section9"><i class="fas fa-shield-alt icon"></i>9. Limitation of Liability</h2>
 
         <h3>Disclaimer of Warranties</h3>
         <p>THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:</p>
@@ -408,29 +640,33 @@
             <li>Warranties of merchantability</li>
             <li>Fitness for a particular purpose</li>
             <li>Non-infringement</li>
-            <li>Accuracy or reliability of information</li>
+            <li>Accuracy or reliability of information, including nutritional data, insulin calculations, and AI-generated advice</li>
             <li>Uninterrupted or error-free service</li>
+            <li>Medical accuracy or suitability for diabetes management</li>
         </ul>
 
         <h3>Limitation of Damages</h3>
-        <p>Afrivance AI shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use of the App, including but not limited to:</p>
+        <p>AFRIVANCE AI SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES RESULTING FROM YOUR USE OF THE APP, INCLUDING BUT NOT LIMITED TO:</p>
         <ul>
             <li>Loss of profits or revenue</li>
             <li>Loss of data or information</li>
             <li>Loss of business opportunities</li>
-            <li>Personal injury or health issues</li>
-            <li>Reliance on nutritional information provided by the App</li>
-            <li>Errors or inaccuracies in AI-generated estimates</li>
+            <li><strong>Personal injury or health issues, including complications from diabetes management</strong></li>
+            <li><strong>Hypoglycemia, hyperglycemia, diabetic ketoacidosis, or other medical emergencies</strong></li>
+            <li><strong>Reliance on nutritional information, insulin calculations, or AI-generated recommendations</strong></li>
+            <li>Errors or inaccuracies in AI-generated estimates, meal plans, or health guidance</li>
+            <li>Failure to seek timely medical care due to reliance on the App</li>
+            <li>Adverse reactions to foods suggested by the App</li>
         </ul>
 
-        <p>Our total liability to you for any claims arising from your use of the App shall not exceed the amount you paid for the App (currently $0 for the free version).</p>
+        <p>Our total liability to you for any claims arising from your use of the App shall not exceed the amount you paid for the App in the past 12 months (currently $0 for the free version).</p>
 
         <h3>Jurisdictional Limitations</h3>
         <p>Some jurisdictions do not allow the exclusion of certain warranties or limitation of liability. In such jurisdictions, our liability will be limited to the maximum extent permitted by law.</p>
 
         <hr>
 
-        <h2>8. Changes to Terms</h2>
+        <h2 id="section10"><i class="fas fa-sync-alt icon"></i>10. Changes to Terms</h2>
         <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting to the App or our website.</p>
 
         <h3>Notification of Changes</h3>
@@ -442,12 +678,15 @@
             <li>Update to the "Last Updated" date at the top of these Terms</li>
         </ul>
 
+        <h3>Health Feature Changes</h3>
+        <p>Material changes affecting diabetes management or other health features will require explicit opt-in consent before you can continue using those features.</p>
+
         <h3>Acceptance of Changes</h3>
         <p>Your continued use of the App after such changes constitutes acceptance of the modified Terms. If you do not agree to the modified Terms, you must stop using the App and may delete your account.</p>
 
         <hr>
 
-        <h2>9. Termination</h2>
+        <h2 id="section11"><i class="fas fa-times-circle icon"></i>11. Termination</h2>
 
         <h3>Termination by You</h3>
         <p>You may terminate your account at any time by:</p>
@@ -456,6 +695,7 @@
             <li>Uninstalling the App from your device</li>
             <li>Contacting us at info@afrivance.ai</li>
         </ul>
+        <p><strong>Note:</strong> Account deletion will permanently remove all your data, including meal history, AI Coach conversations, and diabetes management data within 30 days.</p>
 
         <h3>Termination by Us</h3>
         <p>We may terminate or suspend your access to the App immediately, without prior notice or liability, for any reason, including but not limited to:</p>
@@ -463,6 +703,7 @@
             <li>Breach of these Terms</li>
             <li>Violation of applicable laws</li>
             <li>Fraudulent, abusive, or illegal activity</li>
+            <li>Misuse of diabetes or health features</li>
             <li>Requests from law enforcement or government authorities</li>
             <li>Discontinuation of the App</li>
             <li>Technical or security issues</li>
@@ -476,11 +717,12 @@
             <li>Your account and data may be deleted</li>
             <li>You must cease all use of the App</li>
             <li>Provisions that by their nature should survive will remain in effect</li>
+            <li>You remain responsible for ensuring continuity of your healthcare</li>
         </ul>
 
         <hr>
 
-        <h2>10. Intellectual Property Rights</h2>
+        <h2 id="section12"><i class="fas fa-copyright icon"></i>12. Intellectual Property Rights</h2>
 
         <h3>Our Ownership</h3>
         <p>The App and its original content, features, and functionality are owned by Afrivance AI and are protected by:</p>
@@ -488,6 +730,7 @@
             <li>Copyright laws</li>
             <li>Trademark laws</li>
             <li>Patent laws</li>
+            <li>Trade secret laws</li>
             <li>Other intellectual property rights</li>
         </ul>
 
@@ -501,51 +744,65 @@
             <li>Distribute, transfer, or sublicense the App</li>
             <li>Remove or alter any proprietary notices</li>
             <li>Use our trademarks or branding without permission</li>
+            <li>Claim ownership of AI-generated content</li>
         </ul>
 
         <hr>
 
-        <h2>11. Third-Party Services</h2>
+        <h2 id="section13"><i class="fas fa-plug icon"></i>13. Third-Party Services</h2>
         <p>The App uses third-party services including:</p>
         <ul>
             <li><strong>Google Cloud Services</strong>: For data storage and authentication</li>
-            <li><strong>Google Gemini AI</strong>: For food image analysis</li>
-            <li><strong>Firebase</strong>: For backend services</li>
+            <li><strong>Google Gemini AI</strong>: For food image analysis, AI Coach conversations, and meal plan generation</li>
+            <li><strong>Firebase</strong>: For backend services and real-time data synchronization</li>
             <li><strong>Expo</strong>: For app development and camera functionality</li>
+            <li><strong>Firebase Analytics</strong>: For app performance monitoring</li>
         </ul>
 
-        <p>Your use of these third-party services is subject to their respective terms of service and privacy policies. We are not responsible for the actions or policies of third-party service providers.</p>
+        <p>Your use of these third-party services is subject to their respective terms of service and privacy policies. We are not responsible for the actions, policies, or data practices of third-party service providers.</p>
+
+        <p><strong>AI Processing:</strong> When you use the AI Coach, your messages and data are processed by Google Gemini AI according to Google's terms and privacy policies.</p>
 
         <hr>
 
-        <h2>12. Privacy and Data Protection</h2>
+        <h2 id="section14"><i class="fas fa-user-lock icon"></i>14. Privacy and Data Protection</h2>
         <p>Your privacy is important to us. Our collection and use of personal information is described in our Privacy Policy, which is available at:</p>
         <p style="text-align: center; margin: 1.5rem 0;">
             <a href="https://afrivance.ai/macros-ai-privacy-policy.html" style="color: #FFB134; font-weight: 600; font-size: 1.1rem;">Macros AI Privacy Policy</a>
         </p>
-        <p>By using the App, you agree to our Privacy Policy and consent to our data practices as described therein.</p>
-
-        <hr>
-
-        <h2>13. Indemnification</h2>
-        <p>You agree to defend, indemnify, and hold harmless Afrivance AI, its officers, directors, employees, contractors, agents, and affiliates from and against any and all claims, damages, obligations, losses, liabilities, costs, and expenses arising from:</p>
+        <p>By using the App, you agree to our Privacy Policy and consent to our data practices as described therein, including:</p>
         <ul>
-            <li>Your use of the App</li>
-            <li>Your violation of these Terms</li>
-            <li>Your violation of any third-party rights</li>
-            <li>Your User Content</li>
-            <li>Any harmful or illegal actions you take</li>
+            <li>Collection and processing of meal images</li>
+            <li>Storage of AI Coach conversation history</li>
+            <li>Processing of health data for diabetes management features</li>
+            <li>Use of location data (country/timezone) for meal recommendations</li>
+            <li>Anonymized data usage for service improvement</li>
         </ul>
 
         <hr>
 
-        <h2>14. Dispute Resolution</h2>
+        <h2 id="section15"><i class="fas fa-handshake icon"></i>15. Indemnification</h2>
+        <p>You agree to defend, indemnify, and hold harmless Afrivance AI, its officers, directors, employees, contractors, agents, and affiliates from and against any and all claims, damages, obligations, losses, liabilities, costs, and expenses arising from:</p>
+        <ul>
+            <li>Your use of the App, including use of diabetes management features</li>
+            <li>Your violation of these Terms</li>
+            <li>Your violation of any third-party rights</li>
+            <li>Your User Content</li>
+            <li>Any harmful or illegal actions you take</li>
+            <li>Health decisions made based on App information</li>
+            <li>Insulin or medication adjustments based on App recommendations</li>
+            <li>Failure to seek appropriate medical care</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="section16"><i class="fas fa-gavel icon"></i>16. Dispute Resolution</h2>
 
         <h3>Governing Law</h3>
         <p>These Terms shall be governed by and construed in accordance with the laws of Kenya, without regard to its conflict of law provisions.</p>
 
         <h3>Informal Resolution</h3>
-        <p>If you have any dispute with us, you agree to first contact us at info@afrivance.ai to attempt to resolve the dispute informally.</p>
+        <p>If you have any dispute with us, you agree to first contact us at info@afrivance.ai to attempt to resolve the dispute informally for at least 30 days.</p>
 
         <h3>Arbitration</h3>
         <p>If we cannot resolve the dispute informally, any disputes arising out of or relating to these Terms or the App shall be resolved through binding arbitration in accordance with the rules of arbitration in Kenya.</p>
@@ -553,61 +810,88 @@
         <h3>Class Action Waiver</h3>
         <p>You agree that any proceedings to resolve disputes will be conducted on an individual basis and not as a class action or collective action.</p>
 
-        <hr>
-
-        <h2>15. Severability</h2>
-        <p>If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect.</p>
+        <h3>Medical Disputes</h3>
+        <p>Nothing in this section prevents you from seeking immediate medical care or reporting health concerns to appropriate authorities.</p>
 
         <hr>
 
-        <h2>16. Entire Agreement</h2>
-        <p>These Terms, together with our Privacy Policy, constitute the entire agreement between you and Afrivance AI regarding the use of the App and supersede all prior agreements and understandings.</p>
-
-        <hr>
-
-        <h2>17. No Waiver</h2>
-        <p>Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. A waiver of any such right or provision will be effective only if in writing and signed by our authorized representative.</p>
-
-        <hr>
-
-        <h2>18. Contact Information</h2>
+        <h2 id="section17"><i class="fas fa-envelope icon"></i>17. Contact Information</h2>
         <p>If you have any questions about these Terms of Service, please contact us:</p>
         
         <div class="contact-box">
-            <h3>Afrivance AI</h3>
+            <h3>Afrivance AI - Legal Department</h3>
             <p><strong>Email:</strong> <a href="mailto:info@afrivance.ai">info@afrivance.ai</a></p>
             <p><strong>Subject Line:</strong> Macros AI Terms of Service Inquiry</p>
-            <p style="margin-top: 1rem; color: #666;">We typically respond to inquiries within 48-72 hours.</p>
+            <p style="margin-top: 1rem; color: #ef4444; font-weight: 600;">For urgent health-related concerns, contact your healthcare provider or emergency services, not the app support team.</p>
+            <p style="margin-top: 0.5rem; color: #666;">We typically respond to inquiries within 48-72 hours.</p>
         </div>
 
         <hr>
+
+        <h3>Additional Legal Information</h3>
+        <ul>
+            <li><strong>Severability</strong>: If any provision of these Terms is found to be unenforceable or invalid, that provision will be limited or eliminated to the minimum extent necessary so that these Terms will otherwise remain in full force and effect.</li>
+            <li><strong>Entire Agreement</strong>: These Terms, together with our Privacy Policy, constitute the entire agreement between you and Afrivance AI regarding the use of the App and supersede all prior agreements and understandings.</li>
+            <li><strong>No Waiver</strong>: Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. A waiver of any such right or provision will be effective only if in writing and signed by our authorized representative.</li>
+            <li><strong>Assignment</strong>: We may assign our rights and obligations under these Terms. You may not assign these Terms without our prior written consent.</li>
+        </ul>
+
+        <hr>
+
+        <div class="warning-box">
+            <h4><i class="fas fa-file-signature"></i>Acknowledgment and Consent</h4>
+            <p><strong>By using Macros AI, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</strong></p>
+            <p>You specifically acknowledge and agree to:</p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>The accuracy disclaimers regarding AI-generated nutritional information</li>
+                <li>The medical disclaimers and limitations of the App, especially regarding diabetes management</li>
+                <li>That insulin dose calculations are for informational purposes only</li>
+                <li>Your responsibility to consult healthcare professionals for medical decisions</li>
+                <li>The limitations of liability and indemnification provisions</li>
+                <li>That these Terms may be updated from time to time</li>
+            </ul>
+            <p style="margin-top: 1rem;"><strong>If you use diabetes management features, you explicitly consent to the additional terms, disclaimers, and limitations in Section 5.</strong></p>
+        </div>
 
         <div class="summary-box">
-            <h3>Terms Summary</h3>
-            <p><strong>Service:</strong> Macros AI is a nutrition tracking app using AI to analyze food photos and estimate nutritional values</p>
-            <p><strong>Disclaimer:</strong> AI estimates are not 100% accurate and should not replace professional medical advice</p>
+            <h3><i class="fas fa-clipboard-check icon"></i>Terms Summary</h3>
+            <p><strong>Service:</strong> Macros AI is a nutrition tracking app with AI-powered food recognition, AI Nutrition Coach, meal planning, and optional diabetes management tools</p>
+            <p><strong>Medical Disclaimer:</strong> The App does NOT provide medical advice. AI estimates, insulin calculations, and health recommendations are for informational purposes only</p>
+            <p><strong>Your Responsibility:</strong> Always consult healthcare professionals for medical decisions, especially regarding diabetes management and insulin dosing</p>
             <p><strong>Your Rights:</strong> You own your content but grant us license to process it for the service</p>
+            <p><strong>AI Coach:</strong> Conversational guidance and meal planning are suggestions, not medical advice; uses location data for culturally appropriate recommendations</p>
             <p><strong>Restrictions:</strong> No unauthorized access, reverse engineering, or illegal use of the App</p>
-            <p><strong>Liability:</strong> We are not liable for indirect damages or reliance on nutritional estimates</p>
-            <p><strong>Changes:</strong> We may modify these Terms at any time with notice to users</p>
-            <p><strong>Termination:</strong> Either party may terminate access for violations or other reasons</p>
+            <p><strong>Liability:</strong> We are not liable for health outcomes, insulin dosing decisions, or reliance on nutritional estimates</p>
+            <p><strong>Changes:</strong> We may modify these Terms at any time; health feature changes require opt-in consent</p>
+            <p><strong>Termination:</strong> Either party may terminate access; you remain responsible for your healthcare</p>
         </div>
 
         <hr>
 
-        <div class="highlight-box">
-            <p><strong>Acknowledgment:</strong> By using Macros AI, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. You also acknowledge that these Terms may be updated from time to time and that your continued use of the App constitutes acceptance of any such updates.</p>
+        <div class="info-box">
+            <h4><i class="fas fa-info-circle"></i>Version Information</h4>
+            <p><strong>Terms Version:</strong> 2.0</p>
+            <p><strong>Effective Date:</strong> January 21, 2026</p>
+            <p><strong>Last Reviewed:</strong> January 21, 2026</p>
+            <p style="margin-top: 0.5rem;">These Terms incorporate updates for AI Nutrition Coach and diabetes management features.</p>
         </div>
 
-        <p style="text-align: center; margin-top: 3rem; color: #666;"><em>Macros AI is a product of Afrivance AI</em></p>
+        <p style="text-align: center; margin-top: 3rem; color: #666;">
+            <em>Macros AI is a product of Afrivance AI</em><br>
+            <small>Committed to responsible AI and user health & safety</small>
+        </p>
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Afrivance AI. All rights reserved.</p>
+        <p>&copy; 2026 Afrivance AI. All rights reserved.</p>
         <p style="margin-top: 0.5rem; font-size: 0.9rem;">
-            <a href="/" style="color: #FFB134; text-decoration: none;">Home</a> | 
-            <a href="/macros-ai-privacy-policy.html" style="color: #FFB134; text-decoration: none;">Privacy Policy</a> |
-            <a href="/macros-ai-terms-of-service.html" style="color: #FFB134; text-decoration: none;">Terms of Service</a>
+            <a href="/">Home</a> | 
+            <a href="/macros-ai-privacy-policy.html">Privacy Policy</a> |
+            <a href="/macros-ai-terms-of-service.html">Terms of Service</a> |
+            <a href="mailto:info@afrivance.ai">Contact</a>
+        </p>
+        <p style="margin-top: 1rem; font-size: 0.85rem; color: #94a3b8;">
+            <i class="fas fa-shield-alt"></i> Your health and safety are our top priorities
         </p>
     </footer>
 </body>

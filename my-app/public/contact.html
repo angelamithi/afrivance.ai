@@ -96,9 +96,7 @@
         We'd love to hear from you. Send us a message and we'll get back to you shortly.
     </p>
 
-   <form action="https://formspree.io/f/mlgklozo"
-      method="POST"
-      onsubmit="setTimeout(() => window.location.href='thank-you.html', 1000)">
+  <form id="contact-form">
 
     <div class="form-group">
         <label>Your Name</label>
@@ -120,13 +118,28 @@
         <textarea name="message" required></textarea>
     </div>
 
-    <button type="submit">
-        Send Message
-    </button>
+    <button type="submit">Send Message</button>
 
 </form>
 
 </div>
+<script>
+document.getElementById("contact-form").addEventListener("submit", async function(e) {
+    e.preventDefault(); // STOP Formspree default page
 
+    const formData = new FormData(this);
+
+    await fetch("https://formspree.io/f/mlgklozo", {
+        method: "POST",
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    });
+
+    // redirect ONLY after email is sent
+    window.location.href = "thank-you.html";
+});
+</script>
 </body>
 </html>

@@ -1,1619 +1,918 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macros AI - AI-Powered Nutrition Tracking with Personal AI Coach</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            line-height: 1.6;
-            color: #1a202c;
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        .navbar {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
-            z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2d3748;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: #FFF;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            border-radius: 12px;
-        }
-
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-item a {
-            color: #4a5568;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-item a:hover {
-            color: #FFB134;
-        }
-
-        .nav-cta {
-            background: #FFB134;
-            color: #1a202c !important;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 177, 52, 0.3);
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(255, 177, 52, 0.4);
-            background: #f5a623;
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 177, 52, 0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-        }
-
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            font-size: 3.5rem;
-            font-weight: 800;
-            color: white;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-content .gradient-text {
-            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .hero-tagline {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .hero-features {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .hero-feature {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: white;
-            font-size: 1.1rem;
-        }
-
-        .hero-feature i {
-            color: #FFB134;
-            font-size: 1.3rem;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: #1a202c;
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            border: 2px solid #FFB134;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(255, 177, 52, 0.3);
-            background: #FFB134;
-            color: #1a202c;
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.3);
-            transform: translateY(-3px);
-        }
-
-        .hero-mockup {
-            position: relative;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 800px;
-        }
-
-       .phone-mockup {
-            position: relative;
-            width: 360px;
-            height: 750px;
-            background: linear-gradient(145deg, #1a1a1a 0%, #0a0a0a 100%);
-            border-radius: 45px;
-            padding: 15px;
-            padding-top: 35px;
-            box-shadow: 
-                0 50px 100px rgba(0, 0, 0, 0.5),
-                0 0 0 1px rgba(255, 255, 255, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transform: perspective(1000px) rotateY(-12deg);
-            transition: transform 0.5s ease;
-        }
-
-        .phone-mockup::before {
-            content: '';
-            position: absolute;
-            top: 18px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 25px;
-            background: #000;
-            border-radius: 0 0 20px 20px;
-            box-shadow: inset 0 -2px 3px rgba(255, 255, 255, 0.1);
-        }
-
-        .phone-mockup::after {
-            content: '';
-            position: absolute;
-            top: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 12px;
-            height: 12px;
-            background: radial-gradient(circle, #1a3a52 0%, #0a1a2a 100%);
-            border-radius: 50%;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .phone-mockup:hover {
-            transform: perspective(1000px) rotateY(0deg) scale(1.02);
-        }
-
-        .phone-screen {
-            width: 100%;
-            height: 100%;
-            background: #000;
-            border-radius: 32px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .phone-screen img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .floating-badge {
-            position: absolute;
-            background: white;
-            padding: 1rem 1.5rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            animation: float 3s ease-in-out infinite;
-            border: 2px solid #FFB134;
-            z-index: 10;
-        }
-
-        .badge-1 {
-            top: 180px;
-            right: -60px;
-        }
-
-        .badge-2 {
-            bottom: 110px;
-            left: -40px;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        /* Stats Section */
-        .stats-section {
-            background: #f7fafc;
-            padding: 4rem 2rem;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stats-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            text-align: center;
-        }
-
-        .stat-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 20px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            color: #4a5568;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
-
-        /* AI Coach Section */
-        .ai-coach-section {
-            padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a1a1a 100%);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ai-coach-section::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 177, 52, 0.15) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -300px;
-            right: -300px;
-        }
-
-        .ai-coach-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .ai-coach-header {
-            text-align: center;
-            margin-bottom: 5rem;
-        }
-
-        .ai-coach-header h2 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1rem;
-            font-weight: 800;
-        }
-
-        .ai-coach-header .gradient-text {
-            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .ai-coach-header p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .ai-coach-features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 5rem;
-        }
-
-        .ai-coach-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 3rem;
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .ai-coach-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 177, 52, 0.2);
-        }
-
-        .ai-coach-card i {
-            font-size: 3rem;
-            color: #FFB134;
-            margin-bottom: 1.5rem;
-            display: block;
-        }
-
-        .ai-coach-card h3 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .ai-coach-card p {
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.8;
-            font-size: 1.1rem;
-        }
-
-        .ai-coach-card ul {
-            list-style: none;
-            margin-top: 1.5rem;
-            padding: 0;
-        }
-
-        .ai-coach-card li {
-            color: rgba(255, 255, 255, 0.9);
-            padding: 0.5rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .ai-coach-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #FFB134;
-            font-weight: bold;
-        }
-
-        /* How It Works Section */
-        .how-it-works {
-            padding: 8rem 2rem 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-            scroll-margin-top: 80px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 4rem;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            color: #1a202c;
-            margin-bottom: 1rem;
-        }
-
-        .section-subtitle {
-            font-size: 1.2rem;
-            color: #718096;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .step-card {
-            position: relative;
-            padding: 2.5rem 1.5rem;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-
-        .step-icon {
-            display: inline-block;
-            font-size: 1.8rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0;
-            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            vertical-align: middle;
-        }
-
-        .step-card h3 {
-            display: flex;
-            align-items: center;
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 1rem;
-        }
-
-        @media (max-width: 1024px) {
-            .steps-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .steps-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .step-card {
-                padding: 2.5rem;
-            }
-        }
-
-        .step-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(255, 177, 52, 0.15);
-        }
-
-        .step-number {
-            position: absolute;
-            top: -20px;
-            left: 30px;
-            width: 50px;
-            height: 50px;
-            background: linear-gradient(135deg, #FFB134 0%, #f5a623 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #1a202c;
-            font-size: 1.5rem;
-            font-weight: 800;
-            box-shadow: 0 5px 15px rgba(255, 177, 52, 0.4);
-        }
-
-        .step-card p {
-            color: #718096;
-            line-height: 1.8;
-        }
-
-        /* Video Demo Section */
-        .video-demo-section {
-            padding: 6rem 2rem;
-            background: #f7fafc;
-        }
-
-        .video-demo-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .videos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .video-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .video-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(255, 177, 52, 0.2);
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-top: 210%;
-            background: #1a202c;
-            border-radius: 35px 35px 0 0;
-            padding: 8px;
-            padding-top: calc(210% + 8px);
-            padding-bottom: 0;
-        }
-
-        .video-wrapper::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 6px;
-            background: #0a0f1a;
-            border-radius: 3px;
-            z-index: 2;
-        }
-
-        .video-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 30px;
-            left: 8px;
-            right: 8px;
-            bottom: 0;
-            background: #000;
-            border-radius: 20px 20px 0 0;
-            z-index: 1;
-        }
-
-        .video-wrapper video {
-            position: absolute;
-            top: 30px;
-            left: 8px;
-            width: calc(100% - 16px);
-            height: calc(100% - 30px);
-            object-fit: cover;
-            background: #000;
-            border-radius: 20px 20px 0 0;
-            z-index: 2;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-            background: white;
-            border-radius: 0 0 25px 25px;
-        }
-
-        .video-info h4 {
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .video-info h4 i {
-            color: #FFB134;
-        }
-
-        .video-info p {
-            color: #718096;
-            line-height: 1.6;
-        }
-
-        /* Features Section */
-        .features-section {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #1a1a1a 100%);
-            padding: 6rem 2rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .features-section::before {
-            content: '';
-            position: absolute;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(255, 177, 52, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -250px;
-            right: -250px;
-        }
-
-        .features-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .features-section .section-title,
-        .features-section .section-subtitle {
-            color: white;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 2.5rem;
-            border-radius: 25px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.3s ease;
-        }
-
-        .feature-card:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .feature-icon {
-            width: 60px;
-            height: 60px;
-            background: #FFB134;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.5rem;
-        }
-
-        .feature-icon i {
-            font-size: 1.8rem;
-            color: #1a202c;
-        }
-
-        .feature-card h3 {
-            color: white;
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .feature-card p {
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-        }
-
-        /* Screenshots Section */
-        .screenshots-section {
-            padding: 6rem 2rem;
-            background: #f7fafc;
-        }
-
-        .screenshots-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .screenshots-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .screenshot-card {
-            background: white;
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .screenshot-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-        }
-
-        .screenshot-image {
-            width: 100%;
-            height: auto;
-            min-height: 400px;
-            max-height: 700px;
-            object-fit: contain;
-            object-position: top center;
-            background: #f7fafc;
-            display: block;
-        }
-
-        .screenshot-info {
-            padding: 1.5rem;
-        }
-
-        .screenshot-info h4 {
-            font-size: 1.3rem;
-            color: #2d3748;
-            margin-bottom: 0.5rem;
-        }
-
-        .screenshot-info p {
-            color: #718096;
-        }
-
-        /* Benefits Section */
-        .benefits-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .benefit-card {
-            padding: 2rem;
-            border-left: 4px solid #FFB134;
-            background: white;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-
-        .benefit-card:hover {
-            border-left-width: 8px;
-            transform: translateX(5px);
-        }
-
-        .benefit-card h3 {
-            color: #2d3748;
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .benefit-card h3 i {
-            color: #FFB134;
-            font-size: 1.5rem;
-        }
-
-        .benefit-card p {
-            color: #718096;
-            line-height: 1.8;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
-            padding: 6rem 2rem;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '';
-            position: absolute;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, rgba(255, 177, 52, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            top: -300px;
-            left: -300px;
-        }
-
-        .cta-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-content h2 {
-            font-size: 3rem;
-            color: white;
-            margin-bottom: 1.5rem;
-        }
-
-        .cta-content p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2.5rem;
-        }
-
-        .app-badges {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 2rem;
-        }
-
-        .app-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            background: white;
-            color: #1a202c;
-            padding: 0.75rem 1.5rem;
-            border-radius: 15px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-            border: 2px solid transparent;
-        }
-
-        .app-badge:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-            border-color: #FFB134;
-            background: #FFB134;
-        }
-
-        .app-badge i {
-            font-size: 1.5rem;
-        }
-
-        /* Footer */
-        .footer {
-            background: #0f172a;
-            color: white;
-            padding: 3rem 2rem 2rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin: 2rem 0;
-        }
-
-        .social-links a {
-            width: 45px;
-            height: 45px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: #FFB134;
-            transform: translateY(-3px);
-        }
-
-        .copyright {
-            margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-        }
-        .nav-item a i {
-    margin-right: 0.4rem;
-}
-.nav-item a[href="index.html"] {
-    color: #718096;
-}
-
-.nav-item a[href="index.html"]:hover {
-    color: #FFB134;
-}
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-menu {
-                display: none;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                text-align: center;
-            }
-
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-
-            .hero-tagline {
-                font-size: 1.1rem;
-            }
-
-            .hero-buttons {
-                justify-content: center;
-            }
-
-            .phone-mockup {
-                transform: perspective(1000px) rotateY(0deg);
-                width: 250px;
-                height: 550px;
-            }
-
-            .floating-badge {
-                display: none;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .cta-content h2 {
-                font-size: 2rem;
-            }
-
-            .ai-coach-header h2 {
-                font-size: 2rem;
-            }
-        }
-
-        /* Scroll Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Macros AI — AI-Powered Nutrition Tracking & Personal Coaching</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #111f3a;
+      --teal:   #00C8C8;
+      --teal2:  #00a8a8;
+      --amber:  #E8935A;
+      --white:  #F0F4F8;
+      --muted:  #8899AA;
+      --card:   #152035;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--navy);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 1.2rem 0;
+      transition: background .3s, backdrop-filter .3s;
+    }
+    nav.scrolled {
+      background: rgba(10,22,40,.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,200,200,.12);
+    }
+    .nav-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem;
+    }
+    .nav-logo {
+      display: flex; align-items: center; gap: .75rem;
+      text-decoration: none;
+    }
+    .nav-logo img {
+      width: 40px; height: 40px; border-radius: 8px;
+      object-fit: contain;
+    }
+    .nav-logo span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1.45rem;
+      color: var(--white); letter-spacing: -.02em;
+      display: flex; align-items: baseline; gap: .25rem;
+    }
+    .nav-logo span em {
+      color: var(--teal); font-style: normal; font-weight: 700;
+      margin-left: .35rem; font-size: 1.15em;
+    }
+    .nav-links { list-style: none; display: flex; gap: 2.5rem; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .9rem; font-weight: 500; letter-spacing: .02em;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--white); }
+    .nav-back {
+      color: var(--muted) !important;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .nav-back:hover { color: var(--teal) !important; }
+    .nav-cta {
+      background: var(--teal); color: var(--navy) !important;
+      padding: .5rem 1.25rem; border-radius: 6px;
+      font-weight: 600 !important; transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--teal2) !important; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      padding: 7rem 2rem 5rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: radial-gradient(ellipse 70% 60% at 65% 50%, rgba(0,200,200,.08) 0%, transparent 70%),
+                  radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,147,90,.06) 0%, transparent 60%),
+                  var(--navy);
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(0,200,200,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,200,200,.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+    .hero-inner {
+      max-width: 1160px; margin: 0 auto; width: 100%;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
+      align-items: center; position: relative; z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(0,200,200,.1); border: 1px solid rgba(0,200,200,.25);
+      color: var(--teal); padding: .35rem .9rem;
+      border-radius: 20px; font-size: .8rem; font-weight: 600;
+      letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .hero-eyebrow span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 700; line-height: 1.1;
+      letter-spacing: -.03em; color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    h1 .accent { color: var(--teal); }
+    h1 .amber { color: var(--amber); }
+
+    .hero-body {
+      color: var(--muted); font-size: 1.1rem; line-height: 1.75;
+      margin-bottom: 2rem; max-width: 480px;
+    }
+    .hero-features {
+      display: flex; flex-direction: column; gap: .65rem;
+      margin-bottom: 2.5rem;
+    }
+    .hero-feature {
+      display: flex; align-items: center; gap: .75rem;
+      font-size: .95rem; color: var(--white);
+    }
+    .hero-feature i { color: var(--teal); width: 16px; }
+
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--navy);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
+      transition: all .2s;
+    }
+    .btn-primary:hover { background: var(--teal2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      padding: .85rem 2rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600; font-size: 1rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid rgba(255,255,255,.2); transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+
+    .hero-stats {
+      display: flex; gap: 2rem; margin-top: 2.5rem; flex-wrap: wrap;
+    }
+    .stat { display: flex; flex-direction: column; }
+    .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem; font-weight: 700; color: var(--white);
+    }
+    .stat-num span { color: var(--teal); }
+    .stat-label { font-size: .75rem; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+
+    /* Phone mockup */
+    .hero-visual {
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .phone-wrap {
+      position: relative;
+      display: flex; justify-content: center; align-items: center;
+    }
+    .phone-glow {
+      position: absolute; inset: -20%;
+      background: radial-gradient(circle, rgba(0,200,200,.15) 0%, transparent 65%);
+      border-radius: 50%;
+      animation: breathe 4s ease-in-out infinite;
+    }
+    @keyframes breathe { 0%,100%{transform:scale(1)} 50%{transform:scale(1.05)} }
+    .phone-mockup {
+      position: relative; z-index: 1;
+      width: 280px; height: 580px;
+      background: linear-gradient(145deg, #0d1c30, #071020);
+      border-radius: 40px; padding: 12px; padding-top: 28px;
+      box-shadow:
+        0 40px 80px rgba(0,0,0,.5),
+        0 0 0 1px rgba(0,200,200,.15),
+        inset 0 1px 0 rgba(255,255,255,.07);
+      transition: transform .4s ease;
+    }
+    .phone-mockup:hover { transform: translateY(-8px) rotate(1deg); }
+    .phone-mockup::before {
+      content: '';
+      position: absolute; top: 14px; left: 50%;
+      transform: translateX(-50%);
+      width: 70px; height: 6px;
+      background: rgba(0,200,200,.15);
+      border-radius: 3px;
+    }
+    .phone-screen {
+      width: 100%; height: 100%;
+      background: #000; border-radius: 28px;
+      overflow: hidden;
+    }
+    .phone-screen img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
+    .phone-badge {
+      position: absolute; z-index: 2;
+      background: var(--card); border: 1px solid rgba(0,200,200,.25);
+      border-radius: 12px; padding: .75rem 1rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,.3);
+      animation: float 3.5s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+    .phone-badge-1 { top: 140px; right: -60px; animation-delay: 0s; }
+    .phone-badge-2 { bottom: 120px; left: -60px; animation-delay: 1s; }
+    .phone-badge strong {
+      display: block; font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--teal);
+    }
+    .phone-badge span { font-size: .75rem; color: var(--muted); }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 6rem 2rem; }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label {
+      color: var(--teal); font-size: .75rem; font-weight: 600;
+      letter-spacing: .12em; text-transform: uppercase; margin-bottom: .75rem;
+    }
+    h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700; letter-spacing: -.025em;
+      color: var(--white); margin-bottom: 1rem;
+    }
+    .section-intro {
+      color: var(--muted); font-size: 1.05rem; line-height: 1.75;
+      max-width: 520px; margin-bottom: 3rem;
+    }
+
+    /* ── STATS BAND ── */
+    .stats-band { background: var(--navy2); padding: 3rem 2rem; }
+    .stats-grid {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+    }
+    .stat-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; padding: 1.75rem;
+      text-align: center; transition: border-color .2s;
+    }
+    .stat-card:hover { border-color: rgba(0,200,200,.3); }
+    .stat-card .big-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.2rem; font-weight: 700; color: var(--teal);
+      margin-bottom: .4rem;
+    }
+    .stat-card .big-label {
+      font-size: .85rem; color: var(--muted); text-transform: uppercase;
+      letter-spacing: .06em; font-weight: 500;
+    }
+
+    /* ── AI COACH FEATURES ── */
+    .coach-section { background: var(--navy2); }
+    .coach-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .coach-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px; padding: 2rem;
+      transition: border-color .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .coach-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--teal), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .coach-card:hover { border-color: rgba(0,200,200,.3); transform: translateY(-4px); }
+    .coach-card:hover::before { opacity: 1; }
+    .coach-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(0,200,200,.1); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1.25rem;
+    }
+    .coach-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 600; color: var(--white);
+      margin-bottom: .75rem;
+    }
+    .coach-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; margin-bottom: 1rem; }
+    .coach-card ul { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .coach-card li {
+      display: flex; align-items: center; gap: .65rem;
+      font-size: .85rem; color: var(--white);
+    }
+    .coach-card li::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--teal); flex-shrink: 0;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .process-steps {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
+      margin-top: 3rem; position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 28px; left: 12.5%; right: 12.5%;
+      height: 1px; background: linear-gradient(90deg, var(--teal), rgba(0,200,200,.1));
+      z-index: 0;
+    }
+    .step {
+      display: flex; flex-direction: column; align-items: center;
+      text-align: center; padding: 0 1rem; position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 56px; height: 56px; border-radius: 50%;
+      border: 2px solid var(--teal); background: var(--navy);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem; font-weight: 700; color: var(--teal);
+      margin-bottom: 1.25rem;
+    }
+    .step h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--white);
+      margin-bottom: .5rem;
+    }
+    .step p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem; margin-top: 3rem;
+    }
+    .feature-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px; padding: 2rem;
+      transition: border-color .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--amber), transparent);
+      opacity: 0; transition: opacity .2s;
+    }
+    .feature-card:hover { border-color: rgba(232,147,90,.3); transform: translateY(-4px); }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 10px;
+      background: rgba(232,147,90,.1); color: var(--amber);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; margin-bottom: 1.25rem;
+    }
+    .feature-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--white);
+      margin-bottom: .65rem;
+    }
+    .feature-card p { font-size: .88rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── SCREENSHOTS ── */
+    .screenshots-section { background: var(--navy2); }
+    .screenshots-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 3rem;
+    }
+    .screenshot-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .screenshot-card:hover { border-color: rgba(0,200,200,.25); transform: translateY(-6px); }
+    .screenshot-card img {
+      width: 100%; height: auto; min-height: 340px; max-height: 600px;
+      object-fit: contain; object-position: top center;
+      background: var(--navy2); display: block;
+    }
+    .screenshot-info { padding: 1.25rem 1.5rem; }
+    .screenshot-info h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600; color: var(--white);
+      margin-bottom: .35rem;
+    }
+    .screenshot-info p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── VIDEO DEMOS ── */
+    .videos-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem; margin-top: 3rem;
+    }
+    .video-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 16px; overflow: hidden;
+      transition: border-color .2s, transform .2s;
+    }
+    .video-card:hover { border-color: rgba(0,200,200,.25); transform: translateY(-6px); }
+    .video-phone-frame {
+      background: linear-gradient(145deg, #0d1c30, #071020);
+      padding: 10px; padding-top: 24px;
+      position: relative;
+    }
+    .video-phone-frame::before {
+      content: '';
+      position: absolute; top: 10px; left: 50%;
+      transform: translateX(-50%);
+      width: 50px; height: 5px;
+      background: rgba(0,200,200,.15);
+      border-radius: 3px;
+    }
+    .video-phone-frame video {
+      width: 100%; border-radius: 12px;
+      display: block; aspect-ratio: 9/19;
+      object-fit: cover; background: #000;
+    }
+    .video-info { padding: 1.25rem 1.5rem; }
+    .video-info h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 600; color: var(--white);
+      margin-bottom: .35rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .video-info h4 i { color: var(--teal); }
+    .video-info p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy2) 0%, #0d1e38 100%);
+      border-top: 1px solid rgba(0,200,200,.12);
+      border-bottom: 1px solid rgba(0,200,200,.12);
+    }
+    .cta-inner {
+      max-width: 680px; margin: 0 auto; text-align: center;
+    }
+    .cta-inner h2 { margin-bottom: 1rem; }
+    .cta-inner p { color: var(--muted); font-size: 1.05rem; line-height: 1.75; margin-bottom: 2.5rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .ios-notice {
+      margin-top: 2.5rem; padding: 1.5rem 2rem;
+      background: rgba(0,200,200,.05); border: 1px solid rgba(0,200,200,.15);
+      border-radius: 12px; display: inline-flex;
+      align-items: center; gap: 1rem;
+    }
+    .ios-notice i { font-size: 2rem; color: var(--muted); }
+    .ios-notice h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .ios-notice p { font-size: .83rem; color: var(--muted); margin: 0; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy); padding: 3rem 2rem;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+    .footer-inner {
+      max-width: 1160px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1.5rem;
+    }
+    .footer-brand {
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .footer-brand img { width: 32px; height: 32px; border-radius: 6px; object-fit: contain; }
+    .footer-brand span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem; font-weight: 700; color: var(--white);
+    }
+    .footer-brand span em { color: var(--teal); font-style: normal; }
+    .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+    .footer-links a {
+      color: var(--muted); text-decoration: none;
+      font-size: .85rem; transition: color .2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+    .footer-copy { color: var(--muted); font-size: .8rem; }
+    .social-row { display: flex; gap: 1rem; }
+    .social-row a {
+      width: 36px; height: 36px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,.1); color: var(--muted);
+      display: flex; align-items: center; justify-content: center;
+      font-size: .9rem; text-decoration: none; transition: all .2s;
+    }
+    .social-row a:hover { border-color: var(--teal); color: var(--teal); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .coach-grid { grid-template-columns: 1fr 1fr; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .screenshots-grid { grid-template-columns: 1fr 1fr; }
+      .videos-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .coach-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .screenshots-grid { grid-template-columns: 1fr; }
+      .videos-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* scroll reveal */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.in-view { opacity: 1; transform: none; }
+  </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">
-                <div class="logo-icon">
-                    <img src="macros-icon.png" alt="Macros AI">
-                </div>
-                Macros AI
-            </a>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="index.html"><i class="fas fa-arrow-left"></i> Home</a></li>
-                <li class="nav-item"><a href="#ai-coach">AI Coach</a></li>
-                <li class="nav-item"><a href="#features">Features</a></li>
-                <li class="nav-item"><a href="#how-it-works">How It Works</a></li>
-                <li class="nav-item"><a href="#screenshots">Screenshots</a></li>
-                <li class="nav-item"><a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="nav-cta">Download App</a></li>
-            </ul>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#home" class="nav-logo">
+      <img src="macros-icon.png" alt="Macros AI">
+      <span>Macros <em>AI</em></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-back"><i class="fas fa-arrow-left"></i> Afrivance AI</a></li>
+      <li><a href="#coach">AI Coach</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how-it-works">How It Works</a></li>
+      <li><a href="#screenshots">Screenshots</a></li>
+      <li><a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="nav-cta">Download App</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home" class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow"><span></span> AI-Powered Nutrition Tracking</div>
+      <h1>
+        Snap your meal.<br>
+        Know your macros.<br>
+        <span class="accent">Coach included.</span>
+      </h1>
+      <p class="hero-body">
+        Your AI nutrition coach lives in your pocket — ready to analyze meals, plan your week, and answer every question you have about eating well. No databases, no guesswork.
+      </p>
+      <div class="hero-features">
+        <div class="hero-feature">
+          <i class="fas fa-camera"></i>
+          <span>Instant meal analysis from a photo</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>
-                    Your AI-Powered <span class="gradient-text">Nutrition Coach</span> in Your Pocket
-                </h1>
-                <p class="hero-tagline">
-                    Snap, track, and chat with your personal AI nutrition coach. Get instant meal analysis, personalized meal plans, and expert guidance—all powered by advanced AI.
-                </p>
-                
-                <div class="hero-features">
-                    <div class="hero-feature">
-                        <i class="fas fa-camera"></i>
-                        <span>Instant meal analysis with AI vision</span>
-                    </div>
-                    <div class="hero-feature">
-                        <i class="fas fa-comments"></i>
-                        <span>Chat with your AI nutrition coach 24/7</span>
-                    </div>
-                    <div class="hero-feature">
-                        <i class="fas fa-utensils"></i>
-                        <span>Personalized meal plans for your location</span>
-                    </div>
-                </div>
-
-                <div class="hero-buttons">
-                    <a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="btn-primary">
-                        <i class="fab fa-google-play"></i>
-                        Download on Google Play
-                    </a>
-                    <a href="#ai-coach" class="btn-secondary">
-                        <i class="fas fa-robot"></i>
-                        Meet Your AI Coach
-                    </a>
-                </div>
-            </div>
-
-            <div class="hero-mockup">
-                <div class="phone-mockup">
-                    <div class="phone-screen">
-                        <img src="dashboard.jpeg" alt="Macros AI App Interface">
-                    </div>
-                </div>
-                
-                <div class="floating-badge badge-1">
-                    <strong style="color: #1a202c; font-size: 1.5rem;">AI Coach</strong>
-                    <p style="margin: 0; color: #718096;">24/7 Available</p>
-                </div>
-                
-                <div class="floating-badge badge-2">
-                    <strong style="color: #1a202c; font-size: 1.5rem;">Smart</strong>
-                    <p style="margin: 0; color: #718096;">Meal Planning</p>
-                </div>
-            </div>
+        <div class="hero-feature">
+          <i class="fas fa-comments"></i>
+          <span>Chat with your AI nutrition coach 24/7</span>
         </div>
-    </section>
-
-    <!-- Stats Section -->
-    <section class="stats-section">
-        <div class="stats-container">
-            <div class="stat-card">
-                <div class="stat-number">10 sec</div>
-                <div class="stat-label">Meal Analysis Time</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">24/7</div>
-                <div class="stat-label">AI Coach Availability</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">1000+</div>
-                <div class="stat-label">Local Foods Supported</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number">95%</div>
-                <div class="stat-label">AI Accuracy Rate</div>
-            </div>
+        <div class="hero-feature">
+          <i class="fas fa-globe"></i>
+          <span>Personalized plans with local foods from your region</span>
         </div>
-    </section>
-
-    <!-- AI Coach Section -->
-    <section id="ai-coach" class="ai-coach-section">
-        <div class="ai-coach-container">
-            <div class="ai-coach-header fade-in">
-                <h2>Meet Your <span class="gradient-text">AI Nutrition Coach</span></h2>
-                <p>It's like having a personal nutritionist, meal planner, and nutrition expert all in one—available whenever you need guidance.</p>
-            </div>
-
-            <div class="ai-coach-features">
-                <div class="ai-coach-card fade-in">
-                    <i class="fas fa-comments"></i>
-                    <h3>Conversational Guidance</h3>
-                    <p>Ask anything about nutrition, meal ideas, or your progress. Your AI coach understands your goals and provides personalized responses in natural conversation.</p>
-                    <ul>
-                        <li>Ask questions in plain language</li>
-                        <li>Get instant, personalized answers</li>
-                        <li>Receive contextual advice based on your data</li>
-                        <li>Save conversation history for later</li>
-                    </ul>
-                </div>
-
-                <div class="ai-coach-card fade-in">
-                    <i class="fas fa-calendar-alt"></i>
-                    <h3>AI Meal Planning</h3>
-                    <p>Generate complete daily or weekly meal plans tailored to your goals, diet type, and location—with authentic local foods from your region.</p>
-                    <ul>
-                        <li>Daily or weekly meal plans</li>
-                        <li>Culturally appropriate food suggestions</li>
-                        <li>Complete macro breakdowns</li>
-                        <li>Shopping lists included</li>
-                    </ul>
-                </div>
-
-                <div class="ai-coach-card fade-in">
-                    <i class="fas fa-globe-americas"></i>
-                    <h3>Location-Based Recommendations</h3>
-                    <p>Get meal suggestions using authentic local ingredients and dishes from your country—respecting cultural meal timing and customs.</p>
-                    <ul>
-                        <li>Local ingredient recommendations</li>
-                        <li>Culturally appropriate meal timing</li>
-                        <li>Authentic food names and recipes</li>
-                        <li>Supports 150+ countries</li>
-                    </ul>
-                </div>
-            </div>
+      </div>
+      <div class="hero-actions">
+        <a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="btn-primary">
+          <i class="fab fa-google-play"></i> Download on Google Play
+        </a>
+        <a href="#coach" class="btn-ghost">
+          <i class="fas fa-robot"></i> Meet the AI Coach
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-num">10<span>s</span></span>
+          <span class="stat-label">Meal Analysis</span>
         </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section id="how-it-works" class="how-it-works">
-        <div class="section-header">
-            <h2 class="section-title">How Macros AI Works</h2>
-            <p class="section-subtitle">From meal photo to personalized coaching in seconds</p>
+        <div class="stat">
+          <span class="stat-num">24<span>/7</span></span>
+          <span class="stat-label">Coach Available</span>
         </div>
-
-        <div class="steps-grid">
-            <div class="step-card fade-in">
-                <div class="step-number">1</div>
-                <h3>
-                    <span class="step-icon">
-                        <i class="fas fa-camera-retro"></i>
-                    </span>
-                    Snap Your Meal
-                </h3>
-                <p>Take a photo of any meal. Our AI vision instantly recognizes food items and calculates nutrition.</p>
-            </div>
-
-            <div class="step-card fade-in">
-                <div class="step-number">2</div>
-                <h3>
-                    <span class="step-icon">
-                        <i class="fas fa-robot"></i>
-                    </span>
-                    AI Analyzes Everything
-                </h3>
-                <p>Get instant macro breakdown—calories, protein, carbs, and fats. No manual entry needed.</p>
-            </div>
-
-            <div class="step-card fade-in">
-                <div class="step-number">3</div>
-                <h3>
-                    <span class="step-icon">
-                        <i class="fas fa-comments"></i>
-                    </span>
-                    Chat with AI Coach
-                </h3>
-                <p>Ask questions, get meal suggestions, and receive personalized nutrition guidance anytime.</p>
-            </div>
-
-            <div class="step-card fade-in">
-                <div class="step-number">4</div>
-                <h3>
-                    <span class="step-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </span>
-                    Track Your Progress
-                </h3>
-                <p>Monitor your nutrition journey with smart insights and goal-specific recommendations.</p>
-            </div>
+        <div class="stat">
+          <span class="stat-num">95<span>%</span></span>
+          <span class="stat-label">AI Accuracy</span>
         </div>
-    </section>
-
-    <!-- Video Demo Section -->
-    <section class="video-demo-section">
-        <div class="video-demo-container">
-            <div class="section-header">
-                <h2 class="section-title">Watch Macros AI in Action</h2>
-                <p class="section-subtitle">See how easy it is to track nutrition and chat with your AI coach</p>
-            </div>
-
-            <div class="videos-grid">
-                <div class="video-card fade-in">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="video-food-analysis.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <h4><i class="fas fa-camera"></i> Analyzing Food</h4>
-                        <p>Watch AI instantly analyze your meal and calculate complete macro breakdown</p>
-                    </div>
-                </div>
-
-                <div class="video-card fade-in">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="video-progress-tracking.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <h4><i class="fas fa-chart-line"></i> Tracking Progress</h4>
-                        <p>See how easy it is to monitor your daily progress and macro goals</p>
-                    </div>
-                </div>
-
-                <div class="video-card fade-in">
-                    <div class="video-wrapper">
-                        <video controls preload="metadata">
-                            <source src="video-ai-insights.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                    <div class="video-info">
-                        <h4><i class="fas fa-robot"></i> AI Coach Chat</h4>
-                        <p>Experience personalized nutrition coaching powered by advanced AI</p>
-                    </div>
-                </div>
-            </div>
+        <div class="stat">
+          <span class="stat-num">150<span>+</span></span>
+          <span class="stat-label">Countries</span>
         </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features-section">
-        <div class="features-container">
-            <div class="section-header">
-                <h2 class="section-title">Powerful Features for Real Results</h2>
-                <p class="section-subtitle">Everything you need to master your nutrition with AI assistance</p>
-            </div>
-
-            <div class="features-grid">
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <h3>AI Vision Technology</h3>
-                    <p>Advanced image recognition identifies food items and portions with incredible accuracy. No more guessing or manual searching.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-dumbbell"></i>
-                    </div>
-                    <h3>Goal-Specific Tracking</h3>
-                    <p>Get macro targets tailored to your fitness objectives—whether you're building muscle, losing weight, or maintaining.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Personalized AI Insights</h3>
-                    <p>Intelligent recommendations based on your eating patterns, progress, and goals. Like having a nutritionist analyzing your data 24/7.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-chart-pie"></i>
-                    </div>
-                    <h3>Visual Dashboards</h3>
-                    <p>Beautiful, intuitive visualizations show your macro intake versus targets at a glance. Track everything effortlessly.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Diet Type Support</h3>
-                    <p>Whether you're high protein, low carb, vegetarian, or balanced—track compliance with your chosen dietary approach.</p>
-                </div>
-
-                <div class="feature-card fade-in">
-                    <div class="feature-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>Progress Milestones</h3>
-                    <p>Celebrate wins with achievement tracking, streaks, and progress indicators that keep you motivated.</p>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="phone-wrap">
+        <div class="phone-glow"></div>
+        <div class="phone-mockup">
+          <div class="phone-screen">
+            <img src="dashboard.jpeg" alt="Macros AI Dashboard">
+          </div>
         </div>
-    </section>
-
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="screenshots-section">
-        <div class="screenshots-container">
-            <div class="section-header">
-                <h2 class="section-title">See Macros AI in Action</h2>
-                <p class="section-subtitle">A peek inside the app transforming nutrition tracking</p>
-            </div>
-
-            <div class="screenshots-grid">
-                <div class="screenshot-card fade-in">
-                    <img src="daily-overview.jpeg" alt="Daily Macro Tracking" class="screenshot-image">
-                    <div class="screenshot-info">
-                        <h4>Daily Macro Overview</h4>
-                        <p>Track calories, protein, carbs, and fats in real-time with beautiful circular progress indicators</p>
-                    </div>
-                </div>
-
-                <div class="screenshot-card fade-in">
-                    <img src="macro-breakdown.jpeg" alt="Macro Goal Assessment" class="screenshot-image">
-                    <div class="screenshot-info">
-                        <h4>Goal-Specific Progress</h4>
-                        <p>See your macro goal alignment with instant alerts and personalized recommendations</p>
-                    </div>
-                </div>
-
-                <div class="screenshot-card fade-in">
-                    <img src="insights.jpeg" alt="AI Insights Dashboard" class="screenshot-image">
-                    <div class="screenshot-info">
-                        <h4>AI Coach Insights</h4>
-                        <p>Get smart recommendations like increasing protein intake and optimizing nutrition for better results</p>
-                    </div>
-                </div>
-            </div>
+        <div class="phone-badge phone-badge-1">
+          <strong>AI Coach</strong>
+          <span>24/7 Available</span>
         </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="benefits-section">
-        <div class="section-header">
-            <h2 class="section-title">Why Choose Macros AI?</h2>
-            <p class="section-subtitle">The intelligent way to achieve your fitness goals</p>
+        <div class="phone-badge phone-badge-2">
+          <strong>Smart Plans</strong>
+          <span>Local foods included</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        <div class="benefits-grid">
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-robot"></i>
-                    AI-Powered Coaching
-                </h3>
-                <p>Get expert nutrition guidance 24/7. Ask questions, get meal suggestions, and receive personalized advice—all powered by advanced AI that learns your preferences.</p>
-            </div>
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="big-num">10 sec</div>
+      <div class="big-label">Meal Analysis Time</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="big-num">24/7</div>
+      <div class="big-label">AI Coach Availability</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="big-num">1000+</div>
+      <div class="big-label">Local Foods Supported</div>
+    </div>
+    <div class="stat-card reveal">
+      <div class="big-num">95%</div>
+      <div class="big-label">AI Accuracy Rate</div>
+    </div>
+  </div>
+</div>
 
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-clock"></i>
-                    Save Time
-                </h3>
-                <p>No more manual food logging. Get instant macro breakdowns with a photo and chat with your coach instead of searching databases.</p>
-            </div>
+<!-- AI COACH -->
+<section id="coach" class="section coach-section">
+  <div class="container">
+    <p class="section-label">Your Personal Nutritionist</p>
+    <h2>Meet your AI nutrition coach</h2>
+    <p class="section-intro">Like having a nutritionist, meal planner, and food expert all in one — available the moment you need guidance.</p>
 
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-globe"></i>
-                    Culturally Relevant
-                </h3>
-                <p>Get meal suggestions with authentic local foods from your country. The AI respects cultural meal timing and uses ingredients you can actually find.</p>
-            </div>
+    <div class="coach-grid">
+      <div class="coach-card reveal">
+        <div class="coach-icon"><i class="fas fa-comments"></i></div>
+        <h3>Conversational Guidance</h3>
+        <p>Ask anything about nutrition, meal ideas, or your progress. Get personalized responses based on your goals and eating history.</p>
+        <ul>
+          <li>Ask questions in plain language</li>
+          <li>Get instant, personalized answers</li>
+          <li>Advice based on your actual data</li>
+          <li>Conversation history saved</li>
+        </ul>
+      </div>
+      <div class="coach-card reveal">
+        <div class="coach-icon"><i class="fas fa-calendar-alt"></i></div>
+        <h3>AI Meal Planning</h3>
+        <p>Generate daily or weekly meal plans tailored to your goals, diet type, and location — with authentic local foods from your region.</p>
+        <ul>
+          <li>Daily or weekly plans</li>
+          <li>Culturally appropriate suggestions</li>
+          <li>Complete macro breakdowns</li>
+          <li>Shopping lists included</li>
+        </ul>
+      </div>
+      <div class="coach-card reveal">
+        <div class="coach-icon"><i class="fas fa-globe-americas"></i></div>
+        <h3>Location-Based Recommendations</h3>
+        <p>Meal suggestions using authentic local ingredients and dishes — respecting cultural meal timing and the foods you can actually find.</p>
+        <ul>
+          <li>Local ingredient recommendations</li>
+          <li>Culturally appropriate timing</li>
+          <li>Authentic food names and recipes</li>
+          <li>Supports 150+ countries</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-check-circle"></i>
-                    Stay Accountable
-                </h3>
-                <p>Visual progress tracking and your AI coach keep you consistent. The app celebrates your wins and provides guidance when you need it.</p>
-            </div>
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section" style="background: var(--navy2);">
+  <div class="container">
+    <p class="section-label">How It Works</p>
+    <h2>From photo to coaching in seconds</h2>
+    <p class="section-intro">No databases. No manual entry. Just snap and let your AI coach do the work.</p>
 
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-mobile-alt"></i>
-                    Simple & Intuitive
-                </h3>
-                <p>Clean, beautiful interface makes nutrition tracking enjoyable. Chat naturally with your AI coach—no complicated features.</p>
-            </div>
+    <div class="process-steps reveal">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h4>Snap Your Meal</h4>
+        <p>Take a photo of anything you eat. Our AI vision instantly recognizes food items and portions.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h4>AI Analyses Everything</h4>
+        <p>Get a full macro breakdown — calories, protein, carbs, and fats — in under 10 seconds.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h4>Chat with Your Coach</h4>
+        <p>Ask questions, get meal suggestions, and receive tailored nutrition guidance anytime.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <h4>Track Your Progress</h4>
+        <p>Monitor your nutrition journey with smart insights and goal-specific recommendations.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-            <div class="benefit-card fade-in">
-                <h3>
-                    <i class="fas fa-shield-alt"></i>
-                    Privacy First
-                </h3>
-                <p>Your data belongs to you. We use best-in-class security and never sell your information. Track with complete peace of mind.</p>
-            </div>
+<!-- FEATURES -->
+<section id="features" class="section">
+  <div class="container">
+    <p class="section-label">Built for Real Results</p>
+    <h2>Everything you need, nothing you don't</h2>
+    <p class="section-intro">Powerful features that work together to make nutrition tracking genuinely effortless.</p>
+
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-eye"></i></div>
+        <h3>AI Vision Technology</h3>
+        <p>Advanced image recognition identifies food items and portions with high accuracy — no more searching databases or guessing weights.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-dumbbell"></i></div>
+        <h3>Goal-Specific Tracking</h3>
+        <p>Macro targets tailored to your objectives — whether you're building muscle, losing weight, or maintaining where you are.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-brain"></i></div>
+        <h3>Personalized AI Insights</h3>
+        <p>Intelligent recommendations based on your eating patterns and progress. Like a nutritionist reviewing your data every single day.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-chart-pie"></i></div>
+        <h3>Visual Dashboards</h3>
+        <p>Beautiful, intuitive visualisations show macro intake versus targets at a glance — tracking feels effortless.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-utensils"></i></div>
+        <h3>Diet Type Support</h3>
+        <p>High protein, low carb, vegetarian, or balanced — track compliance with your chosen approach without friction.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon"><i class="fas fa-trophy"></i></div>
+        <h3>Progress Milestones</h3>
+        <p>Achievement tracking, streaks, and progress indicators that celebrate wins and keep you consistent over time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCREENSHOTS -->
+<section id="screenshots" class="section screenshots-section">
+  <div class="container">
+    <p class="section-label">Inside the App</p>
+    <h2>See Macros AI in action</h2>
+    <p class="section-intro">A look at the screens transforming how people track and understand their nutrition.</p>
+
+    <div class="screenshots-grid">
+      <div class="screenshot-card reveal">
+        <img src="daily-overview.jpeg" alt="Daily Macro Tracking">
+        <div class="screenshot-info">
+          <h4>Daily Macro Overview</h4>
+          <p>Track calories, protein, carbs, and fats in real-time with clear circular progress indicators</p>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="download" class="cta-section">
-        <div class="cta-content">
-            <h2>Ready to Meet Your AI Nutrition Coach?</h2>
-            <p>Join thousands crushing their fitness goals with AI-powered coaching and nutrition tracking. Download Macros AI today.</p>
-            
-            <div class="app-badges">
-                <a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="app-badge">
-                    <i class="fab fa-google-play"></i>
-                    <div>
-                        <div style="font-size: 0.8rem; opacity: 0.7;">Get it on</div>
-                        <div style="font-size: 1.1rem;">Google Play</div>
-                    </div>
-                </a>
-            </div>
-
-            <p style="font-size: 1rem; margin-top: 2rem;">
-                <i class="fab fa-android"></i> Available on Android • <i class="fab fa-apple"></i> iOS Coming Soon
-            </p>
-            
-            <div style="margin-top: 3rem; padding: 2rem; background: rgba(255, 177, 52, 0.1); border-radius: 20px; border: 2px solid rgba(255, 177, 52, 0.3); max-width: 600px; margin-left: auto; margin-right: auto;">
-                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; margin-bottom: 1rem;">
-                    <i class="fab fa-apple" style="font-size: 2.5rem; color: #FFB134;"></i>
-                    <div style="text-align: left;">
-                        <h3 style="margin: 0; color: white; font-size: 1.3rem;">iOS Version Coming Soon!</h3>
-                        <p style="margin: 0; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem;">We're bringing Macros AI to the App Store</p>
-                    </div>
-                </div>
-                <p style="color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; margin: 0;">
-                    Stay tuned for updates on our iOS launch
-                </p>
-            </div>
+      </div>
+      <div class="screenshot-card reveal">
+        <img src="macro-breakdown.jpeg" alt="Macro Goal Assessment">
+        <div class="screenshot-info">
+          <h4>Goal-Specific Progress</h4>
+          <p>See macro goal alignment instantly with alerts and personalised recommendations</p>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-logo">Macros AI</div>
-            <p style="color: rgba(255,255,255,0.6); max-width: 600px; margin: 1rem auto;">
-                AI-powered nutrition tracking with your personal nutrition coach. Built by fitness enthusiasts, for fitness enthusiasts.
-            </p>
-            
-            <div class="footer-links">
-                <a href="/macros-ai-privacy-policy.html">Privacy Policy</a>
-                <a href="/macros-ai-delete-account.html">Delete Account</a>
-                <a href="/macros-ai-terms-of-service.html">Terms of Service</a>
-                <a href="mailto:info@afrivance.ai">Contact Us</a>
-                <a href="#ai-coach">AI Coach</a>
-                <a href="#features">Features</a>
-            </div>
-
-            <div class="social-links">
-                <a href="https://www.facebook.com/profile.php?id=61583830148659" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://www.instagram.com/macrosaicaltracker/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-
-            <div class="copyright">
-                <p>&copy; 2026 Afrivance AI. All rights reserved. Macros AI is a product of Afrivance AI.</p>
-            </div>
+      </div>
+      <div class="screenshot-card reveal">
+        <img src="insights.jpeg" alt="AI Insights Dashboard">
+        <div class="screenshot-info">
+          <h4>AI Coach Insights</h4>
+          <p>Smart recommendations like increasing protein intake and optimising nutrition for your goals</p>
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<!-- VIDEO DEMOS -->
+<section class="section" style="background: var(--navy2);">
+  <div class="container">
+    <p class="section-label">Watch It Work</p>
+    <h2>Macros AI in action</h2>
+    <p class="section-intro">See how quick and natural tracking becomes when AI does the heavy lifting.</p>
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+    <div class="videos-grid">
+      <div class="video-card reveal">
+        <div class="video-phone-frame">
+          <video controls preload="metadata">
+            <source src="video-food-analysis.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-info">
+          <h4><i class="fas fa-camera"></i> Analysing Food</h4>
+          <p>Watch AI instantly analyse a meal and calculate the complete macro breakdown</p>
+        </div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-phone-frame">
+          <video controls preload="metadata">
+            <source src="video-progress-tracking.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-info">
+          <h4><i class="fas fa-chart-line"></i> Tracking Progress</h4>
+          <p>How easy it is to monitor daily progress and macro goals at a glance</p>
+        </div>
+      </div>
+      <div class="video-card reveal">
+        <div class="video-phone-frame">
+          <video controls preload="metadata">
+            <source src="video-ai-insights.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="video-info">
+          <h4><i class="fas fa-robot"></i> AI Coach Chat</h4>
+          <p>Experience personalised nutrition coaching powered by advanced AI</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+<!-- CTA -->
+<section class="section cta-section">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <p class="section-label" style="text-align:center">Ready to Start?</p>
+      <h2>Your nutrition coach is waiting.</h2>
+      <p>Thousands of people are hitting their goals with AI-powered coaching and instant meal tracking. Download Macros AI and make nutrition simple.</p>
+      <div class="cta-buttons">
+        <a href="https://play.google.com/store/apps/details?id=com.afrivanceai.macrosai" class="btn-primary">
+          <i class="fab fa-google-play"></i> Get it on Google Play
+        </a>
+        <a href="index.html" class="btn-ghost">
+          <i class="fas fa-arrow-left"></i> Back to Afrivance AI
+        </a>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:2.5rem;">
+        <div class="ios-notice">
+          <i class="fab fa-apple"></i>
+          <div style="text-align:left;">
+            <h4>iOS Version Coming Soon</h4>
+            <p>We're bringing Macros AI to the App Store — stay tuned for updates.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        document.querySelectorAll('.fade-in').forEach(el => {
-            observer.observe(el);
-        });
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="macros-icon.png" alt="Macros AI">
+      <span>Macros <em>AI</em></span>
+    </div>
+    <div class="footer-links">
+      <a href="/macros-ai-privacy-policy.html">Privacy Policy</a>
+      <a href="/macros-ai-terms-of-service.html">Terms of Service</a>
+      <a href="/macros-ai-delete-account.html">Delete Account</a>
+      <a href="mailto:info@afrivance.ai">Contact Us</a>
+      <a href="index.html">Afrivance AI</a>
+    </div>
+    <div class="social-row">
+      <a href="https://www.facebook.com/profile.php?id=61583830148659" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/macrosaicaltracker/" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p class="footer-copy">&copy; 2026 Afrivance AI. All rights reserved.</p>
+  </div>
+</footer>
 
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            const currentScroll = window.pageYOffset;
+<script>
+  // Nav scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
 
-            if (currentScroll > 100) {
-                navbar.style.boxShadow = '0 4px 30px rgba(0, 0, 0, 0.1)';
-            } else {
-                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.05)';
-            }
-        });
-
-        // Limited parallax effect
-        window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero && scrolled < window.innerHeight * 0.8) {
-                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
-            }
-        });
-    </script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>

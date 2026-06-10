@@ -469,6 +469,98 @@
     }
     .ios-notice p { font-size: .83rem; color: var(--muted); margin: 0; }
 
+/* ─────────────────────────────
+   APP STORE STYLE CAROUSEL
+───────────────────────────── */
+
+.screenshots-carousel {
+  display: flex;
+  gap: 2rem;
+  overflow-x: auto;
+  padding: 2rem 0;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.screenshots-carousel::-webkit-scrollbar {
+  height: 8px;
+}
+
+.screenshots-carousel::-webkit-scrollbar-thumb {
+  background: rgba(0,200,200,0.25);
+  border-radius: 20px;
+}
+
+.screenshot-item {
+  flex: 0 0 280px;
+  scroll-snap-align: start;
+  text-align: center;
+}
+
+/* ─────────────────────────────
+   iPHONE MOCK FRAME
+───────────────────────────── */
+
+.iphone-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 19.5;
+  background: linear-gradient(145deg, #0d1c30, #071020);
+  border-radius: 42px;
+  padding: 14px;
+  box-shadow:
+    0 25px 60px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(0,200,200,0.15);
+  margin-bottom: 1rem;
+}
+
+/* notch */
+.iphone-frame::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35%;
+  height: 18px;
+  background: #0a0f18;
+  border-radius: 0 0 14px 14px;
+  z-index: 2;
+}
+
+.iphone-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+}
+
+/* caption styling */
+.screenshot-caption h4 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+
+.screenshot-caption p {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* hover effect */
+.screenshot-item {
+  transition: transform 0.3s ease;
+}
+
+.screenshot-item:hover {
+  transform: translateY(-8px);
+}
+
+
+
+
     /* ── FOOTER ── */
     footer {
       background: var(--navy); padding: 3rem 2rem;
@@ -778,30 +870,46 @@
   <div class="container">
     <p class="section-label">Inside the App</p>
     <h2>See Macros AI in action</h2>
-    <p class="section-intro">A look at the screens transforming how people track and understand their nutrition.</p>
+    <p class="section-intro">
+      A closer look at the experience — designed like an App Store showcase.
+    </p>
 
-    <div class="screenshots-grid">
-      <div class="screenshot-card reveal">
-        <img src="daily-overview.jpeg" alt="Daily Macro Tracking">
-        <div class="screenshot-info">
+    <!-- Carousel -->
+    <div class="screenshots-carousel">
+
+      <!-- Card 1 -->
+      <div class="screenshot-item">
+        <div class="iphone-frame">
+          <img src="daily-overview.jpeg" alt="Daily Overview">
+        </div>
+        <div class="screenshot-caption">
           <h4>Daily Macro Overview</h4>
-          <p>Track calories, protein, carbs, and fats in real-time with clear circular progress indicators</p>
+          <p>Track calories, protein, carbs, and fats in real time.</p>
         </div>
       </div>
-      <div class="screenshot-card reveal">
-        <img src="macro-breakdown.jpeg" alt="Macro Goal Assessment">
-        <div class="screenshot-info">
-          <h4>Goal-Specific Progress</h4>
-          <p>See macro goal alignment instantly with alerts and personalised recommendations</p>
+
+      <!-- Card 2 -->
+      <div class="screenshot-item">
+        <div class="iphone-frame">
+          <img src="macro-breakdown.jpeg" alt="Macro Breakdown">
+        </div>
+        <div class="screenshot-caption">
+          <h4>Goal Progress</h4>
+          <p>See how your intake aligns with your fitness goals.</p>
         </div>
       </div>
-      <div class="screenshot-card reveal">
-        <img src="insights.jpeg" alt="AI Insights Dashboard">
-        <div class="screenshot-info">
+
+      <!-- Card 3 -->
+      <div class="screenshot-item">
+        <div class="iphone-frame">
+          <img src="insights.jpeg" alt="AI Insights">
+        </div>
+        <div class="screenshot-caption">
           <h4>AI Coach Insights</h4>
-          <p>Smart recommendations like increasing protein intake and optimising nutrition for your goals</p>
+          <p>Personalised recommendations based on your habits.</p>
         </div>
       </div>
+
     </div>
   </div>
 </section>

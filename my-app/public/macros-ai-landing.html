@@ -475,12 +475,12 @@
 
 .screenshots-carousel {
   display: flex;
-  gap: 2rem;
-  overflow-x: auto;
-  padding: 2rem 0;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 3rem 0;
+  flex-wrap: wrap;
 }
+
 
 .screenshots-carousel::-webkit-scrollbar {
   height: 8px;
@@ -492,9 +492,8 @@
 }
 
 .screenshot-item {
-  flex: 0 0 280px;
-  scroll-snap-align: start;
-  text-align: center;
+  flex: 0 1 300px;
+  max-width: 320px;
 }
 
 /* ─────────────────────────────

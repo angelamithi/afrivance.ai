@@ -4,6 +4,7 @@ Run with: uvicorn main:app --host 0.0.0.0 --port $PORT
 """
 
 import smtplib
+import ssl
 import os
 import logging
 from email.mime.text import MIMEText
@@ -17,29 +18,25 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 
-# ─── LOGGING ───────────────────────────────────────────
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# ─── APP ───────────────────────────────────────────────
 app = FastAPI(title="Afrivance AI Chatbot API", version="1.0.0")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],   # allow all origins — safe for a public API endpoint
+    allow_origins=["*"],
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
-# ─── SMTP CONFIG ────────────────────────────────────────
 SMTP_HOST     = os.getenv("SMTP_HOST",     "smtpout.secureserver.net")
-SMTP_PORT     = int(os.getenv("SMTP_PORT", "587"))
+SMTP_PORT     = int(os.getenv("SMTP_PORT", "465"))
 SMTP_USER     = os.getenv("SMTP_USER",     "info@afrivance.ai")
 SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
 NOTIFY_TO     = os.getenv("NOTIFY_TO",     "info@afrivance.ai")
 
 
-# ─── REQUEST SCHEMA ─────────────────────────────────────
 class LeadPayload(BaseModel):
     name:     str = "Website Visitor"
     email:    EmailStr
@@ -47,7 +44,6 @@ class LeadPayload(BaseModel):
     question: str = "General enquiry"
 
 
-# ─── EMAIL SENDER ───────────────────────────────────────
 def send_lead_email(lead: LeadPayload) -> None:
     timestamp = datetime.now().strftime("%d %b %Y at %H:%M")
 
@@ -129,12 +125,11 @@ Reply directly to: {lead.email}
 </html>
 """
 
-    logger.info(f"Connecting to SMTP: {SMTP_HOST}:{SMTP_PORT} as {SMTP_USER}")
+    logger.info(f"Connecting to SMTP SSL: {SMTP_HOST}:{SMTP_PORT} as {SMTP_USER}")
 
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as server:
-        server.ehlo()
-        server.starttls()
-        server.ehlo()
+    # GoDaddy works best with SSL on port 465 — not STARTTLS on 587
+    context = ssl.create_default_context()
+    with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=context, timeout=15) as server:
         server.login(SMTP_USER, SMTP_PASSWORD)
         msg = MIMEMultipart("alternative")
         msg["Subject"]  = f"New Lead: {lead.name} — {lead.question[:60]}"
@@ -147,7 +142,6 @@ Reply directly to: {lead.email}
         logger.info(f"Email sent successfully to {NOTIFY_TO}")
 
 
-# ─── ROUTES ─────────────────────────────────────────────
 @app.get("/")
 def health_check():
     return {"status": "Afrivance AI backend is running"}
@@ -155,16 +149,11 @@ def health_check():
 
 @app.get("/debug")
 def debug_env():
-    """
-    Shows which env vars are set (not their values).
-    Visit https://afrivance-ai.onrender.com/debug to confirm config.
-    Remove this route once everything is working.
-    """
     return {
         "SMTP_HOST":     SMTP_HOST,
         "SMTP_PORT":     SMTP_PORT,
         "SMTP_USER":     SMTP_USER,
-        "SMTP_PASSWORD": "SET" if SMTP_PASSWORD else "NOT SET ← this is the problem",
+        "SMTP_PASSWORD": "SET" if SMTP_PASSWORD else "NOT SET",
         "NOTIFY_TO":     NOTIFY_TO,
     }
 
@@ -174,11 +163,7 @@ def receive_lead(lead: LeadPayload):
     logger.info(f"Lead received: {lead.name} | {lead.email} | {lead.phone}")
 
     if not SMTP_PASSWORD:
-        logger.error("SMTP_PASSWORD is not set")
-        raise HTTPException(
-            status_code=500,
-            detail="SMTP_PASSWORD is not configured on the server. Check Render environment variables."
-        )
+        raise HTTPException(status_code=500, detail="SMTP_PASSWORD not set in environment variables.")
 
     try:
         send_lead_email(lead)
@@ -186,7 +171,7 @@ def receive_lead(lead: LeadPayload):
 
     except smtplib.SMTPAuthenticationError as e:
         logger.error(f"SMTP auth failed: {e}")
-        raise HTTPException(status_code=500, detail=f"SMTP authentication failed: {str(e)}")
+        raise HTTPException(status_code=500, detail=f"SMTP authentication failed — check your email password.")
 
     except smtplib.SMTPConnectError as e:
         logger.error(f"SMTP connect failed: {e}")

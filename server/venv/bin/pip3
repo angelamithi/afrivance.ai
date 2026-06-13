@@ -1,4 +1,4 @@
-#!/home/angela/Development/code/afrivance/server/venv/bin/python3
+#!/home/angela/projects/afrivance.ai/server/venv/bin/python3
 # -*- coding: utf-8 -*-
 import re
 import sys

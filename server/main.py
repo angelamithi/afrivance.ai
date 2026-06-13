@@ -3,17 +3,14 @@ Afrivance AI — Chatbot Email Notification Backend
 Run with: uvicorn main:app --host 0.0.0.0 --port $PORT
 """
 
-import smtplib
-import ssl
 import os
 import logging
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 
 from dotenv import load_dotenv
 load_dotenv()
 
+import resend
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
@@ -30,11 +27,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-SMTP_HOST     = os.getenv("SMTP_HOST",     "smtpout.secureserver.net")
-SMTP_PORT     = int(os.getenv("SMTP_PORT", "465"))
-SMTP_USER     = os.getenv("SMTP_USER",     "info@afrivance.ai")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
-NOTIFY_TO     = os.getenv("NOTIFY_TO",     "info@afrivance.ai")
+RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
+NOTIFY_TO      = os.getenv("NOTIFY_TO",      "info@afrivance.ai")
+FROM_EMAIL     = os.getenv("FROM_EMAIL",      "onboarding@resend.dev")
+
+resend.api_key = RESEND_API_KEY
 
 
 class LeadPayload(BaseModel):
@@ -47,18 +44,6 @@ class LeadPayload(BaseModel):
 def send_lead_email(lead: LeadPayload) -> None:
     timestamp = datetime.now().strftime("%d %b %Y at %H:%M")
 
-    text_body = f"""
-New enquiry from your Afrivance AI website chatbot
-Received: {timestamp}
-
-Name:    {lead.name}
-Email:   {lead.email}
-Phone:   {lead.phone}
-Query:   {lead.question}
-
-Reply directly to: {lead.email}
-"""
-
     html_body = f"""
 <!DOCTYPE html>
 <html>
@@ -67,14 +52,10 @@ Reply directly to: {lead.email}
   <style>
     body {{ font-family: Arial, sans-serif; background: #f4f7fb; margin: 0; padding: 20px; }}
     .card {{
-      max-width: 560px; margin: 0 auto;
-      background: #ffffff; border-radius: 12px;
-      border: 1px solid #e0e8f0; overflow: hidden;
+      max-width: 560px; margin: 0 auto; background: #ffffff;
+      border-radius: 12px; border: 1px solid #e0e8f0; overflow: hidden;
     }}
-    .header {{
-      background: #0A1628; padding: 24px 28px;
-      color: #F0F4F8; font-size: 18px; font-weight: bold;
-    }}
+    .header {{ background: #0A1628; padding: 24px 28px; color: #F0F4F8; font-size: 18px; font-weight: bold; }}
     .header span {{ color: #00C8C8; }}
     .body {{ padding: 28px; }}
     .label {{
@@ -89,15 +70,11 @@ Reply directly to: {lead.email}
       font-size: 14px; color: #111f3a; margin-top: 6px;
     }}
     .reply-btn {{
-      display: inline-block; margin-top: 24px;
-      background: #00C8C8; color: #0A1628;
-      padding: 12px 24px; border-radius: 8px;
+      display: inline-block; margin-top: 24px; background: #00C8C8;
+      color: #0A1628; padding: 12px 24px; border-radius: 8px;
       text-decoration: none; font-weight: bold; font-size: 14px;
     }}
-    .footer {{
-      border-top: 1px solid #e0e8f0; padding: 16px 28px;
-      font-size: 12px; color: #8899AA;
-    }}
+    .footer {{ border-top: 1px solid #e0e8f0; padding: 16px 28px; font-size: 12px; color: #8899AA; }}
   </style>
 </head>
 <body>
@@ -125,24 +102,16 @@ Reply directly to: {lead.email}
 </html>
 """
 
-    logger.info(f"Connecting to SMTP SSL: {SMTP_HOST}:{SMTP_PORT} as {SMTP_USER}")
+    params: resend.Emails.SendParams = {
+        "from": f"Afrivance AI <{FROM_EMAIL}>",
+        "to": [NOTIFY_TO],
+        "reply_to": lead.email,
+        "subject": f"New Lead: {lead.name} — {lead.question[:60]}",
+        "html": html_body,
+    }
 
-    # GoDaddy works best with SSL on port 465 — not STARTTLS on 587
-    context = ssl.create_default_context()
-    with smtplib.SMTP(SMTP_HOST, 587, timeout=15) as server:
-        server.ehlo()
-        server.starttls(context=context)
-        server.ehlo()
-        server.login(SMTP_USER, SMTP_PASSWORD)
-        msg = MIMEMultipart("alternative")
-        msg["Subject"]  = f"New Lead: {lead.name} — {lead.question[:60]}"
-        msg["From"]     = f"Afrivance AI Chatbot <{SMTP_USER}>"
-        msg["To"]       = NOTIFY_TO
-        msg["Reply-To"] = lead.email
-        msg.attach(MIMEText(text_body, "plain"))
-        msg.attach(MIMEText(html_body, "html"))
-        server.sendmail(SMTP_USER, NOTIFY_TO, msg.as_string())
-        logger.info(f"Email sent successfully to {NOTIFY_TO}")
+    response = resend.Emails.send(params)
+    logger.info(f"Email sent via Resend. ID: {response['id']}")
 
 
 @app.get("/")
@@ -153,11 +122,9 @@ def health_check():
 @app.get("/debug")
 def debug_env():
     return {
-        "SMTP_HOST":     SMTP_HOST,
-        "SMTP_PORT":     SMTP_PORT,
-        "SMTP_USER":     SMTP_USER,
-        "SMTP_PASSWORD": "SET" if SMTP_PASSWORD else "NOT SET",
-        "NOTIFY_TO":     NOTIFY_TO,
+        "RESEND_API_KEY": "SET ✓" if RESEND_API_KEY else "NOT SET ← add this in Render",
+        "FROM_EMAIL":     FROM_EMAIL,
+        "NOTIFY_TO":      NOTIFY_TO,
     }
 
 
@@ -165,25 +132,17 @@ def debug_env():
 def receive_lead(lead: LeadPayload):
     logger.info(f"Lead received: {lead.name} | {lead.email} | {lead.phone}")
 
-    if not SMTP_PASSWORD:
-        raise HTTPException(status_code=500, detail="SMTP_PASSWORD not set in environment variables.")
+    if not RESEND_API_KEY:
+        logger.error("RESEND_API_KEY is not set")
+        raise HTTPException(
+            status_code=500,
+            detail="RESEND_API_KEY is not configured. Add it in Render environment variables."
+        )
 
     try:
         send_lead_email(lead)
         return {"success": True, "message": f"Lead from {lead.name} sent successfully."}
 
-    except smtplib.SMTPAuthenticationError as e:
-        logger.error(f"SMTP auth failed: {e}")
-        raise HTTPException(status_code=500, detail=f"SMTP authentication failed — check your email password.")
-
-    except smtplib.SMTPConnectError as e:
-        logger.error(f"SMTP connect failed: {e}")
-        raise HTTPException(status_code=500, detail=f"Could not connect to SMTP server: {str(e)}")
-
-    except smtplib.SMTPException as e:
-        logger.error(f"SMTP error: {e}")
-        raise HTTPException(status_code=500, detail=f"SMTP error: {str(e)}")
-
     except Exception as e:
-        logger.error(f"Unexpected error: {e}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")
+        logger.error(f"Resend error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")

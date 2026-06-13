@@ -129,7 +129,10 @@ Reply directly to: {lead.email}
 
     # GoDaddy works best with SSL on port 465 — not STARTTLS on 587
     context = ssl.create_default_context()
-    with smtplib.SMTP_SSL(SMTP_HOST, SMTP_PORT, context=context, timeout=15) as server:
+    with smtplib.SMTP(SMTP_HOST, 587, timeout=15) as server:
+        server.ehlo()
+        server.starttls(context=context)
+        server.ehlo()
         server.login(SMTP_USER, SMTP_PASSWORD)
         msg = MIMEMultipart("alternative")
         msg["Subject"]  = f"New Lead: {lead.name} — {lead.question[:60]}"

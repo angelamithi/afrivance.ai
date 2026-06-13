@@ -53,24 +53,23 @@
       width: 40px; height: 40px; border-radius: 8px;
       object-fit: contain;
     }
-.nav-logo span {
-  font-family: 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 1.45rem; /* increased from 1.2rem */
-  color: var(--white);
-  letter-spacing: -.02em;
-  display: flex;
-  align-items: baseline;
-  gap: 0.25rem;
-}
-
-.nav-logo span em {
-  color: var(--teal);
-  font-style: normal;
-  font-weight: 700;
-  margin-left: 0.35rem;
-  font-size: 1.15em; /* slightly smaller relative emphasis */
-}
+    .nav-logo span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 1.45rem;
+      color: var(--white);
+      letter-spacing: -.02em;
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+    }
+    .nav-logo span em {
+      color: var(--teal);
+      font-style: normal;
+      font-weight: 700;
+      margin-left: 0.35rem;
+      font-size: 1.15em;
+    }
     .nav-links {
       list-style: none; display: flex; gap: 2.5rem;
     }
@@ -102,7 +101,6 @@
                   radial-gradient(ellipse 40% 40% at 20% 80%, rgba(232,147,90,.06) 0%, transparent 60%),
                   var(--navy);
     }
-    /* grid lines */
     .hero-bg::before {
       content: '';
       position: absolute; inset: 0;
@@ -196,7 +194,6 @@
       filter: drop-shadow(0 0 40px rgba(0,200,200,.3));
     }
 
-    /* stat chips below hero headline */
     .hero-stats {
       display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;
     }
@@ -322,6 +319,135 @@
       margin-bottom: .75rem;
     }
     .service-card p { font-size: .9rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── AI AGENTS SECTION ── */
+    .agents-section { background: var(--navy); }
+    .agents-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center; margin-top: 3rem;
+    }
+    .agents-visual {
+      position: relative;
+    }
+    .agent-hub {
+      display: flex; flex-direction: column; gap: 1rem;
+      position: relative;
+    }
+    .agent-hub::before {
+      content: '';
+      position: absolute; left: 23px; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, transparent, rgba(0,200,200,.4), rgba(0,200,200,.4), transparent);
+    }
+    .agent-item {
+      display: flex; align-items: center; gap: 1rem;
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; padding: 1rem 1.25rem;
+      position: relative; z-index: 1;
+      transition: border-color .2s, transform .2s;
+    }
+    .agent-item:hover { border-color: rgba(0,200,200,.3); transform: translateX(4px); }
+    .agent-item.active {
+      border-color: rgba(0,200,200,.3);
+      background: rgba(0,200,200,.06);
+    }
+    .agent-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: rgba(255,255,255,.15); flex-shrink: 0;
+    }
+    .agent-item.active .agent-dot {
+      background: var(--teal);
+      box-shadow: 0 0 8px var(--teal);
+      animation: pulse 2s infinite;
+    }
+    .agent-info { flex: 1; }
+    .agent-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .9rem; font-weight: 600; color: var(--white);
+      margin-bottom: .2rem;
+    }
+    .agent-task { font-size: .8rem; color: var(--muted); }
+    .agent-status {
+      font-size: .7rem; font-weight: 600; letter-spacing: .06em;
+      text-transform: uppercase; padding: .2rem .6rem;
+      border-radius: 20px;
+    }
+    .agent-status.running {
+      background: rgba(0,200,200,.12); color: var(--teal);
+    }
+    .agent-status.idle {
+      background: rgba(255,255,255,.06); color: var(--muted);
+    }
+    .agents-content { }
+    .agents-content h2 { margin-bottom: 1rem; }
+    .agents-content p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .agent-use-cases {
+      display: grid; grid-template-columns: 1fr 1fr; gap: .75rem;
+      margin-bottom: 2rem;
+    }
+    .use-case-chip {
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 8px; padding: .6rem .9rem;
+      display: flex; align-items: center; gap: .6rem;
+      font-size: .82rem; color: var(--white);
+    }
+    .use-case-chip i { color: var(--teal); font-size: .8rem; }
+
+    /* ── RESKILLING SECTION ── */
+    .reskilling-section { background: var(--navy2); }
+    .reskilling-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center; margin-top: 3rem;
+    }
+    .reskilling-cards { display: flex; flex-direction: column; gap: 1rem; }
+    .reskill-card {
+      background: var(--card); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; padding: 1.5rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      transition: border-color .2s, transform .2s;
+    }
+    .reskill-card:hover { border-color: rgba(232,147,90,.3); transform: translateX(4px); }
+    .reskill-card .reskill-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(232,147,90,.12); color: var(--amber);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .reskill-card h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .95rem; font-weight: 600; color: var(--white);
+      margin-bottom: .35rem;
+    }
+    .reskill-card p { font-size: .85rem; color: var(--muted); line-height: 1.6; }
+    .reskilling-content { }
+    .reskilling-content h2 { margin-bottom: 1rem; }
+    .reskilling-content > p { color: var(--muted); font-size: 1rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .audience-tabs {
+      display: flex; gap: .75rem; margin-bottom: 1.75rem; flex-wrap: wrap;
+    }
+    .audience-tab {
+      padding: .45rem 1rem; border-radius: 20px;
+      font-size: .82rem; font-weight: 600;
+      border: 1px solid rgba(0,200,200,.25);
+      color: var(--teal);
+      background: rgba(0,200,200,.08);
+    }
+    .audience-tab.secondary {
+      border-color: rgba(255,255,255,.12);
+      color: var(--muted);
+      background: transparent;
+    }
+    .wave-stat {
+      background: rgba(0,200,200,.06); border: 1px solid rgba(0,200,200,.18);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .wave-stat-num {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2rem; font-weight: 700; color: var(--teal);
+      flex-shrink: 0;
+    }
+    .wave-stat-text { font-size: .85rem; color: var(--muted); line-height: 1.5; }
 
     /* ── PRODUCT SPOTLIGHT ── */
     .spotlight-section { background: var(--navy2); }
@@ -501,6 +627,9 @@
       .process-steps::before { display: none; }
       .ps-grid { grid-template-columns: 1fr; }
       .ps-connector { display: none; }
+      .agents-grid { grid-template-columns: 1fr; }
+      .reskilling-grid { grid-template-columns: 1fr; }
+      .agent-use-cases { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .process-steps { grid-template-columns: 1fr; }
@@ -527,8 +656,9 @@
     <ul class="nav-links">
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#services">Solutions</a></li>
+      <li><a href="#agents">AI Agents</a></li>
+      <li><a href="#reskilling">Reskilling</a></li>
       <li><a href="#product">Products</a></li>
-      <li><a href="#process">How It Works</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
   </div>
@@ -539,14 +669,14 @@
   <div class="hero-bg"></div>
   <div class="hero-inner">
     <div>
-      <div class="hero-eyebrow"><span></span> AI Solutions Built for Real People</div>
+      <div class="hero-eyebrow"><span></span> AI Built for Africa's Future</div>
       <h1>
-        Stop drowning<br>
-        in tasks.<br>
-        <span class="accent">Let AI <span class="underline-word">handle it.</span></span>
+        Smarter decisions.<br>
+        <span class="accent">Bolder futures.<br>
+        <span class="underline-word">Built with AI.</span></span>
       </h1>
       <p class="hero-body">
-        You have a vision. We build the intelligent tools that get you there — faster decisions, less busywork, and technology that actually understands your goals.
+        Afrivance AI builds innovative solutions that empower individuals and businesses to make smarter, more informed decisions — and equips them to retool, upskill, and thrive in an AI-driven world.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary"><i class="fas fa-arrow-right"></i> See What We Build</a>
@@ -688,6 +818,130 @@
   </div>
 </section>
 
+<!-- AI AGENTS -->
+<section id="agents" class="section agents-section">
+  <div class="container">
+    <div class="agents-grid">
+      <div class="agents-visual reveal">
+        <div class="agent-hub">
+          <div class="agent-item active">
+            <div class="agent-dot"></div>
+            <div class="agent-info">
+              <div class="agent-name">Calendar &amp; Scheduling Agent</div>
+              <div class="agent-task">Rescheduled 3 meetings, blocked focus time</div>
+            </div>
+            <span class="agent-status running">Running</span>
+          </div>
+          <div class="agent-item active">
+            <div class="agent-dot"></div>
+            <div class="agent-info">
+              <div class="agent-name">Research &amp; Summarisation Agent</div>
+              <div class="agent-task">Analysed 12 market reports, surfaced key signals</div>
+            </div>
+            <span class="agent-status running">Running</span>
+          </div>
+          <div class="agent-item">
+            <div class="agent-dot"></div>
+            <div class="agent-info">
+              <div class="agent-name">Customer Support Agent</div>
+              <div class="agent-task">Handled 47 queries today with zero escalations</div>
+            </div>
+            <span class="agent-status idle">Idle</span>
+          </div>
+          <div class="agent-item">
+            <div class="agent-dot"></div>
+            <div class="agent-info">
+              <div class="agent-name">Finance Monitoring Agent</div>
+              <div class="agent-task">Tracking expenses, flagging anomalies in real time</div>
+            </div>
+            <span class="agent-status idle">Standby</span>
+          </div>
+          <div class="agent-item">
+            <div class="agent-dot"></div>
+            <div class="agent-info">
+              <div class="agent-name">Supply Chain Agent</div>
+              <div class="agent-task">Monitoring inventory, auto-triggering reorders</div>
+            </div>
+            <span class="agent-status idle">Standby</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agents-content reveal">
+        <p class="section-label">AI Agents</p>
+        <h2>AI agents that work while you sleep</h2>
+        <p>We design and deploy AI agents — autonomous systems that perceive, reason, and act on your behalf. Whether it's a routine daily task or a complex multi-step business problem, our agents handle it end-to-end, without you lifting a finger.</p>
+        <p>Think of them as tireless teammates who never miss a deadline, never lose context, and get smarter the longer they work with you.</p>
+        <div class="agent-use-cases">
+          <div class="use-case-chip"><i class="fas fa-check"></i> Inbox triage &amp; email drafting</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Lead qualification &amp; follow-up</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Competitive intelligence gathering</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Document review &amp; summarisation</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Financial monitoring &amp; alerts</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Supply chain &amp; inventory control</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> HR onboarding &amp; compliance</div>
+          <div class="use-case-chip"><i class="fas fa-check"></i> Custom workflows for your industry</div>
+        </div>
+        <a href="#contact" class="btn-primary"><i class="fas fa-arrow-right"></i> Deploy Your First Agent</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI RESKILLING -->
+<section id="reskilling" class="section reskilling-section">
+  <div class="container">
+    <div class="reskilling-grid">
+      <div class="reskilling-content reveal">
+        <p class="section-label">AI Retooling &amp; Reskilling</p>
+        <h2>Don't get left behind.<br>Adapt, innovate, thrive.</h2>
+        <p>The AI wave isn't coming — it's already here. The organisations and professionals who thrive in this new economy won't be the ones who resist change; they'll be the ones who embrace it first. Afrivance AI helps you make that transition, practically and confidently.</p>
+        <div class="audience-tabs">
+          <span class="audience-tab">Individuals</span>
+          <span class="audience-tab">Teams</span>
+          <span class="audience-tab">Enterprises</span>
+          <span class="audience-tab secondary">NGOs &amp; Government</span>
+        </div>
+        <div class="wave-stat">
+          <div class="wave-stat-num">85<span style="font-size:1rem">M+</span></div>
+          <div class="wave-stat-text">jobs are expected to be transformed by AI by 2030. The question isn't whether your role will change — it's whether you'll be ready when it does.</div>
+        </div>
+      </div>
+
+      <div class="reskilling-cards reveal">
+        <div class="reskill-card">
+          <div class="reskill-icon"><i class="fas fa-user-graduate"></i></div>
+          <div>
+            <h4>AI Literacy for Professionals</h4>
+            <p>Understand how AI tools work, what they can and can't do, and how to use them effectively in your daily role — no technical background required.</p>
+          </div>
+        </div>
+        <div class="reskill-card">
+          <div class="reskill-icon"><i class="fas fa-building"></i></div>
+          <div>
+            <h4>Organisational AI Readiness</h4>
+            <p>We assess your current workflows, identify where AI creates the most value, and build a practical roadmap to integrate it without disrupting your operations.</p>
+          </div>
+        </div>
+        <div class="reskill-card">
+          <div class="reskill-icon"><i class="fas fa-tools"></i></div>
+          <div>
+            <h4>Hands-On Retooling Workshops</h4>
+            <p>Team-based sessions where your people learn by doing — using real AI tools on real problems from your industry, guided by our experts.</p>
+          </div>
+        </div>
+        <div class="reskill-card">
+          <div class="reskill-icon"><i class="fas fa-route"></i></div>
+          <div>
+            <h4>Personalised Upskilling Paths</h4>
+            <p>Tailored learning journeys for individuals who want to move into AI-adjacent roles — from prompt engineering to AI project management and beyond.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PRODUCT SPOTLIGHT -->
 <section id="product" class="section spotlight-section">
   <div class="container">
@@ -759,7 +1013,7 @@
       </div>
       <div class="step">
         <div class="step-num">03</div>
-        <h4>Build & Refine</h4>
+        <h4>Build &amp; Refine</h4>
         <p>You see progress early and often. We iterate with your feedback until it feels exactly right.</p>
       </div>
       <div class="step">

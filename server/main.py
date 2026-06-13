@@ -1,86 +1,56 @@
 """
 Afrivance AI — Chatbot Email Notification Backend
-Run with: uvicorn main:app --host 0.0.0.0 --port 8000
+Run with: uvicorn main:app --host 0.0.0.0 --port $PORT
 """
 
 import smtplib
 import os
+import logging
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from datetime import datetime
 
 from dotenv import load_dotenv
-load_dotenv()  # loads .env automatically — no manual export needed
+load_dotenv()
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, EmailStr
 
+# ─── LOGGING ───────────────────────────────────────────
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # ─── APP ───────────────────────────────────────────────
 app = FastAPI(title="Afrivance AI Chatbot API", version="1.0.0")
 
-# Allow your website domain to call this API.
-# Replace with your actual domain once deployed (e.g. "https://afrivance.ai")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost",
-        "http://127.0.0.1",
-        "http://localhost:5500",   # Live Server (VS Code)
-        "https://afrivance.ai",    # your production domain
-        "https://www.afrivance.ai",
-    ],
-    allow_methods=["POST", "OPTIONS"],
+    allow_origins=["*"],   # allow all origins — safe for a public API endpoint
+    allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["*"],
 )
 
-
 # ─── SMTP CONFIG ────────────────────────────────────────
-# Set these as environment variables on your server — never hardcode passwords.
-# Example (Linux/Mac):  export SMTP_HOST=mail.yourdomain.com
-# Example (Windows):    set SMTP_HOST=mail.yourdomain.com
-#
-# Common SMTP settings by provider:
-#
-# Zoho Mail:
-#   SMTP_HOST = smtp.zoho.com   SMTP_PORT = 587
-#
-# Hostinger:
-#   SMTP_HOST = smtp.hostinger.com   SMTP_PORT = 587
-#
-# Namecheap (Private Email):
-#   SMTP_HOST = mail.privateemail.com   SMTP_PORT = 587
-#
-# Google Workspace (info@yourdomain.com via Gmail):
-#   SMTP_HOST = smtp.gmail.com   SMTP_PORT = 587
-#   (enable "App Passwords" in your Google account security settings)
-#
-# cPanel hosting (most African hosts):
-#   SMTP_HOST = mail.afrivance.ai   SMTP_PORT = 587
-
-SMTP_HOST     = os.getenv("SMTP_HOST",     "mail.afrivance.ai")
+SMTP_HOST     = os.getenv("SMTP_HOST",     "smtpout.secureserver.net")
 SMTP_PORT     = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USER     = os.getenv("SMTP_USER",     "info@afrivance.ai")   # your full email address
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")                    # your email password
-NOTIFY_TO     = os.getenv("NOTIFY_TO",     "info@afrivance.ai")   # where to receive leads
+SMTP_USER     = os.getenv("SMTP_USER",     "info@afrivance.ai")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+NOTIFY_TO     = os.getenv("NOTIFY_TO",     "info@afrivance.ai")
 
 
 # ─── REQUEST SCHEMA ─────────────────────────────────────
 class LeadPayload(BaseModel):
-    name:     str  = "Website Visitor"
+    name:     str = "Website Visitor"
     email:    EmailStr
     phone:    str
-    question: str  = "General enquiry"
+    question: str = "General enquiry"
 
 
 # ─── EMAIL SENDER ───────────────────────────────────────
 def send_lead_email(lead: LeadPayload) -> None:
-    """Compose and send the lead notification email via SMTP."""
-
     timestamp = datetime.now().strftime("%d %b %Y at %H:%M")
 
-    # Plain-text fallback
     text_body = f"""
 New enquiry from your Afrivance AI website chatbot
 Received: {timestamp}
@@ -93,7 +63,6 @@ Query:   {lead.question}
 Reply directly to: {lead.email}
 """
 
-    # HTML email body
     html_body = f"""
 <!DOCTYPE html>
 <html>
@@ -137,26 +106,19 @@ Reply directly to: {lead.email}
 </head>
 <body>
   <div class="card">
-    <div class="header">
-      Afrivance <span>AI</span> — New Website Lead
-    </div>
+    <div class="header">Afrivance <span>AI</span> — New Website Lead</div>
     <div class="body">
       <p style="color:#8899AA;font-size:13px;margin:0 0 4px;">
         Received: <strong style="color:#111f3a">{timestamp}</strong>
       </p>
-
       <div class="label">Name</div>
       <div class="value">{lead.name}</div>
-
       <div class="label">Email</div>
       <div class="value"><a href="mailto:{lead.email}" style="color:#00a8a8;">{lead.email}</a></div>
-
       <div class="label">Phone</div>
       <div class="value">{lead.phone}</div>
-
       <div class="label">Their Question / Interest</div>
       <div class="query-box">{lead.question}</div>
-
       <a href="mailto:{lead.email}" class="reply-btn">Reply to {lead.name} →</a>
     </div>
     <div class="footer">
@@ -167,22 +129,22 @@ Reply directly to: {lead.email}
 </html>
 """
 
-    # Build the MIME message
-    msg = MIMEMultipart("alternative")
-    msg["Subject"] = f"New Lead: {lead.name} — {lead.question[:60]}"
-    msg["From"]    = f"Afrivance AI Chatbot <{SMTP_USER}>"
-    msg["To"]      = NOTIFY_TO
-    msg["Reply-To"] = lead.email
+    logger.info(f"Connecting to SMTP: {SMTP_HOST}:{SMTP_PORT} as {SMTP_USER}")
 
-    msg.attach(MIMEText(text_body, "plain"))
-    msg.attach(MIMEText(html_body, "html"))
-
-    # Send via SMTP with STARTTLS (port 587)
-    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10) as server:
+    with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as server:
         server.ehlo()
         server.starttls()
+        server.ehlo()
         server.login(SMTP_USER, SMTP_PASSWORD)
+        msg = MIMEMultipart("alternative")
+        msg["Subject"]  = f"New Lead: {lead.name} — {lead.question[:60]}"
+        msg["From"]     = f"Afrivance AI Chatbot <{SMTP_USER}>"
+        msg["To"]       = NOTIFY_TO
+        msg["Reply-To"] = lead.email
+        msg.attach(MIMEText(text_body, "plain"))
+        msg.attach(MIMEText(html_body, "html"))
         server.sendmail(SMTP_USER, NOTIFY_TO, msg.as_string())
+        logger.info(f"Email sent successfully to {NOTIFY_TO}")
 
 
 # ─── ROUTES ─────────────────────────────────────────────
@@ -191,30 +153,49 @@ def health_check():
     return {"status": "Afrivance AI backend is running"}
 
 
+@app.get("/debug")
+def debug_env():
+    """
+    Shows which env vars are set (not their values).
+    Visit https://afrivance-ai.onrender.com/debug to confirm config.
+    Remove this route once everything is working.
+    """
+    return {
+        "SMTP_HOST":     SMTP_HOST,
+        "SMTP_PORT":     SMTP_PORT,
+        "SMTP_USER":     SMTP_USER,
+        "SMTP_PASSWORD": "SET" if SMTP_PASSWORD else "NOT SET ← this is the problem",
+        "NOTIFY_TO":     NOTIFY_TO,
+    }
+
+
 @app.post("/api/lead")
 def receive_lead(lead: LeadPayload):
-    """
-    Receives lead data from the website chatbot and sends
-    a notification email to info@afrivance.ai.
-    """
+    logger.info(f"Lead received: {lead.name} | {lead.email} | {lead.phone}")
+
     if not SMTP_PASSWORD:
+        logger.error("SMTP_PASSWORD is not set")
         raise HTTPException(
             status_code=500,
-            detail="SMTP_PASSWORD environment variable is not set on the server."
+            detail="SMTP_PASSWORD is not configured on the server. Check Render environment variables."
         )
 
     try:
         send_lead_email(lead)
-        return {
-            "success": True,
-            "message": f"Lead from {lead.name} sent successfully."
-        }
-    except smtplib.SMTPAuthenticationError:
-        raise HTTPException(
-            status_code=500,
-            detail="SMTP authentication failed. Check SMTP_USER and SMTP_PASSWORD."
-        )
+        return {"success": True, "message": f"Lead from {lead.name} sent successfully."}
+
+    except smtplib.SMTPAuthenticationError as e:
+        logger.error(f"SMTP auth failed: {e}")
+        raise HTTPException(status_code=500, detail=f"SMTP authentication failed: {str(e)}")
+
+    except smtplib.SMTPConnectError as e:
+        logger.error(f"SMTP connect failed: {e}")
+        raise HTTPException(status_code=500, detail=f"Could not connect to SMTP server: {str(e)}")
+
     except smtplib.SMTPException as e:
+        logger.error(f"SMTP error: {e}")
         raise HTTPException(status_code=500, detail=f"SMTP error: {str(e)}")
+
     except Exception as e:
+        logger.error(f"Unexpected error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Unexpected error: {str(e)}")

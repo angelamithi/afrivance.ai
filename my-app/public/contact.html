@@ -242,12 +242,8 @@
       });
 
       if (res.ok) {
-        status.className = 'status-msg success';
-        status.innerHTML = `
-          ✓ <strong>Message sent!</strong> Thank you, ${name}.<br>
-          A member of the Afrivance AI team will get back to you within 1 business day.
-        `;
-        this.reset();
+        // redirect to branded thank-you page
+        window.location.href = 'thank-you.html';
       } else {
         throw new Error('Server error');
       }

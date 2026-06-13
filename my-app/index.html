@@ -1367,6 +1367,13 @@
   const launcherIcon = document.getElementById('launcher-icon');
 
   /* ── DOM HELPERS ── */
+  function scrollToBottom() {
+    // small rAF delay ensures DOM has painted before we scroll
+    requestAnimationFrame(() => {
+      messages.scrollTop = messages.scrollHeight;
+    });
+  }
+
   function addMsg(text, role) {
     return new Promise(resolve => {
       const wrapper = document.createElement('div');
@@ -1380,7 +1387,7 @@
       wrapper.appendChild(avatar);
       wrapper.appendChild(bubble);
       messages.appendChild(wrapper);
-      messages.scrollTop = messages.scrollHeight;
+      scrollToBottom();
       resolve();
     });
   }
@@ -1397,7 +1404,7 @@
     wrapper.appendChild(avatar);
     wrapper.appendChild(bubble);
     messages.appendChild(wrapper);
-    messages.scrollTop = messages.scrollHeight;
+    scrollToBottom();
   }
 
   function removeTyping() {
@@ -1430,6 +1437,8 @@
     `;
     qrPanel.appendChild(form);
     document.getElementById('esc-submit-btn').onclick = handleEscalationSubmit;
+    // scroll so the follow-up message is visible before the form
+    scrollToBottom();
   }
 
   async function handleEscalationSubmit() {

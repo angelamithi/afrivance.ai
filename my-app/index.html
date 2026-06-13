@@ -579,19 +579,33 @@
     /* Launcher button */
     #chat-launcher {
       position: fixed; bottom: 28px; right: 28px; z-index: 9000;
-      width: 58px; height: 58px; border-radius: 50%;
+      height: 48px;
+      padding: 0 1.1rem 0 .9rem;
+      border-radius: 28px;
       background: var(--teal); color: var(--navy);
       border: none; cursor: pointer;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 24px rgba(0,200,200,.35);
-      transition: transform .2s, background .2s;
+      display: flex; align-items: center; gap: .55rem;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .88rem; font-weight: 700;
+      box-shadow: 0 4px 20px rgba(0,200,200,.4), 0 2px 8px rgba(0,0,0,.2);
+      transition: transform .2s, background .2s, box-shadow .2s;
+      white-space: nowrap;
     }
-    #chat-launcher:hover { transform: scale(1.08); background: var(--teal2); }
+    #chat-launcher:hover {
+      transform: translateY(-2px);
+      background: var(--teal2);
+      box-shadow: 0 6px 24px rgba(0,200,200,.5), 0 3px 10px rgba(0,0,0,.2);
+    }
+    #chat-launcher .launcher-icon {
+      font-size: 1.1rem; flex-shrink: 0;
+    }
+    #chat-launcher .launcher-text {
+      font-size: .82rem; font-weight: 700; letter-spacing: .01em;
+    }
     #chat-launcher .badge {
-      position: absolute; top: -3px; right: -3px;
+      position: absolute; top: -4px; right: -4px;
       width: 18px; height: 18px; border-radius: 50%;
-      background: var(--amber); font-size: .65rem; font-weight: 700;
+      background: var(--amber); font-size: .62rem; font-weight: 700;
       color: var(--navy); display: flex; align-items: center; justify-content: center;
       border: 2px solid var(--navy);
     }
@@ -775,6 +789,7 @@
       <li><a href="#agents">AI Agents</a></li>
       <li><a href="#reskilling">Reskilling</a></li>
       <li><a href="#product">Products</a></li>
+      <li><a href="contact.html">Contact</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
   </div>
@@ -1182,7 +1197,8 @@
 
 <!-- Launcher -->
 <button id="chat-launcher" aria-label="Open Afrivance AI chat assistant">
-  <i class="fas fa-comment-dots" id="launcher-icon"></i>
+  <i class="fas fa-comment-dots launcher-icon" id="launcher-icon"></i>
+  <span class="launcher-text" id="launcher-text">Chat with us</span>
   <span class="badge" id="chat-badge">1</span>
 </button>
 
@@ -1588,8 +1604,10 @@
   function openChat() {
     isOpen = true;
     chatWin.classList.remove('hidden');
-    launcherIcon.className = 'fas fa-times';
+    launcherIcon.className = 'fas fa-times launcher-icon';
     badge.style.display = 'none';
+    const lt = document.getElementById('launcher-text');
+    if (lt) lt.style.display = 'none';
     if (!greeted) {
       greeted = true;
       setTimeout(async () => {
@@ -1606,7 +1624,9 @@
   function closeChat() {
     isOpen = false;
     chatWin.classList.add('hidden');
-    launcherIcon.className = 'fas fa-comment-dots';
+    launcherIcon.className = 'fas fa-comment-dots launcher-icon';
+    const lt = document.getElementById('launcher-text');
+    if (lt) lt.style.display = '';
   }
 
   launcher.addEventListener('click', () => isOpen ? closeChat() : openChat());

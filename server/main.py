@@ -114,6 +114,56 @@ def send_lead_email(lead: LeadPayload) -> None:
     logger.info(f"Email sent via Resend. ID: {response['id']}")
 
 
+class ContactPayload(BaseModel):
+    name:    str
+    email:   EmailStr
+    phone:   str = ""
+    subject: str = "Website enquiry"
+    message: str
+
+
+def send_contact_email(form: ContactPayload) -> None:
+    timestamp = datetime.now().strftime("%d %b %Y at %H:%M")
+
+    html_body = f"""
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<style>
+  body {{ font-family: Arial, sans-serif; background: #f4f7fb; margin:0; padding:20px; }}
+  .card {{ max-width:560px; margin:0 auto; background:#fff; border-radius:12px; border:1px solid #e0e8f0; overflow:hidden; }}
+  .header {{ background:#0A1628; padding:24px 28px; color:#F0F4F8; font-size:18px; font-weight:bold; }}
+  .header span {{ color:#00C8C8; }}
+  .body {{ padding:28px; }}
+  .label {{ font-size:11px; font-weight:bold; color:#8899AA; text-transform:uppercase; letter-spacing:.08em; margin-bottom:4px; margin-top:18px; }}
+  .value {{ font-size:15px; color:#111f3a; font-weight:500; }}
+  .msg-box {{ background:#f0f9f9; border-left:3px solid #00C8C8; padding:12px 16px; border-radius:0 8px 8px 0; font-size:14px; color:#111f3a; margin-top:6px; white-space:pre-wrap; }}
+  .reply-btn {{ display:inline-block; margin-top:24px; background:#00C8C8; color:#0A1628; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold; font-size:14px; }}
+  .footer {{ border-top:1px solid #e0e8f0; padding:16px 28px; font-size:12px; color:#8899AA; }}
+</style></head>
+<body><div class="card">
+  <div class="header">Afrivance <span>AI</span> — New Contact Form Message</div>
+  <div class="body">
+    <p style="color:#8899AA;font-size:13px;margin:0 0 4px;">Received: <strong style="color:#111f3a">{timestamp}</strong></p>
+    <div class="label">Name</div><div class="value">{form.name}</div>
+    <div class="label">Email</div><div class="value"><a href="mailto:{form.email}" style="color:#00a8a8">{form.email}</a></div>
+    <div class="label">Phone</div><div class="value">{form.phone or "Not provided"}</div>
+    <div class="label">Subject</div><div class="value">{form.subject}</div>
+    <div class="label">Message</div><div class="msg-box">{form.message}</div>
+    <a href="mailto:{form.email}" class="reply-btn">Reply to {form.name} →</a>
+  </div>
+  <div class="footer">This message came from the Afrivance AI contact form. Respond within 1 business day.</div>
+</div></body></html>"""
+
+    params: resend.Emails.SendParams = {
+        "from": f"Afrivance AI <{FROM_EMAIL}>",
+        "to": [NOTIFY_TO],
+        "reply_to": form.email,
+        "subject": f"Contact Form: {form.subject} — from {form.name}",
+        "html": html_body,
+    }
+    response = resend.Emails.send(params)
+    logger.info(f"Contact email sent via Resend. ID: {response['id']}")
+
+
 @app.get("/")
 def health_check():
     return {"status": "Afrivance AI backend is running"}
@@ -145,4 +195,19 @@ def receive_lead(lead: LeadPayload):
 
     except Exception as e:
         logger.error(f"Resend error: {e}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")
+
+
+@app.post("/api/contact")
+def receive_contact(form: ContactPayload):
+    logger.info(f"Contact form: {form.name} | {form.email} | {form.subject}")
+
+    if not RESEND_API_KEY:
+        raise HTTPException(status_code=500, detail="RESEND_API_KEY not configured.")
+
+    try:
+        send_contact_email(form)
+        return {"success": True, "message": f"Message from {form.name} sent successfully."}
+    except Exception as e:
+        logger.error(f"Contact email error: {e}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Failed to send email: {str(e)}")

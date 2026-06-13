@@ -269,9 +269,9 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
       align-items: start; margin-top: 3rem;
     }
-    /* Content LEFT, visual RIGHT */
+    /* Content LEFT, visual RIGHT — padding-top offsets the label + h2 so hub sits level with the first paragraph */
     .agents-content { grid-column: 1; grid-row: 1; }
-    .agents-visual  { grid-column: 2; grid-row: 1; }
+    .agents-visual  { grid-column: 2; grid-row: 1; align-self: start; padding-top: 9rem; }
 
     .agents-content h2 { margin-bottom: 1rem; }
     .agents-content > p { color: var(--muted); font-size: .975rem; line-height: 1.8; margin-bottom: 1rem; }
@@ -559,7 +559,7 @@
       .ps-grid          { grid-template-columns: 1fr; }
       .ps-connector     { display: none; }
       .agents-grid      { grid-template-columns: 1fr; }
-      .agents-visual    { grid-column: 1; grid-row: 2; }
+      .agents-visual    { grid-column: 1; grid-row: 2; padding-top: 0; }
       .reskilling-grid  { grid-template-columns: 1fr; }
       .spotlight-grid   { grid-template-columns: 1fr; }
       .process-steps    { grid-template-columns: 1fr 1fr; }
@@ -813,7 +813,7 @@
           <span class="audience-tab">Individuals</span>
           <span class="audience-tab">Teams</span>
           <span class="audience-tab">Enterprises</span>
-          <span class="audience-tab secondary">NGOs &amp; Government</span>
+          <span class="audience-tab">NGOs &amp; Government</span>
         </div>
         <div class="wave-stat">
           <div class="wave-stat-num">85<span style="font-size:1rem;font-weight:600">M+</span></div>

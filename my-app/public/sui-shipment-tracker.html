@@ -71,6 +71,11 @@
       color: var(--white); margin-bottom: 1.5rem;
     }
     h1 .accent { color: var(--teal); }
+    h1 .underline-word { position: relative; display: inline-block; }
+    h1 .underline-word::after {
+      content: ''; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 3px; background: var(--amber); border-radius: 2px;
+    }
     .hero-body { color: var(--muted); font-size: 1.08rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .btn-primary {
@@ -113,6 +118,8 @@
       display: flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--teal); z-index: 1;
     }
     .journey-node.confirmed { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+    .journey-node.pending { background: rgba(232,147,90,.15); border-color: rgba(232,147,90,.4); color: var(--amber); }
+    .journey-detail .pending-text { color: var(--amber); }
     .journey-detail h5 { font-family: 'Space Grotesk', sans-serif; font-size: .85rem; font-weight: 600; color: var(--white); margin-bottom: .15rem; }
     .journey-detail p { font-size: .75rem; color: var(--muted); }
     .journey-detail .confirmed-text { color: var(--teal); }
@@ -146,10 +153,11 @@
     .chain-step p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
 
     /* FEATURES */
-    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
     .feat-card { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 1.75rem; transition: border-color .2s, transform .2s; }
     .feat-card:hover { border-color: rgba(0,200,200,.3); transform: translateY(-3px); }
     .feat-icon { width: 46px; height: 46px; border-radius: 10px; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1.1rem; }
+    .feat-icon.amber { background: rgba(232,147,90,.12); color: var(--amber); }
     .feat-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.02rem; font-weight: 600; color: var(--white); margin-bottom: .6rem; }
     .feat-card p { font-size: .875rem; color: var(--muted); line-height: 1.7; }
 
@@ -157,6 +165,7 @@
     .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
     .who-card { text-align: center; padding: 1.75rem 1.25rem; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; }
     .who-icon { width: 50px; height: 50px; border-radius: 50%; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; }
+    .who-icon.amber { background: rgba(232,147,90,.12); color: var(--amber); }
     .who-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
     .who-card p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
 
@@ -204,12 +213,14 @@
       .hero-grid { grid-template-columns: 1fr; }
       .ps-grid { grid-template-columns: 1fr; }
       .chain-steps { grid-template-columns: 1fr 1fr; }
+      .feat-grid { grid-template-columns: 1fr 1fr; }
       .status-card { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 640px) {
       .section { padding: 4rem 1.25rem; }
       .cta-wrap { padding: 4rem 1.25rem; }
       .chain-steps { grid-template-columns: 1fr; }
+      .feat-grid { grid-template-columns: 1fr; }
       .relevance-box { flex-direction: column; }
     }
 
@@ -236,7 +247,7 @@
     <div class="hero-grid">
       <div>
         <div class="project-badge"><span class="dot"></span> Manifest · Blockchain-Backed Tracking</div>
-        <h1>Know exactly where your goods are — <span class="accent">and who's responsible for them.</span></h1>
+        <h1>Know exactly where your goods are — <span class="accent">and who's <span class="underline-word">responsible</span> for them.</span></h1>
         <p class="hero-body">
           A digital tracking system that follows your shipment from pickup to delivery, recording every handover along the way in a way no one can quietly change. If something goes missing or arrives damaged, you can see exactly where it happened — and who had it at the time.
         </p>
@@ -278,10 +289,10 @@
             </div>
           </div>
           <div class="journey-step">
-            <div class="journey-node"><i class="fas fa-clock"></i></div>
+            <div class="journey-node pending"><i class="fas fa-clock"></i></div>
             <div class="journey-detail">
               <h5>Out for delivery</h5>
-              <p>In progress…</p>
+              <p class="pending-text">In progress…</p>
             </div>
           </div>
         </div>
@@ -373,7 +384,7 @@
         <p>See every stop, every handover, and every timestamp from the moment a shipment starts to the moment it's delivered.</p>
       </div>
       <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-flag"></i></div>
+        <div class="feat-icon amber"><i class="fas fa-flag"></i></div>
         <h3>Instant Dispute Flagging</h3>
         <p>If something's wrong — damage, a missing item — it's flagged right away and the shipment is locked until it's sorted out.</p>
       </div>
@@ -408,7 +419,7 @@
         <p>Prove exactly when and to whom a package was handed over, ending "it got lost in transit" disputes.</p>
       </div>
       <div class="who-card reveal">
-        <div class="who-icon"><i class="fas fa-leaf"></i></div>
+        <div class="who-icon amber"><i class="fas fa-leaf"></i></div>
         <h4>Farmers & Exporters</h4>
         <p>Show international buyers exactly where produce came from and how it moved from farm to port.</p>
       </div>
@@ -418,7 +429,7 @@
         <p>Keep a clean, trusted record of stock moving between warehouses, branches, and delivery partners.</p>
       </div>
       <div class="who-card reveal">
-        <div class="who-icon"><i class="fas fa-pills"></i></div>
+        <div class="who-icon amber"><i class="fas fa-pills"></i></div>
         <h4>High-Value Goods</h4>
         <p>For pharmaceuticals, electronics, or anything where proving authenticity and handling matters.</p>
       </div>

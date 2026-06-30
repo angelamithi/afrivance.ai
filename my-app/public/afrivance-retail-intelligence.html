@@ -71,6 +71,11 @@
       color: var(--white); margin-bottom: 1.5rem;
     }
     h1 .accent { color: var(--teal); }
+    h1 .underline-word { position: relative; display: inline-block; }
+    h1 .underline-word::after {
+      content: ''; position: absolute; left: 0; bottom: -4px;
+      width: 100%; height: 3px; background: var(--amber); border-radius: 2px;
+    }
     .hero-body { color: var(--muted); font-size: 1.08rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; }
     .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
     .btn-primary {
@@ -141,7 +146,9 @@
       width: 52px; height: 52px; border-radius: 50%; background: rgba(0,200,200,.1); color: var(--teal);
       display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin: 0 auto 1.1rem;
     }
+    .question-icon.amber { background: rgba(232,147,90,.12); color: var(--amber); }
     .question-card .q { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--teal); margin-bottom: .6rem; }
+    .question-card .q.amber { color: var(--amber); }
     .question-card .a { font-size: .85rem; color: var(--muted); line-height: 1.7; }
 
     /* FEATURES */
@@ -149,6 +156,7 @@
     .feat-card { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 1.75rem; transition: border-color .2s, transform .2s; }
     .feat-card:hover { border-color: rgba(0,200,200,.3); transform: translateY(-3px); }
     .feat-icon { width: 46px; height: 46px; border-radius: 10px; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1.1rem; }
+    .feat-icon.amber { background: rgba(232,147,90,.12); color: var(--amber); }
     .feat-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.02rem; font-weight: 600; color: var(--white); margin-bottom: .6rem; }
     .feat-card p { font-size: .875rem; color: var(--muted); line-height: 1.7; }
 
@@ -228,7 +236,7 @@
     <div class="hero-grid">
       <div>
         <div class="project-badge"><span class="dot"></span> Retail & Supermarkets</div>
-        <h1>Stop guessing what your shop needs. <span class="accent">Wake up knowing.</span></h1>
+        <h1>Stop guessing what your shop needs. <span class="accent">Wake up <span class="underline-word">knowing.</span></span></h1>
         <p class="hero-body">
           Every shop generates the answers to its own biggest questions — what's selling, what's running out, what's about to lose you money. Retail Intelligence reads that data around the clock and hands you a clear morning action plan, so you're making decisions with facts instead of a hunch.
         </p>
@@ -309,8 +317,8 @@
         <div class="a">It looks at yesterday's sales — what sold, what didn't, and which branch did best — and summarises it for you in plain language.</div>
       </div>
       <div class="question-card reveal">
-        <div class="question-icon"><i class="fas fa-boxes-stacked"></i></div>
-        <div class="q">"What's happening now?"</div>
+        <div class="question-icon amber"><i class="fas fa-boxes-stacked"></i></div>
+        <div class="q amber">"What's happening now?"</div>
         <div class="a">It checks your current stock levels and flags what's about to run out and what's been sitting unsold too long.</div>
       </div>
       <div class="question-card reveal">
@@ -339,7 +347,7 @@
         <p>Not guesses — predictions built from your own sales history, so you know what to stock up on before demand hits.</p>
       </div>
       <div class="feat-card reveal">
-        <div class="feat-icon"><i class="fas fa-bell"></i></div>
+        <div class="feat-icon amber"><i class="fas fa-bell"></i></div>
         <h3>Low-Stock & Overstock Alerts</h3>
         <p>Get warned before you run out of your best sellers, and before slow-moving stock ties up money you need elsewhere.</p>
       </div>

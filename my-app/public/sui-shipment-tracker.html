@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manifest — Proof of Custody for Your Goods | Afrivance AI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --navy:   #0A1628;
+      --navy2:  #111f3a;
+      --teal:   #00C8C8;
+      --teal2:  #00a8a8;
+      --amber:  #E8935A;
+      --white:  #F0F4F8;
+      --muted:  #8899AA;
+      --card:   #152035;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--navy); color: var(--white); overflow-x: hidden; }
+
+    nav { position: fixed; top: 0; width: 100%; z-index: 100; padding: 1.1rem 0; transition: background .3s, backdrop-filter .3s; }
+    nav.scrolled { background: rgba(10,22,40,.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(0,200,200,.12); }
+    .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; }
+    .nav-logo { display: flex; align-items: center; gap: .75rem; text-decoration: none; }
+    .nav-logo img { width: 38px; height: 38px; border-radius: 8px; object-fit: contain; }
+    .nav-logo span { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.35rem; color: var(--white); display: flex; align-items: baseline; }
+    .nav-logo span em { color: var(--teal); font-style: normal; margin-left: .3rem; }
+    .back-link { display: inline-flex; align-items: center; gap: .5rem; color: var(--muted); text-decoration: none; font-size: .85rem; font-weight: 500; transition: color .2s; }
+    .back-link:hover { color: var(--teal); }
+
+    .section { padding: 6rem 2rem; }
+    .section.alt { background: var(--navy2); }
+    .container { max-width: 1160px; margin: 0 auto; }
+    .section-label { color: var(--teal); font-size: .72rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; margin-bottom: .75rem; display: block; }
+    h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.5rem); font-weight: 700; letter-spacing: -.025em; color: var(--white); margin-bottom: 1rem; line-height: 1.2; }
+    .section-intro { color: var(--muted); font-size: 1rem; line-height: 1.8; max-width: 620px; margin-bottom: 3rem; }
+
+    /* HERO */
+    .hero { min-height: 92vh; display: flex; align-items: center; padding: 9rem 2rem 4rem; position: relative; overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 70% 40%, rgba(0,200,200,.1) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 10% 90%, rgba(232,147,90,.06) 0%, transparent 60%),
+        var(--navy);
+    }
+    .hero-bg::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(0,200,200,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(0,200,200,.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+    }
+    .hero-inner { max-width: 1160px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+    .project-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: rgba(0,200,200,.1); border: 1px solid rgba(0,200,200,.25);
+      color: var(--teal); padding: .35rem .9rem; border-radius: 20px;
+      font-size: .78rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    .project-badge .dot { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 4rem; align-items: center; }
+    h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(2.2rem, 4.5vw, 3.2rem);
+      font-weight: 700; line-height: 1.15; letter-spacing: -.025em;
+      color: var(--white); margin-bottom: 1.5rem;
+    }
+    h1 .accent { color: var(--teal); }
+    .hero-body { color: var(--muted); font-size: 1.08rem; line-height: 1.8; margin-bottom: 2rem; max-width: 520px; }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .btn-primary {
+      background: var(--teal); color: var(--navy); padding: .8rem 1.75rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: .95rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; transition: all .2s;
+    }
+    .btn-primary:hover { background: var(--teal2); transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent; color: var(--white); padding: .8rem 1.75rem; border-radius: 8px;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .95rem;
+      text-decoration: none; display: inline-flex; align-items: center; gap: .5rem;
+      border: 1px solid rgba(255,255,255,.2); transition: all .2s;
+    }
+    .btn-ghost:hover { border-color: var(--teal); color: var(--teal); }
+    .trust-row { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .trust-item { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--muted); }
+    .trust-item i { color: var(--teal); }
+
+    /* Hero visual: simple shipment journey */
+    .journey-card {
+      background: var(--card); border: 1px solid rgba(0,200,200,.18);
+      border-radius: 16px; padding: 1.75rem; position: relative; overflow: hidden;
+    }
+    .journey-card::before {
+      content: ''; position: absolute; top: -50px; right: -50px; width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(0,200,200,.12) 0%, transparent 70%);
+    }
+    .journey-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1.25rem; position: relative; }
+    .journey-title { font-family: 'Space Grotesk', sans-serif; font-size: .9rem; font-weight: 600; color: var(--white); }
+    .journey-tag { font-size: .68rem; color: var(--teal); background: rgba(0,200,200,.1); padding: .25rem .6rem; border-radius: 5px; font-weight: 600; letter-spacing: .04em; }
+    .journey-chain { display: flex; flex-direction: column; gap: 0; position: relative; }
+    .journey-step { display: flex; gap: .9rem; padding: .9rem 0; position: relative; }
+    .journey-step:not(:last-child)::after {
+      content: ''; position: absolute; left: 14px; top: 40px; bottom: -8px; width: 1px; background: rgba(0,200,200,.25);
+    }
+    .journey-node {
+      width: 28px; height: 28px; border-radius: 50%; flex-shrink: 0;
+      background: rgba(0,200,200,.12); border: 1px solid rgba(0,200,200,.35);
+      display: flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--teal); z-index: 1;
+    }
+    .journey-node.confirmed { background: var(--teal); color: var(--navy); border-color: var(--teal); }
+    .journey-detail h5 { font-family: 'Space Grotesk', sans-serif; font-size: .85rem; font-weight: 600; color: var(--white); margin-bottom: .15rem; }
+    .journey-detail p { font-size: .75rem; color: var(--muted); }
+    .journey-detail .confirmed-text { color: var(--teal); }
+
+    /* PROBLEM / SOLUTION */
+    .ps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+    .ps-card { border-radius: 14px; padding: 1.75rem; display: flex; flex-direction: column; gap: 1.25rem; }
+    .ps-card.problem { background: rgba(232,147,90,.05); border: 1px solid rgba(232,147,90,.18); }
+    .ps-card.solution { background: rgba(0,200,200,.05); border: 1px solid rgba(0,200,200,.18); }
+    .ps-card-head { display: flex; align-items: center; gap: .75rem; }
+    .ps-card-head .icon { width: 38px; height: 38px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+    .ps-card.problem .icon { background: rgba(232,147,90,.15); color: var(--amber); }
+    .ps-card.solution .icon { background: rgba(0,200,200,.15); color: var(--teal); }
+    .ps-card-head h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; }
+    .ps-card.problem h3 { color: var(--amber); }
+    .ps-card.solution h3 { color: var(--teal); }
+    .ps-card p { font-size: .92rem; color: var(--muted); line-height: 1.75; }
+    .ps-card ul { padding-left: 1.1rem; display: flex; flex-direction: column; gap: .5rem; }
+    .ps-card li { font-size: .9rem; color: var(--muted); line-height: 1.6; }
+
+    /* HOW IT WORKS */
+    .chain-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; margin-top: 3rem; }
+    .chain-step { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 1.5rem; transition: border-color .2s, transform .2s; }
+    .chain-step:hover { border-color: rgba(0,200,200,.3); transform: translateY(-3px); }
+    .chain-step-num {
+      width: 36px; height: 36px; border-radius: 50%; background: rgba(0,200,200,.12); color: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: .9rem; margin-bottom: .9rem;
+    }
+    .chain-step h4 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+    .chain-step p { font-size: .85rem; color: var(--muted); line-height: 1.65; }
+
+    /* FEATURES */
+    .feat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .feat-card { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 1.75rem; transition: border-color .2s, transform .2s; }
+    .feat-card:hover { border-color: rgba(0,200,200,.3); transform: translateY(-3px); }
+    .feat-icon { width: 46px; height: 46px; border-radius: 10px; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; margin-bottom: 1.1rem; }
+    .feat-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.02rem; font-weight: 600; color: var(--white); margin-bottom: .6rem; }
+    .feat-card p { font-size: .875rem; color: var(--muted); line-height: 1.7; }
+
+    /* WHO IT'S FOR */
+    .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .who-card { text-align: center; padding: 1.75rem 1.25rem; background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; }
+    .who-icon { width: 50px; height: 50px; border-radius: 50%; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; margin: 0 auto 1rem; }
+    .who-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+    .who-card p { font-size: .82rem; color: var(--muted); line-height: 1.6; }
+
+    /* RELEVANCE */
+    .relevance-box {
+      background: rgba(0,200,200,.06); border: 1px solid rgba(0,200,200,.2);
+      border-radius: 16px; padding: 2rem 2.25rem; margin-top: 3rem;
+      display: flex; gap: 1.25rem; align-items: flex-start;
+    }
+    .relevance-box .icon { width: 46px; height: 46px; border-radius: 10px; background: rgba(0,200,200,.15); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+    .relevance-box h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.02rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+    .relevance-box p { font-size: .92rem; color: var(--muted); line-height: 1.75; }
+
+    /* STATUS */
+    .status-card {
+      background: var(--card); border: 1px solid rgba(0,200,200,.2);
+      border-radius: 14px; padding: 1.75rem 2rem; margin-top: 3rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .status-left { display: flex; align-items: center; gap: 1rem; }
+    .status-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 8px var(--teal); animation: pulse 2s infinite; flex-shrink: 0; }
+    .status-left h4 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .2rem; }
+    .status-left p { font-size: .82rem; color: var(--muted); }
+
+    /* CTA */
+    .cta-wrap {
+      background: linear-gradient(135deg, var(--navy2) 0%, #0d1e38 100%);
+      border-top: 1px solid rgba(0,200,200,.12); border-bottom: 1px solid rgba(0,200,200,.12);
+      padding: 6rem 2rem;
+    }
+    .cta-inner { max-width: 640px; margin: 0 auto; text-align: center; }
+    .cta-inner h2 { margin-bottom: 1rem; }
+    .cta-inner p { color: var(--muted); font-size: 1rem; line-height: 1.8; margin-bottom: 2.5rem; }
+    .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: var(--navy); padding: 2.5rem 2rem; border-top: 1px solid rgba(255,255,255,.06); }
+    .footer-inner { max-width: 1160px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { display: flex; align-items: center; gap: .75rem; }
+    .footer-brand img { width: 30px; height: 30px; border-radius: 6px; object-fit: contain; }
+    .footer-brand span { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 700; color: var(--white); }
+    .footer-brand span em { color: var(--teal); font-style: normal; }
+    .footer-copy { color: var(--muted); font-size: .78rem; }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .ps-grid { grid-template-columns: 1fr; }
+      .chain-steps { grid-template-columns: 1fr 1fr; }
+      .status-card { flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 640px) {
+      .section { padding: 4rem 1.25rem; }
+      .cta-wrap { padding: 4rem 1.25rem; }
+      .chain-steps { grid-template-columns: 1fr; }
+      .relevance-box { flex-direction: column; }
+    }
+
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal.in-view { opacity: 1; transform: none; }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">
+      <img src="FB_IMG_1781095971954.jpg" alt="Afrivance AI Logo">
+      <span>Afrivance <em>AI</em></span>
+    </a>
+    <a href="index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> All Projects</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="project-badge"><span class="dot"></span> Manifest · Supply Chain Tracking</div>
+        <h1>Know exactly where your goods are — <span class="accent">and who's responsible for them.</span></h1>
+        <p class="hero-body">
+          A digital tracking system that follows your shipment from pickup to delivery, recording every handover along the way in a way no one can quietly change. If something goes missing or arrives damaged, you can see exactly where it happened — and who had it at the time.
+        </p>
+        <div class="hero-actions">
+          <a href="https://blockchain-supply-chain-phi.vercel.app/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See It In Action</a>
+          <a href="#how-it-works" class="btn-ghost">How It Works</a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-item"><i class="fas fa-lock"></i> Records can't be edited or deleted</div>
+          <div class="trust-item"><i class="fas fa-eye"></i> Anyone can check the history</div>
+        </div>
+      </div>
+
+      <div class="journey-card reveal">
+        <div class="journey-head">
+          <span class="journey-title">Shipment #4471</span>
+          <span class="journey-tag">DEMO</span>
+        </div>
+        <div class="journey-chain">
+          <div class="journey-step">
+            <div class="journey-node confirmed"><i class="fas fa-check"></i></div>
+            <div class="journey-detail">
+              <h5>Order picked up</h5>
+              <p class="confirmed-text">Confirmed</p>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-node confirmed"><i class="fas fa-check"></i></div>
+            <div class="journey-detail">
+              <h5>Arrived at warehouse</h5>
+              <p class="confirmed-text">Confirmed</p>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-node confirmed"><i class="fas fa-check"></i></div>
+            <div class="journey-detail">
+              <h5>Handed to delivery driver</h5>
+              <p class="confirmed-text">Confirmed</p>
+            </div>
+          </div>
+          <div class="journey-step">
+            <div class="journey-node"><i class="fas fa-clock"></i></div>
+            <div class="journey-detail">
+              <h5>Out for delivery</h5>
+              <p>In progress…</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="section alt">
+  <div class="container">
+    <span class="section-label">The Problem We Solve</span>
+    <h2>"It wasn't me" shouldn't be the end of the conversation.</h2>
+    <p class="section-intro">When a shipment goes missing or arrives damaged, the usual record is a spreadsheet or a notebook — something anyone along the chain could have changed after the fact. That means disputes drag on, trust breaks down, and nobody can say for certain who actually had the goods when something went wrong.</p>
+    <div class="ps-grid">
+      <div class="ps-card problem reveal">
+        <div class="ps-card-head">
+          <div class="icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <h3>The Old Way</h3>
+        </div>
+        <ul>
+          <li>Records are kept in spreadsheets or paper logs that can be edited after the fact</li>
+          <li>When something goes wrong, it's one party's word against another's</li>
+          <li>Customers and partners have no way to independently verify what happened</li>
+          <li>Disputes take weeks to resolve, if they ever do</li>
+        </ul>
+      </div>
+      <div class="ps-card solution reveal">
+        <div class="ps-card-head">
+          <div class="icon"><i class="fas fa-shield-halved"></i></div>
+          <h3>With Manifest</h3>
+        </div>
+        <ul>
+          <li>Every handover is recorded permanently — nobody can quietly change the record</li>
+          <li>You can see exactly who had the shipment at every step of the journey</li>
+          <li>Anyone — a customer, an auditor, a partner — can check the history themselves</li>
+          <li>If something is disputed, it's flagged immediately and locked until resolved</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how-it-works" class="section">
+  <div class="container">
+    <span class="section-label">How It Works</span>
+    <h2>Four simple steps, every shipment</h2>
+    <p class="section-intro">No complicated setup. Each shipment moves through the same trusted process from start to finish.</p>
+    <div class="chain-steps">
+      <div class="chain-step reveal">
+        <div class="chain-step-num">1</div>
+        <h4>Shipment is created</h4>
+        <p>A digital record is created the moment a shipment starts its journey, noting what it is and who has it first.</p>
+      </div>
+      <div class="chain-step reveal">
+        <div class="chain-step-num">2</div>
+        <h4>Every stop is logged</h4>
+        <p>As the shipment moves — warehouse, transit point, delivery — each stop is recorded with a timestamp, permanently.</p>
+      </div>
+      <div class="chain-step reveal">
+        <div class="chain-step-num">3</div>
+        <h4>Handovers are recorded</h4>
+        <p>When responsibility passes from one party to the next, that handover is captured as a verified event — not just a note.</p>
+      </div>
+      <div class="chain-step reveal">
+        <div class="chain-step-num">4</div>
+        <h4>Anyone can check it</h4>
+        <p>The full journey can be viewed by anyone with the shipment ID — no special access or technical knowledge needed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section alt">
+  <div class="container">
+    <span class="section-label">What You Get</span>
+    <h2>Built for trust between people who don't fully trust each other yet</h2>
+    <div class="feat-grid">
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-lock"></i></div>
+        <h3>Tamper-Proof Records</h3>
+        <p>Once a step is logged, it can't be edited or deleted by anyone — including us. That's what makes the history trustworthy.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-route"></i></div>
+        <h3>Full Journey History</h3>
+        <p>See every stop, every handover, and every timestamp from the moment a shipment starts to the moment it's delivered.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-flag"></i></div>
+        <h3>Instant Dispute Flagging</h3>
+        <p>If something's wrong — damage, a missing item — it's flagged right away and the shipment is locked until it's sorted out.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-eye"></i></div>
+        <h3>Open to Everyone</h3>
+        <p>Customers, auditors, and partners can check a shipment's history themselves — no account or technical setup needed.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Works Beyond Shipping</h3>
+        <p>We've also used this same approach to trace farm produce — like tea — from the farmer all the way to the export buyer.</p>
+      </div>
+      <div class="feat-card reveal">
+        <div class="feat-icon"><i class="fas fa-bolt"></i></div>
+        <h3>Fast and Affordable</h3>
+        <p>Recording each step is quick and low-cost, so it's practical to log every single handover — not just the big ones.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHO IT'S FOR -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Who It's For</span>
+    <h2>Built for anyone who needs to prove where goods have been</h2>
+    <div class="who-grid">
+      <div class="who-card reveal">
+        <div class="who-icon"><i class="fas fa-truck"></i></div>
+        <h4>Logistics & Couriers</h4>
+        <p>Prove exactly when and to whom a package was handed over, ending "it got lost in transit" disputes.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon"><i class="fas fa-leaf"></i></div>
+        <h4>Farmers & Exporters</h4>
+        <p>Show international buyers exactly where produce came from and how it moved from farm to port.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon"><i class="fas fa-warehouse"></i></div>
+        <h4>Wholesalers & Distributors</h4>
+        <p>Keep a clean, trusted record of stock moving between warehouses, branches, and delivery partners.</p>
+      </div>
+      <div class="who-card reveal">
+        <div class="who-icon"><i class="fas fa-pills"></i></div>
+        <h4>High-Value Goods</h4>
+        <p>For pharmaceuticals, electronics, or anything where proving authenticity and handling matters.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RELEVANCE -->
+<section class="section alt">
+  <div class="container">
+    <span class="section-label">Why It Matters</span>
+    <h2>One system, many uses</h2>
+    <div class="relevance-box reveal">
+      <div class="icon"><i class="fas fa-lightbulb"></i></div>
+      <div>
+        <h4>The same trusted tracking, adapted to different industries</h4>
+        <p>We built this first for general freight and logistics, then adapted the exact same idea to help a tea exporter prove their product's journey from a specific farmer's field all the way to an international buyer. That's the real strength of this system — once you trust the process, it works for almost any industry where proving "who had it, and when" actually matters: agriculture, retail, pharmaceuticals, and beyond.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section class="section">
+  <div class="container">
+    <span class="section-label">Project Status</span>
+    <h2>Built, tested, and ready to demo</h2>
+    <p class="section-intro">The full process — from creating a shipment to confirming delivery — has been built and tested from start to finish.</p>
+    <div class="status-card reveal">
+      <div class="status-left">
+        <span class="status-dot"></span>
+        <div>
+          <h4>Manifest — Working Demo</h4>
+          <p>Ready to show you exactly how it works, step by step</p>
+        </div>
+      </div>
+      <a href="https://blockchain-supply-chain-phi.vercel.app/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See Live Demo</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-wrap">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:.75rem;">Have Goods to Track?</span>
+      <h2>Let's give your shipments a record you can trust</h2>
+      <p>Whether it's freight, farm produce, or high-value stock — if disputes over "who had it" are costing you time and trust, we can set this up for your business.</p>
+      <div class="cta-buttons">
+        <a href="index.html#contact" class="btn-primary"><i class="fas fa-arrow-right"></i> Talk to Us</a>
+        <a href="index.html#projects" class="btn-ghost">See Other Projects</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="FB_IMG_1781095971954.jpg" alt="Afrivance AI">
+      <span>Afrivance <em>AI</em></span>
+    </div>
+    <p class="footer-copy">&copy; 2026 Afrivance AI. All rights reserved.</p>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

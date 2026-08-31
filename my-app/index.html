@@ -481,12 +481,14 @@
 
     /* Manifest's visual: a chain-of-custody timeline, each checkpoint
        pulsing in sequence to suggest a shipment moving handover to
-       handover — the thing the product actually records. */
+       handover — the thing the product actually records. Amber rather
+       than teal here, matching the Macros AI spotlight's own amber
+       accent, so the two animated elements share that color cue. */
     .chain-track { display: flex; flex-direction: column; position: relative; z-index: 1; }
     .chain-node { position: relative; padding: .7rem 0 .7rem 1.7rem; display: flex; align-items: center; gap: .7rem; }
     .chain-node::before {
       content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
-      width: 11px; height: 11px; border-radius: 50%; background: var(--teal);
+      width: 11px; height: 11px; border-radius: 50%; background: var(--amber);
       animation: chainpulse 2.4s ease-in-out infinite;
     }
     .chain-node:nth-child(1)::before { animation-delay: 0s; }
@@ -495,13 +497,13 @@
     .chain-node:nth-child(4)::before { animation-delay: 1.5s; }
     .chain-node:not(:last-child)::after {
       content: ''; position: absolute; left: 5px; top: calc(50% + 9px); height: calc(100% - 4px);
-      width: 2px; background: rgba(0,200,200,.18);
+      width: 2px; background: rgba(232,147,90,.2);
     }
     @keyframes chainpulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(0,200,200,.4); }
-      50%      { box-shadow: 0 0 0 6px rgba(0,200,200,0); }
+      0%, 100% { box-shadow: 0 0 0 0 rgba(232,147,90,.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(232,147,90,0); }
     }
-    .chain-node-icon { color: var(--teal); font-size: .8rem; width: 18px; text-align: center; flex-shrink: 0; }
+    .chain-node-icon { color: var(--amber); font-size: .8rem; width: 18px; text-align: center; flex-shrink: 0; }
     .chain-node-label { font-size: .84rem; color: var(--white); font-weight: 600; }
     .chain-node-time { font-size: .68rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
 
@@ -510,7 +512,8 @@
        different animation mechanic (fade + slide, one line at a time)
        from Manifest's staggered pulse above and from the Macros AI
        spotlight's loading bars, so the three don't end up feeling like
-       the same component reskinned three times. */
+       the same component reskinned three times. Amber rather than teal
+       here too, same reasoning as Manifest's chain above. */
     .insight-ticker { position: relative; height: 3.4rem; z-index: 1; }
     .ticker-line {
       position: absolute; inset: 0; display: flex; align-items: center; gap: .6rem;
@@ -971,7 +974,7 @@
                 <span class="lbl">Sales Today</span>
               </div>
               <div class="mock-stat highlight">
-                <span class="num">↑ Rising</span>
+                <span class="num" style="color: var(--amber);">↑ Rising</span>
                 <span class="lbl">This Week's Forecast</span>
               </div>
             </div>

@@ -505,6 +505,30 @@
     .chain-node-label { font-size: .84rem; color: var(--white); font-weight: 600; }
     .chain-node-time { font-size: .68rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
 
+    /* Afrivance ERP & POS's visual: a small rotating ticker cycling
+       through different Duka Insights messages one at a time — a
+       different animation mechanic (fade + slide, one line at a time)
+       from Manifest's staggered pulse above and from the Macros AI
+       spotlight's loading bars, so the three don't end up feeling like
+       the same component reskinned three times. */
+    .insight-ticker { position: relative; height: 3.4rem; z-index: 1; }
+    .ticker-line {
+      position: absolute; inset: 0; display: flex; align-items: center; gap: .6rem;
+      background: rgba(0,200,200,.08); border: 1px solid rgba(0,200,200,.2);
+      border-radius: 8px; padding: 0 1rem;
+      font-size: .8rem; color: var(--teal); line-height: 1.5;
+      opacity: 0; animation: tickercycle 9s ease-in-out infinite;
+    }
+    .ticker-line i { flex-shrink: 0; }
+    .ticker-line.t1 { animation-delay: 0s; }
+    .ticker-line.t2 { animation-delay: 3s; }
+    .ticker-line.t3 { animation-delay: 6s; }
+    @keyframes tickercycle {
+      0%, 4%    { opacity: 0; transform: translateY(6px); }
+      9%, 24%   { opacity: 1; transform: translateY(0); }
+      29%, 100% { opacity: 0; transform: translateY(-6px); }
+    }
+
     /* ─── PROCESS ─── */
     .process-steps {
       display: grid; grid-template-columns: repeat(4, 1fr);
@@ -920,6 +944,48 @@
     <div class="project-cards">
       <div class="project-card reveal">
         <div class="project-card-top">
+          <div class="project-card-badge"><i class="fas fa-chart-line"></i> ERP · POS · Finance · HR · AI Insights</div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-text">
+            <h3>Afrivance ERP &amp; POS <span style="color:var(--muted);font-weight:500;font-size:.85em;">— with Duka Insights built in</span></h3>
+            <p class="project-card-desc">The complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor, watching it all around the clock and handing you a ready-made action plan every morning.</p>
+            <div class="project-card-row">
+              <span class="project-card-label">Solves</span>
+              <span>Owners making big calls on gut feel because by the time data gets reviewed, the moment to act on it has already passed.</span>
+            </div>
+            <div class="project-card-row">
+              <span class="project-card-label">Also useful for</span>
+              <span>Spotting slow-moving stock before it ties up your cash, and catching sales trends days before they'd show up in a month-end report.</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
+              <a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-ghost project-card-link" download><i class="fab fa-android"></i> Get Duka Insights Mpos</a>
+            </div>
+          </div>
+          <div class="project-card-visual">
+            <div class="mock-label">Duka Insights — Live</div>
+            <div class="mock-stats">
+              <div class="mock-stat plain">
+                <span class="num">KES 482K</span>
+                <span class="lbl">Sales Today</span>
+              </div>
+              <div class="mock-stat highlight">
+                <span class="num">↑ Rising</span>
+                <span class="lbl">This Week's Forecast</span>
+              </div>
+            </div>
+            <div class="insight-ticker">
+              <div class="ticker-line t1"><i class="fas fa-bolt"></i> Reorder maize flour before Friday — it usually sells out by the weekend.</div>
+              <div class="ticker-line t2"><i class="fas fa-triangle-exclamation"></i> 7 items are running low across your branches.</div>
+              <div class="ticker-line t3"><i class="fas fa-arrow-trend-up"></i> Sales are trending up compared to last week.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-card reveal">
+        <div class="project-card-top">
           <div class="project-card-badge"><i class="fas fa-truck"></i> Supply Chain Tracking</div>
         </div>
         <div class="project-card-body">
@@ -945,48 +1011,6 @@
               <div class="chain-node"><i class="fas fa-circle-check chain-node-icon"></i><span class="chain-node-label">Delivered</span><span class="chain-node-time">05:30 PM</span></div>
             </div>
             <div class="mock-insight"><strong>Tamper-evident:</strong> every handover above is permanently recorded — no one can quietly edit it after the fact.</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="project-card reveal">
-        <div class="project-card-top">
-          <div class="project-card-badge"><i class="fas fa-chart-line"></i> ERP · POS · Finance · HR · AI Insights</div>
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-text">
-            <h3>Afrivance ERP &amp; POS <span style="color:var(--muted);font-weight:500;font-size:.85em;">— with Duka Insights built in</span></h3>
-            <p class="project-card-desc">The complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor, watching it all around the clock and handing you a ready-made action plan every morning.</p>
-            <div class="project-card-row">
-              <span class="project-card-label">Solves</span>
-              <span>Owners making big calls on gut feel because by the time data gets reviewed, the moment to act on it has already passed.</span>
-            </div>
-            <div class="project-card-row">
-              <span class="project-card-label">Also useful for</span>
-              <span>Spotting slow-moving stock before it ties up your cash, and catching sales trends days before they'd show up in a month-end report.</span>
-            </div>
-            <div class="project-card-actions">
-              <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
-              <a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-ghost project-card-link" download><i class="fab fa-android"></i> Get mPOS</a>
-            </div>
-          </div>
-          <div class="project-card-visual">
-            <div class="mock-label">Today's Shop Activity</div>
-            <div style="display:flex;flex-direction:column;gap:.6rem;">
-              <div>
-                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Sales</span><span style="color:var(--teal)">KES 482K</span></div>
-                <div class="mock-bar"><div class="mock-bar-fill" style="width:82%"></div></div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Stock Health</span><span style="color:var(--amber)">7 low</span></div>
-                <div class="mock-bar"><div class="mock-bar-fill b2" style="width:65%"></div></div>
-              </div>
-              <div>
-                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Staff Clocked In</span><span style="color:#7b9cc4">4/5</span></div>
-                <div class="mock-bar"><div class="mock-bar-fill b3" style="width:90%"></div></div>
-              </div>
-            </div>
-            <div class="mock-insight"><strong>Duka Insights:</strong> Reorder maize flour before Friday — it usually sells out by the weekend.</div>
           </div>
         </div>
       </div>

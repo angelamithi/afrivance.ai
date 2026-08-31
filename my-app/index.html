@@ -352,57 +352,6 @@
     .agent-status.running { background: rgba(0,200,200,.12); color: var(--teal); }
     .agent-status.idle    { background: rgba(255,255,255,.06); color: var(--muted); }
 
-    /* ─── RESKILLING ─── */
-    .reskilling-grid {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-      align-items: start; margin-top: 3rem;
-    }
-    .reskilling-content h2 { margin-bottom: 1rem; }
-    .reskilling-content > p { color: var(--muted); font-size: .975rem; line-height: 1.8; margin-bottom: 1.5rem; }
-
-    .audience-tabs {
-      display: flex; gap: .6rem; margin-bottom: 1.75rem; flex-wrap: wrap;
-    }
-    .audience-tab {
-      padding: .4rem .9rem; border-radius: 20px;
-      font-size: .8rem; font-weight: 600; white-space: nowrap;
-      border: 1px solid rgba(0,200,200,.28); color: var(--teal);
-      background: rgba(0,200,200,.08);
-    }
-    .audience-tab.secondary {
-      border-color: rgba(255,255,255,.12); color: var(--muted); background: transparent;
-    }
-    .wave-stat {
-      background: rgba(0,200,200,.06); border: 1px solid rgba(0,200,200,.18);
-      border-radius: 10px; padding: 1.2rem 1.4rem;
-      display: flex; align-items: flex-start; gap: 1rem;
-    }
-    .wave-stat-num {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: 2rem; font-weight: 700; color: var(--teal); flex-shrink: 0; line-height: 1;
-    }
-    .wave-stat-text { font-size: .84rem; color: var(--muted); line-height: 1.6; padding-top: .15rem; }
-
-    .reskilling-cards { display: flex; flex-direction: column; gap: .9rem; }
-    .reskill-card {
-      background: var(--card); border: 1px solid rgba(255,255,255,.07);
-      border-radius: 12px; padding: 1.35rem 1.5rem;
-      display: flex; align-items: flex-start; gap: .9rem;
-      transition: border-color .2s, transform .2s;
-    }
-    .reskill-card:hover { border-color: rgba(232,147,90,.28); transform: translateX(4px); }
-    .reskill-icon {
-      width: 42px; height: 42px; border-radius: 10px;
-      background: rgba(232,147,90,.12); color: var(--amber);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .95rem; flex-shrink: 0;
-    }
-    .reskill-card h4 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: .92rem; font-weight: 600; color: var(--white); margin-bottom: .3rem;
-    }
-    .reskill-card p { font-size: .83rem; color: var(--muted); line-height: 1.65; }
-
     /* ─── PRODUCT SPOTLIGHT ─── */
     .spotlight-grid {
       display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem;
@@ -473,13 +422,13 @@
 
     /* ─── PROJECT CARDS (Sui Tracker, Duka Insights, etc.) ─── */
     .project-cards {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-      gap: 1.5rem; margin-top: 3.5rem;
+      display: flex; flex-direction: column;
+      gap: 2rem; margin-top: 3.5rem;
     }
     .project-card {
       background: var(--card); border: 1px solid rgba(255,255,255,.07);
-      border-radius: 16px; padding: 2rem;
-      display: flex; flex-direction: column; gap: 1rem;
+      border-radius: 16px; padding: 2.25rem;
+      display: flex; flex-direction: column; gap: 1.5rem;
       transition: border-color .2s, transform .2s;
       position: relative; overflow: hidden;
     }
@@ -513,6 +462,48 @@
     .project-card-link { align-self: flex-start; margin-top: .25rem; padding: .65rem 1.4rem; font-size: .88rem; }
     .project-card-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .25rem; }
     .project-card-actions .project-card-link { margin-top: 0; }
+
+    /* Now that each project sits in its own full-width row rather than
+       side by side in a grid, there's room to pair its write-up with a
+       small animated mock visual — same idea as the Macros AI spotlight
+       further up the page, scaled down to fit inside a project card. */
+    .project-card-body { display: grid; grid-template-columns: 1.15fr .85fr; gap: 2.25rem; align-items: center; }
+    .project-card-text { display: flex; flex-direction: column; gap: 1rem; }
+    .project-card-visual {
+      background: rgba(255,255,255,.02); border: 1px solid rgba(0,200,200,.15);
+      border-radius: 14px; padding: 1.5rem; position: relative; overflow: hidden;
+      display: flex; flex-direction: column; gap: 1rem; align-self: stretch; justify-content: center;
+    }
+    .project-card-visual::before {
+      content: ''; position: absolute; top: -40px; right: -40px; width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(0,200,200,.08) 0%, transparent 70%);
+    }
+
+    /* Manifest's visual: a chain-of-custody timeline, each checkpoint
+       pulsing in sequence to suggest a shipment moving handover to
+       handover — the thing the product actually records. */
+    .chain-track { display: flex; flex-direction: column; position: relative; z-index: 1; }
+    .chain-node { position: relative; padding: .7rem 0 .7rem 1.7rem; display: flex; align-items: center; gap: .7rem; }
+    .chain-node::before {
+      content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
+      width: 11px; height: 11px; border-radius: 50%; background: var(--teal);
+      animation: chainpulse 2.4s ease-in-out infinite;
+    }
+    .chain-node:nth-child(1)::before { animation-delay: 0s; }
+    .chain-node:nth-child(2)::before { animation-delay: .5s; }
+    .chain-node:nth-child(3)::before { animation-delay: 1s; }
+    .chain-node:nth-child(4)::before { animation-delay: 1.5s; }
+    .chain-node:not(:last-child)::after {
+      content: ''; position: absolute; left: 5px; top: calc(50% + 9px); height: calc(100% - 4px);
+      width: 2px; background: rgba(0,200,200,.18);
+    }
+    @keyframes chainpulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0,200,200,.4); }
+      50%      { box-shadow: 0 0 0 6px rgba(0,200,200,0); }
+    }
+    .chain-node-icon { color: var(--teal); font-size: .8rem; width: 18px; text-align: center; flex-shrink: 0; }
+    .chain-node-label { font-size: .84rem; color: var(--white); font-weight: 600; }
+    .chain-node-time { font-size: .68rem; color: var(--muted); margin-left: auto; white-space: nowrap; }
 
     /* ─── PROCESS ─── */
     .process-steps {
@@ -623,8 +614,8 @@
       .ps-connector     { display: none; }
       .agents-grid      { grid-template-columns: 1fr; }
       .agents-visual    { grid-column: 1; grid-row: 2; padding-top: 0; }
-      .reskilling-grid  { grid-template-columns: 1fr; }
       .spotlight-grid   { grid-template-columns: 1fr; }
+      .project-card-body { grid-template-columns: 1fr; }
       .process-steps    { grid-template-columns: 1fr 1fr; }
       .process-steps::before { display: none; }
       .agent-use-cases  { grid-template-columns: 1fr; }
@@ -658,7 +649,6 @@
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#services">Solutions</a></li>
       <li><a href="#agents">AI Agents</a></li>
-      <li><a href="#reskilling">Reskilling</a></li>
       <li><a href="#projects">Projects</a></li>
       <li><a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="nav-download" download><i class="fab fa-android"></i> Get Duka Insights Mpos</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
@@ -678,7 +668,7 @@
         <span class="underline-word">Built with AI.</span></span>
       </h1>
       <p class="hero-body">
-        Afrivance AI builds innovative solutions that empower individuals and businesses to make smarter, more informed decisions — and equips them to retool, upskill, and thrive in an AI-driven world.
+        Afrivance AI builds innovative solutions that empower individuals and businesses to make smarter, more informed decisions in an AI-driven world.
       </p>
       <div class="hero-actions">
         <a href="#services" class="btn-primary"><i class="fas fa-arrow-right"></i> See What We Build</a>
@@ -871,59 +861,6 @@
   </div>
 </section>
 
-<!-- RESKILLING — navy bg -->
-<section id="reskilling" class="section">
-  <div class="container">
-    <div class="reskilling-grid">
-      <div class="reskilling-content reveal">
-        <span class="section-label">AI Retooling &amp; Reskilling</span>
-        <h2>Don't get left behind.<br>Adapt, innovate, thrive.</h2>
-        <p>The AI wave isn't coming — it's already here. The organisations and professionals who thrive in this new economy won't be the ones who resist change; they'll be the ones who embrace it first. Afrivance AI helps you make that transition, practically and confidently.</p>
-        <div class="audience-tabs">
-          <span class="audience-tab">Individuals</span>
-          <span class="audience-tab">Teams</span>
-          <span class="audience-tab">Enterprises</span>
-          <span class="audience-tab">NGOs &amp; Government</span>
-        </div>
-        <div class="wave-stat">
-          <div class="wave-stat-num">85<span style="font-size:1rem;font-weight:600">M+</span></div>
-          <div class="wave-stat-text">jobs are expected to be transformed by AI by 2030. The question isn't whether your role will change — it's whether you'll be ready when it does.</div>
-        </div>
-      </div>
-      <div class="reskilling-cards reveal">
-        <div class="reskill-card">
-          <div class="reskill-icon"><i class="fas fa-user-graduate"></i></div>
-          <div>
-            <h4>AI Literacy for Professionals</h4>
-            <p>Understand how AI tools work, what they can and can't do, and how to use them effectively in your daily role — no technical background required.</p>
-          </div>
-        </div>
-        <div class="reskill-card">
-          <div class="reskill-icon"><i class="fas fa-building"></i></div>
-          <div>
-            <h4>Organisational AI Readiness</h4>
-            <p>We assess your current workflows, identify where AI creates the most value, and build a practical roadmap to integrate it without disrupting your operations.</p>
-          </div>
-        </div>
-        <div class="reskill-card">
-          <div class="reskill-icon"><i class="fas fa-tools"></i></div>
-          <div>
-            <h4>Hands-On Retooling Workshops</h4>
-            <p>Team-based sessions where your people learn by doing — using real AI tools on real problems from your industry, guided by our experts.</p>
-          </div>
-        </div>
-        <div class="reskill-card">
-          <div class="reskill-icon"><i class="fas fa-route"></i></div>
-          <div>
-            <h4>Personalised Upskilling Paths</h4>
-            <p>Tailored learning journeys for individuals who want to move into AI-adjacent roles — from prompt engineering to AI project management and beyond.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- PRODUCTS & PROJECTS — alt bg -->
 <section id="projects" class="section alt">
   <div class="container">
@@ -985,36 +922,72 @@
         <div class="project-card-top">
           <div class="project-card-badge"><i class="fas fa-truck"></i> Supply Chain Tracking</div>
         </div>
-        <h3>Manifest</h3>
-        <p class="project-card-desc">A digital tracking system that follows a shipment from pickup to delivery, recording every handover in a way no one can quietly change later.</p>
-        <div class="project-card-row">
-          <span class="project-card-label">Solves</span>
-          <span>Disputes over who had a shipment and when, because the old record-keeping could be edited after the fact.</span>
+        <div class="project-card-body">
+          <div class="project-card-text">
+            <h3>Manifest</h3>
+            <p class="project-card-desc">A digital tracking system that follows a shipment from pickup to delivery, recording every handover in a way no one can quietly change later.</p>
+            <div class="project-card-row">
+              <span class="project-card-label">Solves</span>
+              <span>Disputes over who had a shipment and when, because the old record-keeping could be edited after the fact.</span>
+            </div>
+            <div class="project-card-row">
+              <span class="project-card-label">Also useful for</span>
+              <span>We've adapted the same idea to help farmers and exporters prove exactly where their produce — like tea — came from, all the way to the buyer.</span>
+            </div>
+            <a href="sui-shipment-tracker.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          </div>
+          <div class="project-card-visual">
+            <div class="mock-label">Chain of Custody — Live</div>
+            <div class="chain-track">
+              <div class="chain-node"><i class="fas fa-box chain-node-icon"></i><span class="chain-node-label">Pickup confirmed</span><span class="chain-node-time">09:14 AM</span></div>
+              <div class="chain-node"><i class="fas fa-truck chain-node-icon"></i><span class="chain-node-label">In transit</span><span class="chain-node-time">11:02 AM</span></div>
+              <div class="chain-node"><i class="fas fa-clipboard-check chain-node-icon"></i><span class="chain-node-label">Checkpoint verified</span><span class="chain-node-time">02:47 PM</span></div>
+              <div class="chain-node"><i class="fas fa-circle-check chain-node-icon"></i><span class="chain-node-label">Delivered</span><span class="chain-node-time">05:30 PM</span></div>
+            </div>
+            <div class="mock-insight"><strong>Tamper-evident:</strong> every handover above is permanently recorded — no one can quietly edit it after the fact.</div>
+          </div>
         </div>
-        <div class="project-card-row">
-          <span class="project-card-label">Also useful for</span>
-          <span>We've adapted the same idea to help farmers and exporters prove exactly where their produce — like tea — came from, all the way to the buyer.</span>
-        </div>
-        <a href="sui-shipment-tracker.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
       </div>
 
       <div class="project-card reveal">
         <div class="project-card-top">
           <div class="project-card-badge"><i class="fas fa-chart-line"></i> ERP · POS · Finance · HR · AI Insights</div>
         </div>
-        <h3>Afrivance ERP &amp; POS <span style="color:var(--muted);font-weight:500;font-size:.85em;">— with Duka Insights built in</span></h3>
-        <p class="project-card-desc">The complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor, watching it all around the clock and handing you a ready-made action plan every morning.</p>
-        <div class="project-card-row">
-          <span class="project-card-label">Solves</span>
-          <span>Owners making big calls on gut feel because by the time data gets reviewed, the moment to act on it has already passed.</span>
-        </div>
-        <div class="project-card-row">
-          <span class="project-card-label">Also useful for</span>
-          <span>Spotting slow-moving stock before it ties up your cash, and catching sales trends days before they'd show up in a month-end report.</span>
-        </div>
-        <div class="project-card-actions">
-          <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
-          <a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-ghost project-card-link" download><i class="fab fa-android"></i> Get mPOS</a>
+        <div class="project-card-body">
+          <div class="project-card-text">
+            <h3>Afrivance ERP &amp; POS <span style="color:var(--muted);font-weight:500;font-size:.85em;">— with Duka Insights built in</span></h3>
+            <p class="project-card-desc">The complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor, watching it all around the clock and handing you a ready-made action plan every morning.</p>
+            <div class="project-card-row">
+              <span class="project-card-label">Solves</span>
+              <span>Owners making big calls on gut feel because by the time data gets reviewed, the moment to act on it has already passed.</span>
+            </div>
+            <div class="project-card-row">
+              <span class="project-card-label">Also useful for</span>
+              <span>Spotting slow-moving stock before it ties up your cash, and catching sales trends days before they'd show up in a month-end report.</span>
+            </div>
+            <div class="project-card-actions">
+              <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
+              <a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-ghost project-card-link" download><i class="fab fa-android"></i> Get mPOS</a>
+            </div>
+          </div>
+          <div class="project-card-visual">
+            <div class="mock-label">Today's Shop Activity</div>
+            <div style="display:flex;flex-direction:column;gap:.6rem;">
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Sales</span><span style="color:var(--teal)">KES 482K</span></div>
+                <div class="mock-bar"><div class="mock-bar-fill" style="width:82%"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Stock Health</span><span style="color:var(--amber)">7 low</span></div>
+                <div class="mock-bar"><div class="mock-bar-fill b2" style="width:65%"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;font-size:.7rem;color:var(--muted);margin-bottom:.25rem;"><span>Staff Clocked In</span><span style="color:#7b9cc4">4/5</span></div>
+                <div class="mock-bar"><div class="mock-bar-fill b3" style="width:90%"></div></div>
+              </div>
+            </div>
+            <div class="mock-insight"><strong>Duka Insights:</strong> Reorder maize flour before Friday — it usually sells out by the weekend.</div>
+          </div>
         </div>
       </div>
     </div>
@@ -1058,7 +1031,7 @@
     <div class="cta-inner reveal">
       <span class="section-label" style="display:block;text-align:center;margin-bottom:.75rem;">Ready to Start?</span>
       <h2>The AI economy is here.<br>Will you lead or be left behind?</h2>
-      <p>The gap between people and organisations using AI and those that aren't is growing every month. Let Afrivance AI help you adapt, retool, and build the intelligent systems that keep you ahead.</p>
+      <p>The gap between people and organisations using AI and those that aren't is growing every month. Let Afrivance AI help you build the intelligent systems that keep you ahead.</p>
       <div class="cta-buttons">
         <a href="#contact" class="btn-primary"><i class="fas fa-arrow-right"></i> Get in Touch</a>
         <a href="#services" class="btn-ghost">Explore Solutions</a>

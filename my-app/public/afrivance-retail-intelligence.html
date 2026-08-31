@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Duka Insights — Your Store's Daily Business Report | Afrivance AI</title>
+  <title>Duka Insights &amp; Afrivance ERP &amp; POS — Run Your Whole Shop, Know It Every Morning | Afrivance AI</title>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -200,12 +200,35 @@
     .footer-brand span em { color: var(--teal); font-style: normal; }
     .footer-copy { color: var(--muted); font-size: .78rem; }
 
+    /* SYSTEM MODULES (Afrivance ERP & POS) */
+    .module-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 3rem; }
+    .module-card { background: var(--card); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 1.5rem; transition: border-color .2s, transform .2s; }
+    .module-card:hover { border-color: rgba(0,200,200,.3); transform: translateY(-3px); }
+    .module-icon { width: 42px; height: 42px; border-radius: 10px; background: rgba(0,200,200,.1); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1rem; margin-bottom: 1rem; }
+    .module-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: .95rem; font-weight: 600; color: var(--white); margin-bottom: .5rem; }
+    .module-card p { font-size: .84rem; color: var(--muted); line-height: 1.65; }
+
+    /* mPOS DOWNLOAD CARD */
+    .mpos-card {
+      background: linear-gradient(135deg, rgba(0,200,200,.08) 0%, rgba(0,200,200,.02) 100%);
+      border: 1px solid rgba(0,200,200,.22); border-radius: 16px;
+      padding: 2rem 2.25rem; margin-top: 3rem;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap;
+    }
+    .mpos-card-left { display: flex; align-items: center; gap: 1.25rem; }
+    .mpos-icon { width: 54px; height: 54px; border-radius: 12px; background: rgba(0,200,200,.15); color: var(--teal); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .mpos-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--white); margin-bottom: .35rem; }
+    .mpos-card p { font-size: .85rem; color: var(--muted); max-width: 420px; line-height: 1.6; }
+    .mpos-note { font-size: .76rem; color: var(--muted); margin-top: .6rem; }
+
     @media (max-width: 900px) {
       .hero-grid { grid-template-columns: 1fr; }
       .ps-grid { grid-template-columns: 1fr; }
       .questions-grid { grid-template-columns: 1fr; }
       .feat-grid { grid-template-columns: 1fr 1fr; }
+      .module-grid { grid-template-columns: 1fr 1fr; }
       .status-card { flex-direction: column; align-items: flex-start; }
+      .mpos-card { flex-direction: column; align-items: flex-start; }
     }
     @media (max-width: 640px) {
       .section { padding: 4rem 1.25rem; }
@@ -213,6 +236,7 @@
       .relevance-box { flex-direction: column; }
       .report-metrics { grid-template-columns: 1fr; }
       .feat-grid { grid-template-columns: 1fr; }
+      .module-grid { grid-template-columns: 1fr; }
     }
 
     .reveal { opacity: 0; transform: translateY(20px); transition: opacity .55s ease, transform .55s ease; }
@@ -237,24 +261,25 @@
   <div class="hero-inner">
     <div class="hero-grid">
       <div>
-        <div class="project-badge"><span class="dot"></span> Retail & Supermarkets</div>
-        <h1>Stop guessing what your shop needs. <span class="accent">Wake up <span class="underline-word">knowing.</span></span></h1>
+        <div class="project-badge"><span class="dot"></span> ERP · POS · Finance · HR · AI Insights</div>
+        <h1>The system your shop runs on. <span class="accent">The report <span class="underline-word">that runs ahead of it.</span></span></h1>
         <p class="hero-body">
-          Every shop generates the answers to its own biggest questions — what's selling, what's running out, what's about to lose you money. Duka Insights reads that data around the clock and hands you a clear morning action plan, so you're making decisions with facts instead of a hunch.
+          Afrivance ERP &amp; POS is the complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor: it reads everything happening across your shop and delivers a clear, plain-language report every morning, so you always know what to reorder, what to push, and what's about to cost you money.
         </p>
         <div class="hero-actions">
-          <a href="https://www.dukainsights.com/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See It In Action</a>
-          <a href="#how-it-works" class="btn-ghost">How It Works</a>
+          <a href="https://erp.afrivance.ai/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See Duka Insights in Action</a>
+          <a href="#mpos" class="btn-ghost"><i class="fab fa-android"></i> Get the mPOS App</a>
         </div>
         <div class="trust-row">
-          <div class="trust-item"><i class="fas fa-clock"></i> Delivered every morning</div>
-          <div class="trust-item"><i class="fas fa-comment"></i> Sent straight to WhatsApp or email</div>
+          <div class="trust-item"><i class="fas fa-layer-group"></i> A full ERP &amp; POS, not a bolt-on tool</div>
+          <div class="trust-item"><i class="fas fa-mobile-screen-button"></i> The same till on Android with mPOS</div>
+          <div class="trust-item"><i class="fas fa-comment"></i> A Duka Insights report every morning</div>
         </div>
       </div>
 
       <div class="report-card reveal">
         <div class="report-head">
-          <span class="report-title">Your Morning Report</span>
+          <span class="report-title">Duka Insights — Your Morning Report</span>
           <span class="report-tag">TODAY, 7:00 AM</span>
         </div>
         <div class="report-metrics">
@@ -271,12 +296,75 @@
   </div>
 </section>
 
+<!-- SYSTEM MODULES -->
+<section id="mpos" class="section alt">
+  <div class="container">
+    <span class="section-label">The Complete System</span>
+    <h2>Every part of running a shop, working as one system</h2>
+    <p class="section-intro">Afrivance ERP &amp; POS brings sales, stock, staff, and money into a single connected system. Duka Insights sits at the centre of it, turning everything that happens across the shop into one clear report each morning.</p>
+    <div class="module-grid">
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-cash-register"></i></div>
+        <h4>Till (POS) &amp; mPOS</h4>
+        <p>Ring up sales on desktop or on a dedicated Android app — cash, M-Pesa, and card, with receipts and shift handovers built in.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-boxes-stacked"></i></div>
+        <h4>Stock &amp; Purchasing</h4>
+        <p>Stock levels, transfers, and purchase orders in one place, so what's on the shelf and what's on order are never a guess.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-utensils"></i></div>
+        <h4>Recipes &amp; Food Costing</h4>
+        <p>For bars and restaurants — build recipes from your own ingredients and see real plate cost and food cost % automatically.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-users"></i></div>
+        <h4>Staff &amp; Payroll</h4>
+        <p>Shifts, PIN-based staff access, and payroll, so managing your team doesn't mean a separate spreadsheet on the side.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-file-invoice-dollar"></i></div>
+        <h4>Finance &amp; Reporting</h4>
+        <p>Sales, expenses, and cash position roll up automatically — real bookkeeping, not just a sales tally.</p>
+      </div>
+      <div class="module-card reveal">
+        <div class="module-icon"><i class="fas fa-sun"></i></div>
+        <h4>Duka Insights</h4>
+        <p>Your AI business advisor — reads everything above and delivers a clear action plan every morning: what to reorder, what to push, and what's about to cost you money.</p>
+      </div>
+    </div>
+
+    <div class="mpos-card reveal">
+      <div class="mpos-card-left">
+        <div class="mpos-icon"><i class="fab fa-android"></i></div>
+        <div>
+          <h4>Get mPOS for Android</h4>
+          <p>The same till, in your pocket — ring up sales, check stock, and open a shift from a phone, no desktop needed.</p>
+        </div>
+      </div>
+      <div>
+        <!-- TODO: replace <owner>/<repo> with your actual GitHub owner and
+             repo name. This link is now permanent — the "mpos-latest"
+             GitHub Release build-mpos-android.yml publishes to always
+             updates in place on every successful build, so this URL
+             never needs editing again after this one-time fix. See the
+             chat explanation for why this replaces the earlier Google
+             Drive link (no interstitial warning page, a real direct
+             binary download). -->
+        <a href="https://github.com/<owner>/<repo>/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-primary"><i class="fas fa-download"></i> Download mPOS (.apk)</a>
+        <p class="mpos-note">Android only, direct install — not on the Play Store yet. You may need to allow "install from unknown sources" the first time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- PROBLEM / SOLUTION -->
 <section class="section alt">
   <div class="container">
-    <span class="section-label">The Problem We Solve</span>
+    <span class="section-label">Why Duka Insights Exists</span>
     <h2>You're not short on information. You're short on time to read it.</h2>
-    <p class="section-intro">Every sale, every delivery, every stock movement in your shop creates data — but most owners only get to look at it once a month, if at all. By then, the shelf that ran empty last week has already cost you sales, and the slow-moving stock has been quietly tying up your cash for weeks.</p>
+    <p class="section-intro">Every sale, every delivery, every stock movement across your shop generates data — but most owners only get to review it once a month, if at all. By the time a report reaches you, the shelf that ran empty last week has already cost you sales, and stock that isn't moving has been quietly tying up your cash for weeks. Duka Insights closes that gap.</p>
     <div class="ps-grid">
       <div class="ps-card problem reveal">
         <div class="ps-card-head">
@@ -335,7 +423,7 @@
 <!-- FEATURES -->
 <section class="section alt">
   <div class="container">
-    <span class="section-label">What You Get</span>
+    <span class="section-label">What Duka Insights Adds</span>
     <h2>Everything you need, nothing you have to dig for</h2>
     <div class="feat-grid">
       <div class="feat-card reveal">
@@ -381,7 +469,7 @@
       <div class="icon"><i class="fas fa-lightbulb"></i></div>
       <div>
         <h4>Made for real shops, not online stores</h4>
-        <p>Most business tools out there are built for online shops with neat digital data trails. This one is built for the real world — physical supermarkets, wholesalers, and distributors who are busy running a shop, not analysing spreadsheets. Instead of three different dashboards to check, you get one clear answer each morning, so you can make the call before customers walk through the door, without needing to hire a data analyst.</p>
+        <p>Most business tools are built for online shops with neat digital data trails. Duka Insights is built for the real world — physical supermarkets, wholesalers, and distributors who are busy running a shop, not analysing spreadsheets. Instead of three different dashboards to check, you get one clear answer each morning, so you can make the call before customers walk through the door, without needing to hire a data analyst.</p>
       </div>
     </div>
   </div>
@@ -392,7 +480,7 @@
   <div class="container">
     <span class="section-label">Project Status</span>
     <h2>Built, tested, and ready to use</h2>
-    <p class="section-intro">The full system has been built and tested from start to finish — from reading your sales and stock data to delivering your daily report.</p>
+    <p class="section-intro">Afrivance ERP &amp; POS — the till, mPOS, purchasing, and staff modules a shop runs on day to day — has been built and tested from start to finish, with Duka Insights reading it all to deliver your daily report.</p>
     <div class="status-card reveal">
       <div class="status-left">
         <span class="status-dot"></span>
@@ -401,7 +489,7 @@
           <p>Ready to show you exactly what your report would look like</p>
         </div>
       </div>
-      <a href="https://www.dukainsights.com/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See Live Demo</a>
+      <a href="https://erp.afrivance.ai/" class="btn-primary" target="_blank" rel="noopener"><i class="fas fa-external-link-alt"></i> See Live Demo</a>
     </div>
   </div>
 </section>

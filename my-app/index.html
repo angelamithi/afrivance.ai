@@ -62,6 +62,14 @@
       transition: background .2s !important;
     }
     .nav-cta:hover { background: var(--teal2) !important; }
+    .nav-download {
+      border: 1px solid rgba(0,200,200,.35) !important; color: var(--teal) !important;
+      padding: .4rem 1rem; border-radius: 6px;
+      font-weight: 600 !important;
+      display: inline-flex !important; align-items: center; gap: .4rem;
+      transition: background .2s, border-color .2s !important;
+    }
+    .nav-download:hover { background: rgba(0,200,200,.08); border-color: var(--teal) !important; color: var(--teal) !important; }
 
     /* ─── HERO ─── */
     .hero {
@@ -503,6 +511,8 @@
       color: var(--teal); text-transform: uppercase; letter-spacing: .07em;
     }
     .project-card-link { align-self: flex-start; margin-top: .25rem; padding: .65rem 1.4rem; font-size: .88rem; }
+    .project-card-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .25rem; }
+    .project-card-actions .project-card-link { margin-top: 0; }
 
     /* ─── PROCESS ─── */
     .process-steps {
@@ -650,6 +660,7 @@
       <li><a href="#agents">AI Agents</a></li>
       <li><a href="#reskilling">Reskilling</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="nav-download" download><i class="fab fa-android"></i> Get Duka Insights Mpos</a></li>
       <li><a href="#contact" class="nav-cta">Get Started</a></li>
     </ul>
   </div>
@@ -989,10 +1000,10 @@
 
       <div class="project-card reveal">
         <div class="project-card-top">
-          <div class="project-card-badge"><i class="fas fa-chart-line"></i> Retail & Supermarkets</div>
+          <div class="project-card-badge"><i class="fas fa-chart-line"></i> ERP · POS · Finance · HR · AI Insights</div>
         </div>
-        <h3>Duka Insights</h3>
-        <p class="project-card-desc">An always-on business advisor for your shop. It watches your sales and stock around the clock and hands you a ready-made action plan every morning — what to reorder, what to push, and what's about to cost you money.</p>
+        <h3>Afrivance ERP &amp; POS <span style="color:var(--muted);font-weight:500;font-size:.85em;">— with Duka Insights built in</span></h3>
+        <p class="project-card-desc">The complete system a shop runs on — till, stock, purchasing, staff, and finance, with mPOS putting the same till on Android. At the centre of it is Duka Insights, our AI business advisor, watching it all around the clock and handing you a ready-made action plan every morning.</p>
         <div class="project-card-row">
           <span class="project-card-label">Solves</span>
           <span>Owners making big calls on gut feel because by the time data gets reviewed, the moment to act on it has already passed.</span>
@@ -1001,7 +1012,10 @@
           <span class="project-card-label">Also useful for</span>
           <span>Spotting slow-moving stock before it ties up your cash, and catching sales trends days before they'd show up in a month-end report.</span>
         </div>
-        <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
+        <div class="project-card-actions">
+          <a href="afrivance-retail-intelligence.html" class="btn-ghost project-card-link"><i class="fas fa-arrow-right"></i> View Project</a>
+          <a href="https://github.com/angelamithi/afrivance-erp/releases/download/mpos-latest/duka_insights_mpos.apk" class="btn-ghost project-card-link" download><i class="fab fa-android"></i> Get mPOS</a>
+        </div>
       </div>
     </div>
   </div>

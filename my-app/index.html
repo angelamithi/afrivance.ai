@@ -77,6 +77,18 @@
     }
     .nav-download:hover { background: rgba(0,200,200,.08); border-color: var(--teal) !important; color: var(--teal) !important; }
 
+    /* ─── MOBILE NAV TOGGLE ─── */
+    .nav-toggle {
+      display: none;
+      background: none; border: 1px solid rgba(0,200,200,.35); border-radius: 6px;
+      width: 40px; height: 40px;
+      align-items: center; justify-content: center;
+      cursor: pointer; flex-shrink: 0;
+      color: var(--white);
+      font-size: 1.1rem;
+    }
+    .nav-toggle:hover { border-color: var(--teal); color: var(--teal); }
+
     /* ─── HERO ─── */
     .hero {
       min-height: 100vh;
@@ -657,7 +669,21 @@
       .section          { padding: 4rem 1.25rem; }
       .cta-wrap         { padding: 4rem 1.25rem; }
       .process-steps    { grid-template-columns: 1fr; }
-      .nav-links        { display: none; }
+      .nav-toggle       { display: flex; }
+      .nav-links {
+        position: absolute; top: 100%; left: 0; right: 0;
+        flex-direction: column; align-items: stretch; gap: 0;
+        background: rgba(10,22,40,.98); backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(0,200,200,.12);
+        max-height: 0; overflow: hidden;
+        transition: max-height .3s ease;
+        padding: 0 1.25rem;
+      }
+      .nav-links.open   { max-height: 26rem; padding: .5rem 1.25rem 1.25rem; }
+      .nav-links li      { width: 100%; }
+      .nav-links a      { display: block; padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.06); white-space: normal; }
+      .nav-links li:last-child a { border-bottom: none; }
+      .nav-links .nav-cta, .nav-links .nav-download { margin: .75rem 0 0; text-align: center; justify-content: center; }
       .hero             { padding: 7rem 1.25rem 4rem; }
       h1                { font-size: 2.2rem; }
       .hero-stats       { gap: 1.5rem; }
@@ -678,7 +704,10 @@
       <img src="FB_IMG_1781095971954.jpg" alt="Afrivance AI Logo">
       <span>Afrivance <em>AI</em></span>
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navLinks">
+      <i class="fas fa-bars"></i>
+    </button>
+    <ul class="nav-links" id="navLinks">
       <li><a href="#problem">The Problem</a></li>
       <li><a href="#services">Solutions</a></li>
       <li><a href="#agents">AI Agents</a></li>
@@ -1123,6 +1152,35 @@
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  const navToggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const navIcon = navToggle.querySelector('i');
+
+  function closeNav() {
+    navLinks.classList.remove('open');
+    navToggle.setAttribute('aria-expanded', 'false');
+    navIcon.classList.remove('fa-xmark');
+    navIcon.classList.add('fa-bars');
+  }
+  function openNav() {
+    navLinks.classList.add('open');
+    navToggle.setAttribute('aria-expanded', 'true');
+    navIcon.classList.remove('fa-bars');
+    navIcon.classList.add('fa-xmark');
+  }
+
+  navToggle.addEventListener('click', () => {
+    navLinks.classList.contains('open') ? closeNav() : openNav();
+  });
+
+  // Close the menu after tapping a link
+  navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', closeNav));
+
+  // Close the menu if resized back to desktop width
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 640) closeNav();
   });
 
   const observer = new IntersectionObserver(entries => {
